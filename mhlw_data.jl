@@ -55,4 +55,4 @@ plot([A B C],
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
 plot!(xticks = ([0 floor((N-1)/3)  floor(2*(N-1)/3) N-3;], [l0 l1 l2 l3]))
-savefig("data_mhlw.png") 
+savefig("mhlw_data.png") 
