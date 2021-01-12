@@ -73,4 +73,4 @@ plot(sol,
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
 plot!(xticks = ([0 2*7  4*7;], [l0 l1 l2]))
-savefig("sir_mhlw.png") 
+savefig("mhlw_sir.png") 
