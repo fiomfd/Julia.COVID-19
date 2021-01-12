@@ -3,3 +3,5 @@ These Julia programs download the open data of COVID-19 given by the Japanese Mi
 
 - mhlw_data.jl the graph of the record
 - mhlw_sir.jl the SIR model simulation
+- *.png results
+- *.csv CSV files downloaded by the programs
