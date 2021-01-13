@@ -51,7 +51,7 @@ plot([A B C],
     linewidth=3, 
     title="COVID-19 in Japan (126M)", 
     xlabel="",
-    yaxis="population",
+    yaxis="cases",
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
 plot!(xticks = ([0 floor((N-1)/3)  floor(2*(N-1)/3) N-3;], [l0 l1 l2 l3]))
