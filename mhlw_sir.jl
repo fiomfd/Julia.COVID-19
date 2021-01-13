@@ -69,7 +69,7 @@ plot(sol,
     linewidth=3, 
     title="SIR model for COVID-19 in Japan (126M)", 
     xlabel="",
-    yaxis="population",
+    yaxis="cases",
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
 plot!(xticks = ([0 2*7  4*7;], [l0 l1 l2]))
