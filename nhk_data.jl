@@ -9,10 +9,6 @@ download("https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_pr
 download("https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_domestic_daily_data.csv","nhk_news_covid19_domestic_daily_data.csv");
 
 # Shape up the data.
-# N: the number of days 
-# A[n]: total cases on the n-th day
-# B[n]: the number of total discharged individuals on the n-the day
-# C[n]=A[n]-B[n]: active cases and deaths  
 Acsv=DataFrame(CSV.File("nhk_news_covid19_prefectures_daily_data.csv", header=false, delim=','));
 Jcsv=DataFrame(CSV.File("nhk_news_covid19_domestic_daily_data.csv", header=false, delim=','));
 (pa,qa)=size(Acsv);
