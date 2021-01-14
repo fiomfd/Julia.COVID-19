@@ -49,8 +49,8 @@ l3=string(d0+Day(N-1));
 plot([A B C], 
     grid=false,
     linewidth=3, 
-    title="COVID-19 in Japan (126M)", 
-    xlabel="",
+    title="COVID-19 in Japan (126M) \n data sourced by Japanese Ministry of Health", 
+    xlabel="date",
     yaxis="cases",
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)

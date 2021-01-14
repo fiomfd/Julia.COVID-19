@@ -67,8 +67,8 @@ l2=string(d0+Day(4*7));
 plot(sol, 
     grid=false,
     linewidth=3, 
-    title="SIR model for COVID-19 in Japan (126M)", 
-    xlabel="",
+    title="SIR model for COVID-19 in Japan (126M)\n data sourced by Japanese Ministry of Health", 
+    xlabel="date",
     yaxis="cases",
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
