@@ -38,6 +38,16 @@ for k=1:N
 end
 C=A-B;
 
+n=aa-320;
+r=zeros(n);
+for k=1:n
+    r[k,1]=C[k+304,1]/C[k+303,1];
+end
+s=ones(n);
+b1=2^(1/7)*s;
+b2=2^(1/14)*s;
+b4=2^(1/28)*s;
+
 # Plot the data
 # d0: the initial date
 # d0+Day(N-1): the date of update.
@@ -52,7 +62,25 @@ plot([A B C],
     title="COVID-19 in Japan (126M) \n data sourced by Japanese Ministry of Health", 
     xlabel="date",
     yaxis="cases",
+    legendfont=font(14), 
     label=["total cases" "discharged" "active cases"], 
     legend = :topleft)
 plot!(xticks = ([0 floor((N-1)/3)  floor(2*(N-1)/3) N-3;], [l0 l1 l2 l3]))
 savefig("mhlw_data.png") 
+
+dd0=Date(2020,12,1)
+ll0=string(dd0);
+ll1=string(dd0+Day(Int(floor((n-1)/3))));
+ll2=string(dd0+Day(Int(floor(2*(n-1)/3))));
+ll3=string(dd0+Day(n-2));
+plot([r s b1 b2 b4], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Japan (126M) I(t)/I(t-1) \n data sourced by Japanese Ministry of Health", 
+    xlabel="date t",
+    yaxis="ratio",
+    legendfont=font(14), 
+    label=["I(t)/I(t-1)" "1" "2^(1/7)" "2^(1/14)" "2^(1/28)"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor((n-1)/3)  floor(2*(n-1)/3) n-1;], [ll0 ll1 ll2 ll3]))
+savefig("mhlw_ratio.png") 
