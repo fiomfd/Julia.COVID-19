@@ -43,12 +43,12 @@ CMYS=parse.(Float64,Array(Acsv[176,5:qa]));
 RMYS=parse.(Float64,Array(Ccsv[161,5:qa]));
 IMYS=CMYS-RMYS;
 # Indonesia
-PIND=271;
-AIND=parse.(Float64,Array(Acsv[149,5:qa]))/PIND;
-BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
-CIND=parse.(Float64,Array(Acsv[149,5:qa]));
-RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
-IIND=CIND-RIND;
+PIDN=271;
+AIDN=parse.(Float64,Array(Acsv[149,5:qa]))/PIDN;
+BIDN=parse.(Float64,Array(Bcsv[149,5:qa]))/PIDN;
+CIDN=parse.(Float64,Array(Acsv[149,5:qa]));
+RIDN=parse.(Float64,Array(Ccsv[134,5:qa]));
+IIDN=CIDN-RIDN;
 # Singapore
 PSIN=5.7;
 ASIN=parse.(Float64,Array(Acsv[228,5:qa]))/PSIN;
@@ -84,6 +84,41 @@ BNSW=parse.(Float64,Array(Bcsv[11,5:qa]))/PNSW;
 CNSW=parse.(Float64,Array(Acsv[11,5:qa]));
 RNSW=parse.(Float64,Array(Ccsv[11,5:qa]));
 INSW=CNSW-RNSW;
+# India 148 133
+PIND=1380;
+AIND=parse.(Float64,Array(Acsv[148,5:qa]))/PIND;
+BIND=parse.(Float64,Array(Bcsv[148,5:qa]))/PIND;
+CIND=parse.(Float64,Array(Acsv[148,5:qa]));
+RIND=parse.(Float64,Array(Ccsv[133,5:qa]));
+IIND=CIND-RIND;
+# Nepal 192 177
+PNPL=29;
+ANPL=parse.(Float64,Array(Acsv[192,5:qa]))/PNPL;
+BNPL=parse.(Float64,Array(Bcsv[192,5:qa]))/PNPL;
+CNPL=parse.(Float64,Array(Acsv[192,5:qa]));
+RNPL=parse.(Float64,Array(Ccsv[177,5:qa]));
+INPL=CNPL-RNPL;
+# Pakistan 205 190
+PPAK=221;
+APAK=parse.(Float64,Array(Acsv[205,5:qa]))/PPAK;
+BPAK=parse.(Float64,Array(Bcsv[205,5:qa]))/PPAK;
+CPAK=parse.(Float64,Array(Acsv[205,5:qa]));
+RPAK=parse.(Float64,Array(Ccsv[190,5:qa]));
+IPAK=CPAK-RPAK;
+# Bangladesh 22 22
+PBGD=165;
+ABGD=parse.(Float64,Array(Acsv[22,5:qa]))/PBGD;
+BBGD=parse.(Float64,Array(Bcsv[22,5:qa]))/PBGD;
+CBGD=parse.(Float64,Array(Acsv[22,5:qa]));
+RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
+IBGD=CBGD-RBGD;
+# Sri Lanka 236 221
+PLKA=21;
+ALKA=parse.(Float64,Array(Acsv[236,5:qa]))/PLKA;
+BLKA=parse.(Float64,Array(Bcsv[236,5:qa]))/PLKA;
+CLKA=parse.(Float64,Array(Acsv[236,5:qa]));
+RLKA=parse.(Float64,Array(Ccsv[221,5:qa]));
+ILKA=CLKA-RLKA;
 
 D=qa-4;
 d0=Date(2020,1,22);
@@ -94,26 +129,26 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(d0+Day(D-1));
 
-plot([AJPN APHI AMYS AIND AKOR],  
+plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
     grid=false,
-    linewidth=3, 
+    linewidth=2, 
     title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
     xlabel="date",
     yaxis="cases/1M",
-    legendfont=font(14), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea"],
+    legendfont=font(12), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_cases.png") 
 
-plot([BJPN BPHI BMYS BIND BKOR], 
+plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
-    linewidth=3, 
+    linewidth=2, 
     title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     xlabel="date",
     yaxis="deaths/1M",
-    legendfont=font(14), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea"],
+    legendfont=font(12), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_deaths.png") 
@@ -166,7 +201,7 @@ plot([CMYS IMYS RMYS],
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_malaysia.png")
 
-plot([CIND IIND RIND], 
+plot([CIDN IIDN RIDN], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Indonesia (271M) \n data sourced by JHU Coronavirus Resource Center", 
@@ -238,6 +273,66 @@ plot([CNSW INSW RNSW],
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_new_south_wales.png")
 
+plot([CIND IIND RIND], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in India (1380M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_india.png")
+
+plot([CNPL INPL RNPL], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Nepal (29M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_nepal.png")
+
+plot([CPAK IPAK RPAK], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Pakistan (221M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_pakistan.png")
+
+plot([CBGD IBGD RBGD], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Bangladesh (165M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_bangladesh.png")
+
+plot([CLKA ILKA RLKA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Sri Lanka (21M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_sri_lanka.png")
+
 # Japan
 A1T0=CJPN[qa-4];
 A1R0=RJPN[qa-4];
@@ -263,11 +358,41 @@ A4T2=CMYS[qa-10];
 A4R2=RMYS[qa-10];
 A4N=PMYS;
 # Indonesia
-A5T0=CIND[qa-4];
-A5R0=RIND[qa-4];
-A5T2=CIND[qa-10];
-A5R2=RIND[qa-10];
-A5N=PIND;
+A5T0=CIDN[qa-4];
+A5R0=RIDN[qa-4];
+A5T2=CIDN[qa-10];
+A5R2=RIDN[qa-10];
+A5N=PIDN;
+# India
+A6T0=CIND[qa-4];
+A6R0=RIND[qa-4];
+A6T2=CIND[qa-10];
+A6R2=RIND[qa-10];
+A6N=PIND;
+# Nepal
+A7T0=CNPL[qa-4];
+A7R0=RNPL[qa-4];
+A7T2=CNPL[qa-10];
+A7R2=RNPL[qa-10];
+A7N=PNPL;
+# Pakistan
+A8T0=CPAK[qa-4];
+A8R0=RPAK[qa-4];
+A8T2=CPAK[qa-10];
+A8R2=RPAK[qa-10];
+A8N=PPAK;
+# Bangladesh
+A9T0=CBGD[qa-4];
+A9R0=RBGD[qa-4];
+A9T2=CBGD[qa-10];
+A9R2=RBGD[qa-10];
+A9N=PBGD;
+# Sri Lanka
+A10T0=CLKA[qa-4];
+A10R0=RLKA[qa-4];
+A10T2=CLKA[qa-10];
+A10R2=RLKA[qa-10];
+A10N=PLKA;
 
 # interval 
 W=Float64(5*7)
@@ -383,7 +508,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
-    legend = :topleft)
+    legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_malaysia.png")
 
@@ -411,6 +536,146 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
-    legend = :topleft)
+    legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_indonesia.png")
+
+# India
+T0=A6T0;
+R0=A6R0;
+T2=A6T2;
+R2=A6R2;
+N=A6N
+T1=(T0-T2)/Float64(7);
+R1=(R0-R2)/Float64(7);
+beta=T1/(T0-R0)/(N-T0);
+gamma=R1/(T0-R0);
+tspan=(0,W);
+f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+u0=[T0;T0-R0;R0];
+prob = ODEProblem(f,u0,tspan);
+sol = solve(prob);
+# plotting
+plot(sol, 
+    grid=false,
+    linewidth=3, 
+    title="SIR model for COVID-19 in India (1380M)", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :right)
+plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+savefig("sir_india.png")
+
+# Nepal
+T0=A7T0;
+R0=A7R0;
+T2=A7T2;
+R2=A7R2;
+N=A7N
+T1=(T0-T2)/Float64(7);
+R1=(R0-R2)/Float64(7);
+beta=T1/(T0-R0)/(N-T0);
+gamma=R1/(T0-R0);
+tspan=(0,W);
+f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+u0=[T0;T0-R0;R0];
+prob = ODEProblem(f,u0,tspan);
+sol = solve(prob);
+# plotting
+plot(sol, 
+    grid=false,
+    linewidth=3, 
+    title="SIR model for COVID-19 in Nepal (29M)", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :right)
+plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+savefig("sir_nepal.png")
+
+# Pakistan
+T0=A8T0;
+R0=A8R0;
+T2=A8T2;
+R2=A8R2;
+N=A8N
+T1=(T0-T2)/Float64(7);
+R1=(R0-R2)/Float64(7);
+beta=T1/(T0-R0)/(N-T0);
+gamma=R1/(T0-R0);
+tspan=(0,W);
+f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+u0=[T0;T0-R0;R0];
+prob = ODEProblem(f,u0,tspan);
+sol = solve(prob);
+# plotting
+plot(sol, 
+    grid=false,
+    linewidth=3, 
+    title="SIR model for COVID-19 in Pakistan (221M)", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :right)
+plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+savefig("sir_pakistan.png")
+
+# Bangladesh
+T0=A9T0;
+R0=A9R0;
+T2=A9T2;
+R2=A9R2;
+N=A9N
+T1=(T0-T2)/Float64(7);
+R1=(R0-R2)/Float64(7);
+beta=T1/(T0-R0)/(N-T0);
+gamma=R1/(T0-R0);
+tspan=(0,W);
+f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+u0=[T0;T0-R0;R0];
+prob = ODEProblem(f,u0,tspan);
+sol = solve(prob);
+# plotting
+plot(sol, 
+    grid=false,
+    linewidth=3, 
+    title="SIR model for COVID-19 in Bangladesh (165M)", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :right)
+plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+savefig("sir_bangladesh.png")
+
+# Sri Lanka
+T0=A10T0;
+R0=A10R0;
+T2=A10T2;
+R2=A10R2;
+N=A10N
+T1=(T0-T2)/Float64(7);
+R1=(R0-R2)/Float64(7);
+beta=T1/(T0-R0)/(N-T0);
+gamma=R1/(T0-R0);
+tspan=(0,W);
+f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+u0=[T0;T0-R0;R0];
+prob = ODEProblem(f,u0,tspan);
+sol = solve(prob);
+# plotting
+plot(sol, 
+    grid=false,
+    linewidth=3, 
+    title="SIR model for COVID-19 in Sri Lanka (21M)", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    legend = :right)
+plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+savefig("sir_sri_lanka.png")
