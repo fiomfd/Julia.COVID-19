@@ -137,6 +137,7 @@ plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     yaxis="cases/1M",
     legendfont=font(12), 
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_cases.png") 
@@ -149,7 +150,8 @@ plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA],
     yaxis="deaths/1M",
     legendfont=font(12), 
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
-    legend = :topleft)
+   palette = :seaborn_bright, 
+     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_deaths.png") 
 
