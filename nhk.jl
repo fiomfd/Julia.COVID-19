@@ -92,6 +92,7 @@ plot([NJPN NTKY NHKD NOSK NOKNW],
     legendfont=font(14), 
     label=["Japan" "Tokyo" "Hokkaido" "Osaka" "Okinawa"], 
     palette = :seaborn_bright, 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_new_cases.png") 

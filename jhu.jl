@@ -177,7 +177,8 @@ plot([CJPN IJPN RJPN],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
-    legend = :topleft)
+    palette = :seaborn_bright, 
+   legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_japan.png") 
 
@@ -189,6 +190,7 @@ plot([CKOR IKOR RKOR],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_south_korea.png")
@@ -201,6 +203,7 @@ plot([CPHI IPHI RPHI],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_philippines.png")
@@ -213,6 +216,7 @@ plot([CMYS IMYS RMYS],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_malaysia.png")
@@ -225,6 +229,7 @@ plot([CIDN IIDN RIDN],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_indonesia.png")
@@ -237,6 +242,7 @@ plot([CSIN ISIN RSIN],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_singapore.png")
@@ -249,6 +255,7 @@ plot([CNZL INZL RNZL],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_new_zealand.png")
@@ -261,6 +268,7 @@ plot([CHubei IHubei RHubei],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_hubei.png")
@@ -273,6 +281,7 @@ plot([CVIC IVIC RVIC],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_victoria.png")
@@ -285,6 +294,7 @@ plot([CNSW INSW RNSW],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_new_south_wales.png")
@@ -297,6 +307,7 @@ plot([CIND IIND RIND],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_india.png")
@@ -309,6 +320,7 @@ plot([CNPL INPL RNPL],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_nepal.png")
@@ -321,6 +333,7 @@ plot([CPAK IPAK RPAK],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_pakistan.png")
@@ -333,6 +346,7 @@ plot([CBGD IBGD RBGD],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_bangladesh.png")
@@ -345,6 +359,7 @@ plot([CLKA ILKA RLKA],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_sri_lanka.png")
@@ -357,6 +372,7 @@ plot([CBRA IBRA RBRA],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_brazil.png")
@@ -369,6 +385,7 @@ plot([CZAF IZAF RZAF],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_south_africa.png")
@@ -476,6 +493,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_japan.png")
@@ -504,6 +522,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_south_Korea.png")
@@ -532,6 +551,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_philippines.png")
@@ -560,6 +580,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_malaysia.png")
@@ -588,6 +609,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_indonesia.png")
@@ -616,6 +638,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_india.png")
@@ -644,6 +667,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_nepal.png")
@@ -672,6 +696,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_pakistan.png")
@@ -700,6 +725,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_bangladesh.png")
@@ -728,6 +754,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_sri_lanka.png")
@@ -756,6 +783,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_brazil.png")
@@ -784,6 +812,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_south_africa.png")

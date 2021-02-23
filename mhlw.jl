@@ -55,6 +55,7 @@ plot([A C B],
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(L/3)  floor(2*L/3) L-3;], [l0 l1 l2 l3]))
 savefig("mhlw_data.png") 
@@ -113,6 +114,7 @@ plot(sol,
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([0 2*7  4*7;], [l00 l11 l22]))
 savefig("mhlw_sir.png") 
