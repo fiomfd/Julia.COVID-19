@@ -119,13 +119,6 @@ BLKA=parse.(Float64,Array(Bcsv[236,5:qa]))/PLKA;
 CLKA=parse.(Float64,Array(Acsv[236,5:qa]));
 RLKA=parse.(Float64,Array(Ccsv[221,5:qa]));
 ILKA=CLKA-RLKA;
-# Brazil 32 32
-PBRA=214;
-ABRA=parse.(Float64,Array(Acsv[32,5:qa]))/PBRA;
-BBRA=parse.(Float64,Array(Bcsv[32,5:qa]))/PBRA;
-CBRA=parse.(Float64,Array(Acsv[32,5:qa]));
-RBRA=parse.(Float64,Array(Ccsv[32,5:qa]));
-IBRA=CBRA-RBRA;
 # South Africa 233 218
 PZAF=58.8;
 AZAF=parse.(Float64,Array(Acsv[233,5:qa]))/PZAF;
@@ -133,6 +126,76 @@ BZAF=parse.(Float64,Array(Bcsv[233,5:qa]))/PZAF;
 CZAF=parse.(Float64,Array(Acsv[233,5:qa]));
 RZAF=parse.(Float64,Array(Ccsv[218,5:qa]));
 IZAF=CZAF-RZAF;
+# Argentina 8 8
+PARG=45.2;
+AARG=parse.(Float64,Array(Acsv[8,5:qa]))/PARG;
+BARG=parse.(Float64,Array(Bcsv[8,5:qa]))/PARG;
+CARG=parse.(Float64,Array(Acsv[8,5:qa]));
+RARG=parse.(Float64,Array(Ccsv[8,5:qa]));
+IARG=CARG-RARG;
+# Brazil 32 32
+PBRA=213;
+ABRA=parse.(Float64,Array(Acsv[32,5:qa]))/PBRA;
+BBRA=parse.(Float64,Array(Bcsv[32,5:qa]))/PBRA;
+CBRA=parse.(Float64,Array(Acsv[32,5:qa]));
+RBRA=parse.(Float64,Array(Ccsv[32,5:qa]));
+IBRA=CBRA-RBRA;
+# Colombia 93 78
+PCOL=50.9;
+ACOL=parse.(Float64,Array(Acsv[93,5:qa]))/PCOL;
+BCOL=parse.(Float64,Array(Bcsv[93,5:qa]))/PCOL;
+CCOL=parse.(Float64,Array(Acsv[93,5:qa]));
+RCOL=parse.(Float64,Array(Ccsv[78,5:qa]));
+ICOL=CCOL-RCOL;
+# France 131 116
+PFRA=65.3;
+AFRA=parse.(Float64,Array(Acsv[131,5:qa]))/PFRA;
+BFRA=parse.(Float64,Array(Bcsv[131,5:qa]))/PFRA;
+CFRA=parse.(Float64,Array(Acsv[131,5:qa]));
+RFRA=parse.(Float64,Array(Ccsv[116,5:qa]));
+IFRA=CFRA-RFRA;
+# Italia 154 139
+PITA=60.5;
+AITA=parse.(Float64,Array(Acsv[154,5:qa]))/PITA;
+BITA=parse.(Float64,Array(Bcsv[154,5:qa]))/PITA;
+CITA=parse.(Float64,Array(Acsv[154,5:qa]));
+RITA=parse.(Float64,Array(Ccsv[139,5:qa]));
+IITA=CITA-RITA;
+# Mexico 183 168
+PMEX=129;
+AMEX=parse.(Float64,Array(Acsv[183,5:qa]))/PMEX;
+BMEX=parse.(Float64,Array(Bcsv[183,5:qa]))/PMEX;
+CMEX=parse.(Float64,Array(Acsv[183,5:qa]));
+RMEX=parse.(Float64,Array(Ccsv[168,5:qa]));
+IMEX=CMEX-RMEX;
+# Mexico 183 168
+PMEX=129;
+AMEX=parse.(Float64,Array(Acsv[183,5:qa]))/PMEX;
+BMEX=parse.(Float64,Array(Bcsv[183,5:qa]))/PMEX;
+CMEX=parse.(Float64,Array(Acsv[183,5:qa]));
+RMEX=parse.(Float64,Array(Ccsv[168,5:qa]));
+IMEX=CMEX-RMEX;
+# Spain 235 220
+PESP=46.8;
+AESP=parse.(Float64,Array(Acsv[235,5:qa]))/PESP;
+BESP=parse.(Float64,Array(Bcsv[235,5:qa]))/PESP;
+CESP=parse.(Float64,Array(Acsv[235,5:qa]));
+RESP=parse.(Float64,Array(Ccsv[220,5:qa]));
+IESP=CESP-RESP;
+# United Staes 251 236
+PUSA=331;
+AUSA=parse.(Float64,Array(Acsv[251,5:qa]))/PUSA;
+BUSA=parse.(Float64,Array(Bcsv[251,5:qa]))/PUSA;
+CUSA=parse.(Float64,Array(Acsv[251,5:qa]));
+RUSA=parse.(Float64,Array(Ccsv[236,5:qa]));
+IUSA=CUSA-RUSA;
+# United Kingdom 266 251
+PGBR=67.9;
+AGBR=parse.(Float64,Array(Acsv[266,5:qa]))/PGBR;
+BGBR=parse.(Float64,Array(Bcsv[266,5:qa]))/PGBR;
+CGBR=parse.(Float64,Array(Acsv[266,5:qa]));
+RGBR=parse.(Float64,Array(Ccsv[251,5:qa]));
+IGBR=CGBR-RGBR;
 
 D=qa-4;
 d0=Date(2020,1,22);
@@ -154,7 +217,7 @@ plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     palette = :seaborn_bright, 
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_cases.png") 
+savefig("jhu_asia_cases.png") 
 
 plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
@@ -167,7 +230,33 @@ plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA],
    palette = :seaborn_bright, 
      legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_deaths.png") 
+savefig("jhu_asia_deaths.png") 
+
+plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_world_cases.png") 
+
+plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_world_deaths.png") 
 
 plot([CJPN IJPN RJPN], 
     grid=false,
@@ -364,19 +453,6 @@ plot([CLKA ILKA RLKA],
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_sri_lanka.png")
 
-plot([CBRA IBRA RBRA], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in Brazil (214M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_brazil.png")
-
 plot([CZAF IZAF RZAF], 
     grid=false,
     linewidth=3, 
@@ -389,6 +465,123 @@ plot([CZAF IZAF RZAF],
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_south_africa.png")
+
+plot([CARG IARG RARG], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Argentina (45.2M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_argentina.png")
+
+plot([CBRA IBRA RBRA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Brazil (213M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_brazil.png")
+
+plot([CCOL ICOL RCOL], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Colombia (50.9M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_colombia.png")
+
+plot([CFRA IFRA RFRA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in France (65.3M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_france.png")
+
+plot([CITA IITA RITA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Italy (60.5M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_italy.png")
+
+plot([CMEX IMEX RMEX], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Mexico (129M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_mexico.png")
+
+plot([CESP IESP RESP], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Spain (46.8M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_spain.png")
+
+plot([CUSA IUSA RUSA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in United States (331M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_usa.png")
+
+plot([CGBR IGBR RGBR], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in United Kingdom (67.9M) \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_uk.png")
 
 # Japan
 A1T0=CJPN[qa-4];
@@ -778,7 +971,7 @@ sol = solve(prob);
 plot(sol, 
     grid=false,
     linewidth=3, 
-    title="SIR model for COVID-19 in Brazil (214M)", 
+    title="SIR model for COVID-19 in Brazil (213M) \n data sourced by JHU Coronavirus Resource Center", 
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
@@ -807,7 +1000,7 @@ sol = solve(prob);
 plot(sol, 
     grid=false,
     linewidth=3, 
-    title="SIR model for COVID-19 in South Africa (58.8M)", 
+    title="SIR model for COVID-19 in South Africa (58.8M) \n data sourced by JHU Coronavirus Resource Center", 
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
