@@ -168,13 +168,6 @@ BMEX=parse.(Float64,Array(Bcsv[183,5:qa]))/PMEX;
 CMEX=parse.(Float64,Array(Acsv[183,5:qa]));
 RMEX=parse.(Float64,Array(Ccsv[168,5:qa]));
 IMEX=CMEX-RMEX;
-# Mexico 183 168
-PMEX=129;
-AMEX=parse.(Float64,Array(Acsv[183,5:qa]))/PMEX;
-BMEX=parse.(Float64,Array(Bcsv[183,5:qa]))/PMEX;
-CMEX=parse.(Float64,Array(Acsv[183,5:qa]));
-RMEX=parse.(Float64,Array(Ccsv[168,5:qa]));
-IMEX=CMEX-RMEX;
 # Spain 235 220
 PESP=46.8;
 AESP=parse.(Float64,Array(Acsv[235,5:qa]))/PESP;
@@ -257,6 +250,19 @@ plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_world_deaths.png") 
+
+plot([CUSA CIND CBRA],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Confirmed Cases \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(10), 
+    label=["United States (331M)" "India (1380M)" "Brazil (213M)"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_UIB.png") 
 
 plot([CJPN IJPN RJPN], 
     grid=false,
