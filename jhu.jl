@@ -16,52 +16,52 @@ Ccsv=DataFrame(CSV.File("time_series_covid19_recovered_global.csv", header=false
 
 # Japan
 PJPN=126;
-AJPN=parse.(Float64,Array(Acsv[156,5:qa]))/PJPN;
-BJPN=parse.(Float64,Array(Bcsv[156,5:qa]))/PJPN;
-CJPN=parse.(Float64,Array(Acsv[156,5:qa]));
-RJPN=parse.(Float64,Array(Ccsv[141,5:qa]));
+AJPN=parse.(Float64,Array(Acsv[157,5:qa]))/PJPN;
+BJPN=parse.(Float64,Array(Bcsv[157,5:qa]))/PJPN;
+CJPN=parse.(Float64,Array(Acsv[157,5:qa]));
+RJPN=parse.(Float64,Array(Ccsv[142,5:qa]));
 IJPN=CJPN-RJPN;
 # South Korea
 PKOR=51.3;
-AKOR=parse.(Float64,Array(Acsv[160,5:qa]))/PKOR;
-BKOR=parse.(Float64,Array(Bcsv[160,5:qa]))/PKOR;
-CKOR=parse.(Float64,Array(Acsv[160,5:qa]));
-RKOR=parse.(Float64,Array(Ccsv[145,5:qa]));
+AKOR=parse.(Float64,Array(Acsv[161,5:qa]))/PKOR;
+BKOR=parse.(Float64,Array(Bcsv[161,5:qa]))/PKOR;
+CKOR=parse.(Float64,Array(Acsv[161,5:qa]));
+RKOR=parse.(Float64,Array(Ccsv[146,5:qa]));
 IKOR=CKOR-RKOR;
 # Philippines
 PPHI=108;
-APHI=parse.(Float64,Array(Acsv[210,5:qa]))/PPHI;
-BPHI=parse.(Float64,Array(Bcsv[210,5:qa]))/PPHI;
-CPHI=parse.(Float64,Array(Acsv[210,5:qa]));
-RPHI=parse.(Float64,Array(Ccsv[195,5:qa]));
+APHI=parse.(Float64,Array(Acsv[211,5:qa]))/PPHI;
+BPHI=parse.(Float64,Array(Bcsv[211,5:qa]))/PPHI;
+CPHI=parse.(Float64,Array(Acsv[211,5:qa]));
+RPHI=parse.(Float64,Array(Ccsv[196,5:qa]));
 IPHI=CPHI-RPHI;
 # Malaysia
 PMYS=32.6;
-AMYS=parse.(Float64,Array(Acsv[176,5:qa]))/PMYS;
-BMYS=parse.(Float64,Array(Bcsv[176,5:qa]))/PMYS;
-CMYS=parse.(Float64,Array(Acsv[176,5:qa]));
-RMYS=parse.(Float64,Array(Ccsv[161,5:qa]));
+AMYS=parse.(Float64,Array(Acsv[177,5:qa]))/PMYS;
+BMYS=parse.(Float64,Array(Bcsv[177,5:qa]))/PMYS;
+CMYS=parse.(Float64,Array(Acsv[177,5:qa]));
+RMYS=parse.(Float64,Array(Ccsv[162,5:qa]));
 IMYS=CMYS-RMYS;
 # Indonesia
 PIDN=271;
-AIDN=parse.(Float64,Array(Acsv[149,5:qa]))/PIDN;
-BIDN=parse.(Float64,Array(Bcsv[149,5:qa]))/PIDN;
-CIDN=parse.(Float64,Array(Acsv[149,5:qa]));
-RIDN=parse.(Float64,Array(Ccsv[134,5:qa]));
+AIDN=parse.(Float64,Array(Acsv[150,5:qa]))/PIDN;
+BIDN=parse.(Float64,Array(Bcsv[150,5:qa]))/PIDN;
+CIDN=parse.(Float64,Array(Acsv[150,5:qa]));
+RIDN=parse.(Float64,Array(Ccsv[135,5:qa]));
 IIDN=CIDN-RIDN;
 # Singapore
 PSIN=5.7;
-ASIN=parse.(Float64,Array(Acsv[228,5:qa]))/PSIN;
-BSIN=parse.(Float64,Array(Bcsv[228,5:qa]))/PSIN;
-CSIN=parse.(Float64,Array(Acsv[228,5:qa]));
-RSIN=parse.(Float64,Array(Ccsv[213,5:qa]));
+ASIN=parse.(Float64,Array(Acsv[229,5:qa]))/PSIN;
+BSIN=parse.(Float64,Array(Bcsv[229,5:qa]))/PSIN;
+CSIN=parse.(Float64,Array(Acsv[229,5:qa]));
+RSIN=parse.(Float64,Array(Ccsv[214,5:qa]));
 ISIN=CSIN-RSIN;
 # New Zealand
 PNZL=4.9;
-ANZL=parse.(Float64,Array(Acsv[198,5:qa]))/PNZL;
-BNZL=parse.(Float64,Array(Bcsv[198,5:qa]))/PNZL;
-CNZL=parse.(Float64,Array(Acsv[198,5:qa]));
-RNZL=parse.(Float64,Array(Ccsv[183,5:qa]));
+ANZL=parse.(Float64,Array(Acsv[199,5:qa]))/PNZL;
+BNZL=parse.(Float64,Array(Bcsv[199,5:qa]))/PNZL;
+CNZL=parse.(Float64,Array(Acsv[199,5:qa]));
+RNZL=parse.(Float64,Array(Ccsv[184,5:qa]));
 INZL=CNZL-RNZL;
 # Hubei
 PHubei=58.5;
@@ -77,7 +77,7 @@ BVIC=parse.(Float64,Array(Bcsv[16,5:qa]))/PVIC;
 CVIC=parse.(Float64,Array(Acsv[16,5:qa]));
 RVIC=parse.(Float64,Array(Ccsv[16,5:qa]));
 IVIC=CVIC-RVIC;
-# Victoria
+# NSW
 PNSW=7.5;
 ANSW=parse.(Float64,Array(Acsv[11,5:qa]))/PNSW;
 BNSW=parse.(Float64,Array(Bcsv[11,5:qa]))/PNSW;
@@ -86,24 +86,24 @@ RNSW=parse.(Float64,Array(Ccsv[11,5:qa]));
 INSW=CNSW-RNSW;
 # India 148 133
 PIND=1380;
-AIND=parse.(Float64,Array(Acsv[148,5:qa]))/PIND;
-BIND=parse.(Float64,Array(Bcsv[148,5:qa]))/PIND;
-CIND=parse.(Float64,Array(Acsv[148,5:qa]));
-RIND=parse.(Float64,Array(Ccsv[133,5:qa]));
+AIND=parse.(Float64,Array(Acsv[149,5:qa]))/PIND;
+BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
+CIND=parse.(Float64,Array(Acsv[149,5:qa]));
+RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
 IIND=CIND-RIND;
 # Nepal 192 177
 PNPL=29.5;
-ANPL=parse.(Float64,Array(Acsv[192,5:qa]))/PNPL;
-BNPL=parse.(Float64,Array(Bcsv[192,5:qa]))/PNPL;
-CNPL=parse.(Float64,Array(Acsv[192,5:qa]));
-RNPL=parse.(Float64,Array(Ccsv[177,5:qa]));
+ANPL=parse.(Float64,Array(Acsv[193,5:qa]))/PNPL;
+BNPL=parse.(Float64,Array(Bcsv[193,5:qa]))/PNPL;
+CNPL=parse.(Float64,Array(Acsv[193,5:qa]));
+RNPL=parse.(Float64,Array(Ccsv[178,5:qa]));
 INPL=CNPL-RNPL;
 # Pakistan 205 190
 PPAK=221;
-APAK=parse.(Float64,Array(Acsv[205,5:qa]))/PPAK;
-BPAK=parse.(Float64,Array(Bcsv[205,5:qa]))/PPAK;
-CPAK=parse.(Float64,Array(Acsv[205,5:qa]));
-RPAK=parse.(Float64,Array(Ccsv[190,5:qa]));
+APAK=parse.(Float64,Array(Acsv[206,5:qa]))/PPAK;
+BPAK=parse.(Float64,Array(Bcsv[206,5:qa]))/PPAK;
+CPAK=parse.(Float64,Array(Acsv[206,5:qa]));
+RPAK=parse.(Float64,Array(Ccsv[191,5:qa]));
 IPAK=CPAK-RPAK;
 # Bangladesh 22 22
 PBGD=165;
@@ -114,17 +114,17 @@ RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
 IBGD=CBGD-RBGD;
 # Sri Lanka 236 221
 PLKA=21.5;
-ALKA=parse.(Float64,Array(Acsv[236,5:qa]))/PLKA;
-BLKA=parse.(Float64,Array(Bcsv[236,5:qa]))/PLKA;
-CLKA=parse.(Float64,Array(Acsv[236,5:qa]));
-RLKA=parse.(Float64,Array(Ccsv[221,5:qa]));
+ALKA=parse.(Float64,Array(Acsv[237,5:qa]))/PLKA;
+BLKA=parse.(Float64,Array(Bcsv[237,5:qa]))/PLKA;
+CLKA=parse.(Float64,Array(Acsv[237,5:qa]));
+RLKA=parse.(Float64,Array(Ccsv[222,5:qa]));
 ILKA=CLKA-RLKA;
 # South Africa 233 218
 PZAF=58.8;
-AZAF=parse.(Float64,Array(Acsv[233,5:qa]))/PZAF;
-BZAF=parse.(Float64,Array(Bcsv[233,5:qa]))/PZAF;
-CZAF=parse.(Float64,Array(Acsv[233,5:qa]));
-RZAF=parse.(Float64,Array(Ccsv[218,5:qa]));
+AZAF=parse.(Float64,Array(Acsv[234,5:qa]))/PZAF;
+BZAF=parse.(Float64,Array(Bcsv[234,5:qa]))/PZAF;
+CZAF=parse.(Float64,Array(Acsv[234,5:qa]));
+RZAF=parse.(Float64,Array(Ccsv[219,5:qa]));
 IZAF=CZAF-RZAF;
 # Argentina 8 8
 PARG=45.2;
@@ -142,52 +142,52 @@ RBRA=parse.(Float64,Array(Ccsv[32,5:qa]));
 IBRA=CBRA-RBRA;
 # Colombia 93 78
 PCOL=50.9;
-ACOL=parse.(Float64,Array(Acsv[93,5:qa]))/PCOL;
-BCOL=parse.(Float64,Array(Bcsv[93,5:qa]))/PCOL;
-CCOL=parse.(Float64,Array(Acsv[93,5:qa]));
-RCOL=parse.(Float64,Array(Ccsv[78,5:qa]));
+ACOL=parse.(Float64,Array(Acsv[94,5:qa]))/PCOL;
+BCOL=parse.(Float64,Array(Bcsv[94,5:qa]))/PCOL;
+CCOL=parse.(Float64,Array(Acsv[94,5:qa]));
+RCOL=parse.(Float64,Array(Ccsv[79,5:qa]));
 ICOL=CCOL-RCOL;
 # France 131 116
 PFRA=65.3;
-AFRA=parse.(Float64,Array(Acsv[131,5:qa]))/PFRA;
-BFRA=parse.(Float64,Array(Bcsv[131,5:qa]))/PFRA;
-CFRA=parse.(Float64,Array(Acsv[131,5:qa]));
-RFRA=parse.(Float64,Array(Ccsv[116,5:qa]));
+AFRA=parse.(Float64,Array(Acsv[132,5:qa]))/PFRA;
+BFRA=parse.(Float64,Array(Bcsv[132,5:qa]))/PFRA;
+CFRA=parse.(Float64,Array(Acsv[132,5:qa]));
+RFRA=parse.(Float64,Array(Ccsv[117,5:qa]));
 IFRA=CFRA-RFRA;
 # Italia 154 139
 PITA=60.5;
-AITA=parse.(Float64,Array(Acsv[154,5:qa]))/PITA;
-BITA=parse.(Float64,Array(Bcsv[154,5:qa]))/PITA;
-CITA=parse.(Float64,Array(Acsv[154,5:qa]));
-RITA=parse.(Float64,Array(Ccsv[139,5:qa]));
+AITA=parse.(Float64,Array(Acsv[155,5:qa]))/PITA;
+BITA=parse.(Float64,Array(Bcsv[155,5:qa]))/PITA;
+CITA=parse.(Float64,Array(Acsv[155,5:qa]));
+RITA=parse.(Float64,Array(Ccsv[140,5:qa]));
 IITA=CITA-RITA;
 # Mexico 183 168
 PMEX=129;
-AMEX=parse.(Float64,Array(Acsv[183,5:qa]))/PMEX;
-BMEX=parse.(Float64,Array(Bcsv[183,5:qa]))/PMEX;
-CMEX=parse.(Float64,Array(Acsv[183,5:qa]));
-RMEX=parse.(Float64,Array(Ccsv[168,5:qa]));
+AMEX=parse.(Float64,Array(Acsv[184,5:qa]))/PMEX;
+BMEX=parse.(Float64,Array(Bcsv[184,5:qa]))/PMEX;
+CMEX=parse.(Float64,Array(Acsv[184,5:qa]));
+RMEX=parse.(Float64,Array(Ccsv[169,5:qa]));
 IMEX=CMEX-RMEX;
 # Spain 235 220
 PESP=46.8;
-AESP=parse.(Float64,Array(Acsv[235,5:qa]))/PESP;
-BESP=parse.(Float64,Array(Bcsv[235,5:qa]))/PESP;
-CESP=parse.(Float64,Array(Acsv[235,5:qa]));
-RESP=parse.(Float64,Array(Ccsv[220,5:qa]));
+AESP=parse.(Float64,Array(Acsv[236,5:qa]))/PESP;
+BESP=parse.(Float64,Array(Bcsv[236,5:qa]))/PESP;
+CESP=parse.(Float64,Array(Acsv[236,5:qa]));
+RESP=parse.(Float64,Array(Ccsv[221,5:qa]));
 IESP=CESP-RESP;
 # United Staes 251 236
 PUSA=331;
-AUSA=parse.(Float64,Array(Acsv[251,5:qa]))/PUSA;
-BUSA=parse.(Float64,Array(Bcsv[251,5:qa]))/PUSA;
-CUSA=parse.(Float64,Array(Acsv[251,5:qa]));
-RUSA=parse.(Float64,Array(Ccsv[236,5:qa]));
+AUSA=parse.(Float64,Array(Acsv[252,5:qa]))/PUSA;
+BUSA=parse.(Float64,Array(Bcsv[252,5:qa]))/PUSA;
+CUSA=parse.(Float64,Array(Acsv[252,5:qa]));
+RUSA=parse.(Float64,Array(Ccsv[237,5:qa]));
 IUSA=CUSA-RUSA;
 # United Kingdom 266 251
 PGBR=67.9;
-AGBR=parse.(Float64,Array(Acsv[266,5:qa]))/PGBR;
-BGBR=parse.(Float64,Array(Bcsv[266,5:qa]))/PGBR;
-CGBR=parse.(Float64,Array(Acsv[266,5:qa]));
-RGBR=parse.(Float64,Array(Ccsv[251,5:qa]));
+AGBR=parse.(Float64,Array(Acsv[267,5:qa]))/PGBR;
+BGBR=parse.(Float64,Array(Bcsv[267,5:qa]))/PGBR;
+CGBR=parse.(Float64,Array(Acsv[267,5:qa]));
+RGBR=parse.(Float64,Array(Ccsv[252,5:qa]));
 IGBR=CGBR-RGBR;
 
 D=qa-4;
@@ -211,6 +211,19 @@ plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     legend = :topleft)
 plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_asia_cases.png") 
+
+plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA ASIN],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(8), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Singapore"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+savefig("jhu_asia_sin_cases.png") 
 
 plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
@@ -682,7 +695,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -696,35 +709,6 @@ plot(sol,
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_japan.png")
-
-# South Korea
-T0=A2T0;
-R0=A2R0;
-T2=A2T2;
-R2=A2R2;
-N=A2N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
-# plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in South Korea (51.3M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_south_Korea.png")
 
 # Philippines
 T0=A3T0;
@@ -740,7 +724,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -769,7 +753,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -798,7 +782,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -814,33 +798,33 @@ plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_indonesia.png")
 
 # India
-T0=A6T0;
-R0=A6R0;
-T2=A6T2;
-R2=A6R2;
-N=A6N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+# T0=A6T0;
+# R0=A6R0;
+# T2=A6T2;
+# R2=A6R2;
+# N=A6N
+# T1=(T0-T2)/Float64(7);
+# R1=(R0-R2)/Float64(7);
+# beta=T1/(T0-R0)/(N-T0);
+# gamma=R1/(T0-R0);
+# tspan=(0,W);
+# f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+# u0=[T0;T0-R0;R0];
+# prob = ODEProblem(f,u0,tspan);
+# sol = solve(prob, maxiters=Int(1e8));
 # plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in India (1380M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_india.png")
+# plot(sol, 
+#     grid=false,
+#     linewidth=3, 
+#     title="SIR model for COVID-19 in India (1380M) \n data sourced by JHU Coronavirus Resource Center", 
+#     xlabel="date",
+#     yaxis="cases",
+#     legendfont=font(14), 
+#     label=["total cases" "active cases" "discharged"], 
+#     palette = :seaborn_bright, 
+#     legend = :right)
+# plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+# savefig("sir_india.png")
 
 # Nepal
 T0=A7T0;
@@ -856,7 +840,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -885,7 +869,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -914,7 +898,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -943,7 +927,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -972,7 +956,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
+sol = solve(prob, maxiters=Int(1e8));
 # plotting
 plot(sol, 
     grid=false,
@@ -987,31 +971,3 @@ plot(sol,
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_brazil.png")
 
-# South Africa
-T0=A12T0;
-R0=A12R0;
-T2=A12T2;
-R2=A12R2;
-N=A12N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob);
-# plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in South Africa (58.8M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_south_africa.png")
