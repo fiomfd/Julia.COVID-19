@@ -199,408 +199,441 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(d0+Day(D-1));
 
-plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
+p1=plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
     xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
-    legendfont=font(12), 
+    legendfont=font(10), 
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_asia_cases.png") 
+size(600,900)
 
-plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA ASIN],  
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(8), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Singapore"],
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_asia_sin_cases.png") 
-
-plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
+p2=plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(12), 
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
    palette = :seaborn_bright, 
      legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
+
+p3=plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p4=plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+plot(p1, p2, p3, p4, 
+     layout=(2,2), 
+     size=(1260,840), 
+     margin=Plots.Measures.Length(:mm, 5.0))
+savefig("jhu.png") 
+
+plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("jhu_asia_cases.png") 
+
+plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(12), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+   palette = :seaborn_bright, 
+     legend = :topleft)
 savefig("jhu_asia_deaths.png") 
 
 plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
     label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_world_cases.png") 
 
 plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
     label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_world_deaths.png") 
 
 plot([CUSA CIND CBRA],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Confirmed Cases \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
-    legendfont=font(10), 
+    legendfont=font(14), 
     label=["United States (331M)" "India (1380M)" "Brazil (213M)"],
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_UIB.png") 
 
 plot([CJPN IJPN RJPN], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Japan (126M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_japan.png") 
 
 plot([CKOR IKOR RKOR], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in South Korea (51.3M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_south_korea.png")
 
 plot([CPHI IPHI RPHI], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Philippines (108M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_philippines.png")
 
 plot([CMYS IMYS RMYS], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Malaysia (32.6M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_malaysia.png")
 
 plot([CIDN IIDN RIDN], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Indonesia (271M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_indonesia.png")
 
 plot([CSIN ISIN RSIN], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Singapore (5.7M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :right)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_singapore.png")
 
 plot([CNZL INZL RNZL], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in New Zealand (4.9M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :right)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_new_zealand.png")
 
 plot([CHubei IHubei RHubei], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Hubei Province (58.5M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :right)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_hubei.png")
 
 plot([CVIC IVIC RVIC], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Victoria (AUS) (6.4M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_victoria.png")
-
-plot([CNSW INSW RNSW], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in New South Wales (AUS) (7.5M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_new_south_wales.png")
 
 plot([CIND IIND RIND], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in India (1380M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_india.png")
 
 plot([CNPL INPL RNPL], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Nepal (29.5M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_nepal.png")
 
 plot([CPAK IPAK RPAK], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Pakistan (221M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_pakistan.png")
 
 plot([CBGD IBGD RBGD], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Bangladesh (165M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_bangladesh.png")
 
 plot([CLKA ILKA RLKA], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Sri Lanka (21.5M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_sri_lanka.png")
 
 plot([CZAF IZAF RZAF], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in South Africa (58.8M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_south_africa.png")
 
 plot([CARG IARG RARG], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Argentina (45.2M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_argentina.png")
 
 plot([CBRA IBRA RBRA], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Brazil (213M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_brazil.png")
 
 plot([CCOL ICOL RCOL], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Colombia (50.9M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_colombia.png")
 
 plot([CFRA IFRA RFRA], 
     grid=false,
     linewidth=3, 
-    title="COVID-19 in France (65.3M) \n data sourced by JHU Coronavirus Resource Center", 
+    title="COVID-19 in France (65.3M) \n data sourced by JHU Coronavirus Resource Center",    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_france.png")
 
 plot([CITA IITA RITA], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Italy (60.5M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_italy.png")
 
 plot([CMEX IMEX RMEX], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Mexico (129M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_mexico.png")
 
 plot([CESP IESP RESP], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Spain (46.8M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases",
     legendfont=font(14), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("jhu_spain.png")
-
-plot([CUSA IUSA RUSA], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in United States (331M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_usa.png")
-
-plot([CGBR IGBR RGBR], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in United Kingdom (67.9M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("jhu_uk.png")
 
 # Japan
 A1T0=CJPN[qa-4];
@@ -695,7 +728,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -724,7 +757,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -753,7 +786,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -782,7 +815,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -811,7 +844,7 @@ savefig("sir_indonesia.png")
 # f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 # u0=[T0;T0-R0;R0];
 # prob = ODEProblem(f,u0,tspan);
-# sol = solve(prob, maxiters=Int(1e8));
+# sol = solve(prob, maxiters=Int(1e6));
 # plotting
 # plot(sol, 
 #     grid=false,
@@ -826,34 +859,34 @@ savefig("sir_indonesia.png")
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 # savefig("sir_india.png")
 
-# Nepal
-T0=A7T0;
-R0=A7R0;
-T2=A7T2;
-R2=A7R2;
-N=A7N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
-# plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in Nepal (29.5M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_nepal.png")
+# ##Nepal
+# T0=A7T0;
+# R0=A7R0;
+# T2=A7T2;
+# R2=A7R2;
+# N=A7N
+# T1=(T0-T2)/Float64(7);
+# R1=(R0-R2)/Float64(7);
+# beta=T1/(T0-R0)/(N-T0);
+# gamma=R1/(T0-R0);
+# tspan=(0,W);
+# f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+# u0=[T0;T0-R0;R0];
+# prob = ODEProblem(f,u0,tspan);
+# sol = solve(prob, maxiters=Int(1e6));
+# ##plotting
+# plot(sol, 
+#     grid=false,
+#     linewidth=3, 
+#     title="SIR model for COVID-19 in Nepal (29.5M) \n data sourced by JHU Coronavirus Resource Center", 
+#     xlabel="date",
+#     yaxis="cases",
+#     legendfont=font(14), 
+#     label=["total cases" "active cases" "discharged"], 
+#     palette = :seaborn_bright, 
+#     legend = :right)
+# plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+# savefig("sir_nepal.png")
 
 # Pakistan
 T0=A8T0;
@@ -869,7 +902,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -898,7 +931,7 @@ tspan=(0,W);
 f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
 u0=[T0;T0-R0;R0];
 prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
+sol = solve(prob, maxiters=Int(1e6));
 # plotting
 plot(sol, 
     grid=false,
@@ -913,61 +946,61 @@ plot(sol,
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 savefig("sir_bangladesh.png")
 
-# Sri Lanka
-T0=A10T0;
-R0=A10R0;
-T2=A10T2;
-R2=A10R2;
-N=A10N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
-# plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in Sri Lanka (21.5M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_sri_lanka.png")
+# ##Sri Lanka
+# T0=A10T0;
+# R0=A10R0;
+# T2=A10T2;
+# R2=A10R2;
+# N=A10N
+# T1=(T0-T2)/Float64(7);
+# R1=(R0-R2)/Float64(7);
+# beta=T1/(T0-R0)/(N-T0);
+# gamma=R1/(T0-R0);
+# tspan=(0,W);
+# f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+# u0=[T0;T0-R0;R0];
+# prob = ODEProblem(f,u0,tspan);
+# sol = solve(prob, maxiters=Int(1e6));
+##plotting
+# plot(sol, 
+#     grid=false,
+#     linewidth=3, 
+#     title="SIR model for COVID-19 in Sri Lanka (21.5M) \n data sourced by JHU Coronavirus Resource Center", 
+#     xlabel="date",
+#     yaxis="cases",
+#     legendfont=font(14), 
+#     label=["total cases" "active cases" "discharged"], 
+#     palette = :seaborn_bright, 
+#     legend = :right)
+# plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+# savefig("sir_sri_lanka.png")
 
-# Brazil
-T0=A11T0;
-R0=A11R0;
-T2=A11T2;
-R2=A11R2;
-N=A11N
-T1=(T0-T2)/Float64(7);
-R1=(R0-R2)/Float64(7);
-beta=T1/(T0-R0)/(N-T0);
-gamma=R1/(T0-R0);
-tspan=(0,W);
-f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
-u0=[T0;T0-R0;R0];
-prob = ODEProblem(f,u0,tspan);
-sol = solve(prob, maxiters=Int(1e8));
-# plotting
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in Brazil (213M) \n data sourced by JHU Coronavirus Resource Center", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_brazil.png")
+# ##Brazil
+# T0=A11T0;
+# R0=A11R0;
+# T2=A11T2;
+# R2=A11R2;
+# N=A11N
+# T1=(T0-T2)/Float64(7);
+# R1=(R0-R2)/Float64(7);
+# beta=T1/(T0-R0)/(N-T0);
+# gamma=R1/(T0-R0);
+# tspan=(0,W);
+# f(u,p,t) = [beta*u[2]*(N-u[1]);u[2]*(beta*(N-u[1])-gamma); gamma*u[2]];
+# u0=[T0;T0-R0;R0];
+# prob = ODEProblem(f,u0,tspan);
+# sol = solve(prob, maxiters=Int(1e6));
+# ##plotting
+# plot(sol, 
+#     grid=false,
+#     linewidth=3, 
+#     title="SIR model for COVID-19 in Brazil (213M) \n data sourced by JHU Coronavirus Resource Center", 
+#     xlabel="date",
+#     yaxis="cases",
+#     legendfont=font(14), 
+#     label=["total cases" "active cases" "discharged"], 
+#     palette = :seaborn_bright, 
+#     legend = :right)
+# plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
+# savefig("sir_brazil.png")
 

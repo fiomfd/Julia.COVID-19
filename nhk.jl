@@ -48,11 +48,13 @@ rowtky=findall(x->x==13,A0);
 NTKY=A1[rowtky]/14;
 TTKY=A2[rowtky]/14;
 DTKY=A3[rowtky]/14;
+J3TKY=A3[rowtky];
 # Osaka (8.81M): code 27
 rowosk=findall(x->x==27,A0);
 NOSK=A1[rowosk]/8.81;
 TOSK=A2[rowosk]/8.81;
 DOSK=A3[rowosk]/8.81;
+J3OSK=A3[rowosk];
 # Japan (126M)
 NJPN=J1/126;
 TJPN=J2/126;
@@ -82,6 +84,10 @@ rowkng=findall(x->x==14,A0);
 NKNG=A1[rowkng]/9.22;
 TKNG=A2[rowkng]/9.22;
 DKNG=A3[rowkng]/9.22;
+# SCK (7.34+6.28+9.22=22.84)
+NSCK=(A1[rowstm]+A1[rowchb]+A1[rowkng])/22.84;
+TSCK=(A2[rowstm]+A2[rowchb]+A2[rowkng])/22.84;
+DSCK=(A3[rowstm]+A3[rowchb]+A3[rowkng])/22.84;
 # Miyagi (2.29M): code 4
 rowmyg=findall(x->x==4,A0);
 NMYG=A1[rowmyg]/2.29;
@@ -92,146 +98,283 @@ rowamr=findall(x->x==2,A0);
 NAMR=A1[rowamr]/1.23;
 TAMR=A2[rowamr]/1.23;
 DAMR=A3[rowamr]/1.23;
+# Fukuoka (5.11M): code 40
+rowfuk=findall(x->x==40,A0);
+NFUK=A1[rowfuk]/5.11;
+TFUK=A2[rowfuk]/5.11;
+DFUK=A3[rowfuk]/5.11;
+# Saga (0.807M): code 41
+rowsag=findall(x->x==41,A0);
+NSAG=A1[rowsag]/0.807;
+TSAG=A2[rowsag]/0.807;
+DSAG=A3[rowsag]/0.807;
+# Nagasaki (1.31M): code 42
+rownsk=findall(x->x==42,A0);
+NNSK=A1[rownsk]/1.31;
+TNSK=A2[rownsk]/1.31;
+DNSK=A3[rownsk]/1.31;
+# Kumamoto (1.73M): code 43
+rowkum=findall(x->x==43,A0);
+NKUM=A1[rowkum]/1.73;
+TKUM=A2[rowkum]/1.73;
+DKUM=A3[rowkum]/1.73;
+# Oita (1.12M): code 44
+rowoit=findall(x->x==44,A0);
+NOIT=A1[rowoit]/1.12;
+TOIT=A2[rowoit]/1.12;
+DOIT=A3[rowoit]/1.12;
+# Miyazaki (1.06M): code 45
+rowmzk=findall(x->x==45,A0);
+NMZK=A1[rowmzk]/1.06;
+TMZK=A2[rowmzk]/1.06;
+DMZK=A3[rowmzk]/1.06;
+# Kagoshima (1.58M): code 46
+rowkgm=findall(x->x==46,A0);
+NKGM=A1[rowkgm]/1.58;
+TKGM=A2[rowkgm]/1.58;
+DKGN=A3[rowkgm]/1.58;
+# Kyushu (5.11+0.81+1.31+1.73+1.12+1.06+1.58=12.72)
+NKYU=(A1[rowfuk]+A1[rowsag]+A1[rownsk]+A1[rowkum]+A1[rowoit]+A1[rowmzk]+A1[rowkgm])/12.72;
+TKYU=(A2[rowfuk]+A2[rowsag]+A2[rownsk]+A2[rowkum]+A2[rowoit]+A2[rowmzk]+A2[rowkgm])/12.72;
+DKYU=(A3[rowfuk]+A3[rowsag]+A3[rownsk]+A3[rowkum]+A3[rowoit]+A3[rowmzk]+A3[rowkgm])/12.72;
+
+p1=plot([TJPN TTKY TOSK TOKNW THYG THKD TSCK], 
+    grid=false,
+    linewidth=2, 
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",    
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p2=plot([DJPN DTKY DOSK DOKNW DHYG DHKD DSCK], 
+    grid=false,
+    linewidth=2, 
+    legendfont=font(10), 
+    title="COVID-19 in Japan (deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p3=plot([NJPN NTKY NOSK NOKNW NHYG], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p4=plot([J3 J3TKY J3OSK], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Japan (death toll) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="deaths",
+    legendfont=font(14), 
+    label=["Japan" "Tokyo" "Osaka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+plot(p1, p2, p3, p4, 
+     layout=(2,2), 
+     size=(1260,840), 
+     margin=Plots.Measures.Length(:mm, 5.0))
+savefig("nhk.png") 
 
 plot([NJPN NTKY NOSK NOKNW NHYG], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
-    legendfont=font(14), 
+    legendfont=font(10), 
     label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_new_cases.png") 
 
 plot([NJPN NTKY NOKNW], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(14), 
     label=["Japan" "Tokyo" "Okinawa"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_new_cases_okinawa.png") 
-
-plot([NJPN NTKY NMYG], 
-    grid=false,
-    linewidth=1, 
-    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(14), 
-    label=["Japan" "Tokyo" "Miyagi"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk_new_cases_miyagi.png") 
 
 plot([NJPN NTKY NOSK], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(14), 
     label=["Japan" "Tokyo" "Osaka"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_new_cases_osaka.png") 
-
-plot([NJPN NTKY NAMR], 
-    grid=false,
-    linewidth=1, 
-    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(14), 
-    label=["Japan" "Tokyo" "Aomori"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk_new_cases_aomori.png") 
 
 plot([NJPN NTKY NHYG], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(14), 
     label=["Japan" "Tokyo" "Hyogo"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_new_cases_hyogo.png") 
 
-plot([TJPN TTKY TOSK TOKNW THKD TKNG TSTM TCHB THYG TKYT], 
+plot([NJPN NTKY NFUK], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(14), 
+    label=["Japan" "Tokyo" "Fukuoka"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_new_cases_fukuoka.png") 
+
+plot([NJPN NTKY NKYU], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(14), 
+    label=["Japan" "Tokyo" "Kyushu"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_new_cases_kyushu.png") 
+
+plot([TJPN TTKY TOSK TOKNW THYG THKD TKNG TSTM TCHB TKYT TKYU], 
     grid=false,
     linewidth=2, 
-    legendfont=font(12), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hokkaido" "Kanagawa" "Saitama" "Chiba" "Hyogo" "Kyoto"], 
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Kanagawa" "Saitama" "Chiba" "Kyoto" "Kyushu"], 
     title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",    
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk_cases.png") 
+savefig("nhk_cases_1.png") 
 
-plot([DJPN DTKY DOSK DOKNW DHKD DKNG DSTM DCHB DHYG DKYT], 
+plot([DJPN DTKY DOSK DOKNW DHYG DHKD DKNG DSTM DCHB DKYT DKYU], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Japan (deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
-    legendfont=font(12), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hokkaido" "Kanagawa" "Saitama" "Chiba" "Hyogo" "Kyoto"], 
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Kanagawa" "Saitama" "Chiba" "Kyoto" "Kyushu"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk_deaths.png") 
+savefig("nhk_deaths_1.png") 
 
-plot([TJPN TTKY TMYG], 
+plot([TJPN TTKY TOSK TOKNW], 
     grid=false,
     linewidth=2, 
     legendfont=font(14), 
-    label=["Japan" "Tokyo" "Miyagi"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa"], 
     title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",    
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk2_cases.png") 
+savefig("nhk_cases_2.png") 
 
-plot([DJPN DTKY DMYG], 
+plot([DJPN DTKY DOSK DOKNW], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Japan (deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(14), 
-    label=["Japan" "Tokyo" "Miyagi"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
-savefig("nhk2_deaths.png") 
+savefig("nhk_deaths_2.png") 
 
-plot(J3, 
+plot([TJPN TTKY TOSK TOKNW THYG THKD TSCK], 
+    grid=false,
+    linewidth=2, 
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",    
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_cases_3.png") 
+
+plot([DJPN DTKY DOSK DOKNW DHYG DHKD DSCK], 
+    grid=false,
+    linewidth=2, 
+    legendfont=font(10), 
+    title="COVID-19 in Japan (deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_deaths_3.png") 
+
+plot([J3 J3TKY J3OSK], 
     grid=false,
     linewidth=3, 
     title="COVID-19 in Japan (death toll) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths",
     legendfont=font(14), 
-    label=false, 
-    palette = :Set1_3, 
+    label=["Japan" "Tokyo" "Osaka"],
+    palette = :seaborn_bright, 
     legend = :topleft)
-plot!(xticks = ([1 floor(D/4) floor(D/2) floor(3*D/4) D-3;], [l0 l1 l2 l3 l4]))
 savefig("nhk_japan_deaths.png") 
