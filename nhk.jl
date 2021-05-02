@@ -353,14 +353,13 @@ savefig("nhk_cases_3.png")
 plot([DJPN DTKY DOSK DOKNW DHYG DHKD DSCK], 
     grid=false,
     linewidth=2, 
-    legendfont=font(10), 
     title="COVID-19 in Japan (deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_deaths_3.png") 
