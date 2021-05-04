@@ -17,6 +17,11 @@ Ccsv=DataFrame(CSV.File("time_series_covid19_recovered_global.csv", header=false
 # Japan
 PJPN=126;
 AJPN=parse.(Float64,Array(Acsv[157,5:qa]))/PJPN;
+NJPN=zeros(qa-4);
+NJPN[1]=AJPN[1];
+for j=2:qa-4
+    NJPN[j]=AJPN[j]-AJPN[j-1]
+end
 BJPN=parse.(Float64,Array(Bcsv[157,5:qa]))/PJPN;
 CJPN=parse.(Float64,Array(Acsv[157,5:qa]));
 RJPN=parse.(Float64,Array(Ccsv[142,5:qa]));
@@ -24,6 +29,11 @@ IJPN=CJPN-RJPN;
 # South Korea
 PKOR=51.3;
 AKOR=parse.(Float64,Array(Acsv[161,5:qa]))/PKOR;
+NKOR=zeros(qa-4);
+NKOR[1]=AKOR[1];
+for j=2:qa-4
+    NKOR[j]=AKOR[j]-AKOR[j-1]
+end
 BKOR=parse.(Float64,Array(Bcsv[161,5:qa]))/PKOR;
 CKOR=parse.(Float64,Array(Acsv[161,5:qa]));
 RKOR=parse.(Float64,Array(Ccsv[146,5:qa]));
@@ -31,6 +41,11 @@ IKOR=CKOR-RKOR;
 # Philippines
 PPHI=108;
 APHI=parse.(Float64,Array(Acsv[211,5:qa]))/PPHI;
+NPHI=zeros(qa-4);
+NPHI[1]=APHI[1];
+for j=2:qa-4
+    NPHI[j]=APHI[j]-APHI[j-1]
+end
 BPHI=parse.(Float64,Array(Bcsv[211,5:qa]))/PPHI;
 CPHI=parse.(Float64,Array(Acsv[211,5:qa]));
 RPHI=parse.(Float64,Array(Ccsv[196,5:qa]));
@@ -38,6 +53,11 @@ IPHI=CPHI-RPHI;
 # Malaysia
 PMYS=32.6;
 AMYS=parse.(Float64,Array(Acsv[177,5:qa]))/PMYS;
+NMYS=zeros(qa-4);
+NMYS[1]=AMYS[1];
+for j=2:qa-4
+    NMYS[j]=AMYS[j]-AMYS[j-1]
+end
 BMYS=parse.(Float64,Array(Bcsv[177,5:qa]))/PMYS;
 CMYS=parse.(Float64,Array(Acsv[177,5:qa]));
 RMYS=parse.(Float64,Array(Ccsv[162,5:qa]));
@@ -45,6 +65,11 @@ IMYS=CMYS-RMYS;
 # Indonesia
 PIDN=271;
 AIDN=parse.(Float64,Array(Acsv[150,5:qa]))/PIDN;
+NIDN=zeros(qa-4);
+NIDN[1]=AIDN[1];
+for j=2:qa-4
+    NIDN[j]=AIDN[j]-AIDN[j-1]
+end
 BIDN=parse.(Float64,Array(Bcsv[150,5:qa]))/PIDN;
 CIDN=parse.(Float64,Array(Acsv[150,5:qa]));
 RIDN=parse.(Float64,Array(Ccsv[135,5:qa]));
@@ -52,6 +77,11 @@ IIDN=CIDN-RIDN;
 # Singapore
 PSIN=5.7;
 ASIN=parse.(Float64,Array(Acsv[229,5:qa]))/PSIN;
+NSIN=zeros(qa-4);
+NSIN[1]=ASIN[1];
+for j=2:qa-4
+    NSIN[j]=ASIN[j]-ASIN[j-1]
+end
 BSIN=parse.(Float64,Array(Bcsv[229,5:qa]))/PSIN;
 CSIN=parse.(Float64,Array(Acsv[229,5:qa]));
 RSIN=parse.(Float64,Array(Ccsv[214,5:qa]));
@@ -87,6 +117,11 @@ INSW=CNSW-RNSW;
 # India 148 133
 PIND=1380;
 AIND=parse.(Float64,Array(Acsv[149,5:qa]))/PIND;
+NIND=zeros(qa-4);
+NIND[1]=AIND[1];
+for j=2:qa-4
+    NIND[j]=AIND[j]-AIND[j-1]
+end
 BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
 CIND=parse.(Float64,Array(Acsv[149,5:qa]));
 RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
@@ -94,6 +129,11 @@ IIND=CIND-RIND;
 # Nepal 192 177
 PNPL=29.5;
 ANPL=parse.(Float64,Array(Acsv[193,5:qa]))/PNPL;
+NNPL=zeros(qa-4);
+NNPL[1]=ANPL[1];
+for j=2:qa-4
+    NNPL[j]=ANPL[j]-ANPL[j-1]
+end
 BNPL=parse.(Float64,Array(Bcsv[193,5:qa]))/PNPL;
 CNPL=parse.(Float64,Array(Acsv[193,5:qa]));
 RNPL=parse.(Float64,Array(Ccsv[178,5:qa]));
@@ -101,6 +141,11 @@ INPL=CNPL-RNPL;
 # Pakistan 205 190
 PPAK=221;
 APAK=parse.(Float64,Array(Acsv[206,5:qa]))/PPAK;
+NPAK=zeros(qa-4);
+NPAK[1]=APAK[1];
+for j=2:qa-4
+    NPAK[j]=APAK[j]-APAK[j-1]
+end
 BPAK=parse.(Float64,Array(Bcsv[206,5:qa]))/PPAK;
 CPAK=parse.(Float64,Array(Acsv[206,5:qa]));
 RPAK=parse.(Float64,Array(Ccsv[191,5:qa]));
@@ -108,6 +153,11 @@ IPAK=CPAK-RPAK;
 # Bangladesh 22 22
 PBGD=165;
 ABGD=parse.(Float64,Array(Acsv[22,5:qa]))/PBGD;
+NBGD=zeros(qa-4);
+NBGD[1]=ABGD[1];
+for j=2:qa-4
+    NBGD[j]=ABGD[j]-ABGD[j-1]
+end
 BBGD=parse.(Float64,Array(Bcsv[22,5:qa]))/PBGD;
 CBGD=parse.(Float64,Array(Acsv[22,5:qa]));
 RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
@@ -115,6 +165,11 @@ IBGD=CBGD-RBGD;
 # Sri Lanka 236 221
 PLKA=21.5;
 ALKA=parse.(Float64,Array(Acsv[237,5:qa]))/PLKA;
+NLKA=zeros(qa-4);
+NLKA[1]=ALKA[1];
+for j=2:qa-4
+    NLKA[j]=ALKA[j]-ALKA[j-1]
+end
 BLKA=parse.(Float64,Array(Bcsv[237,5:qa]))/PLKA;
 CLKA=parse.(Float64,Array(Acsv[237,5:qa]));
 RLKA=parse.(Float64,Array(Ccsv[222,5:qa]));
@@ -129,6 +184,11 @@ IZAF=CZAF-RZAF;
 # Argentina 8 8
 PARG=45.2;
 AARG=parse.(Float64,Array(Acsv[8,5:qa]))/PARG;
+NARG=zeros(qa-4);
+NARG[1]=AARG[1];
+for j=2:qa-4
+    NARG[j]=AARG[j]-AARG[j-1]
+end
 BARG=parse.(Float64,Array(Bcsv[8,5:qa]))/PARG;
 CARG=parse.(Float64,Array(Acsv[8,5:qa]));
 RARG=parse.(Float64,Array(Ccsv[8,5:qa]));
@@ -136,6 +196,11 @@ IARG=CARG-RARG;
 # Brazil 32 32
 PBRA=213;
 ABRA=parse.(Float64,Array(Acsv[32,5:qa]))/PBRA;
+NBRA=zeros(qa-4);
+NBRA[1]=ABRA[1];
+for j=2:qa-4
+    NBRA[j]=ABRA[j]-ABRA[j-1]
+end
 BBRA=parse.(Float64,Array(Bcsv[32,5:qa]))/PBRA;
 CBRA=parse.(Float64,Array(Acsv[32,5:qa]));
 RBRA=parse.(Float64,Array(Ccsv[32,5:qa]));
@@ -143,6 +208,11 @@ IBRA=CBRA-RBRA;
 # Colombia 93 78
 PCOL=50.9;
 ACOL=parse.(Float64,Array(Acsv[94,5:qa]))/PCOL;
+NCOL=zeros(qa-4);
+NCOL[1]=ACOL[1];
+for j=2:qa-4
+    NCOL[j]=ACOL[j]-ACOL[j-1]
+end
 BCOL=parse.(Float64,Array(Bcsv[94,5:qa]))/PCOL;
 CCOL=parse.(Float64,Array(Acsv[94,5:qa]));
 RCOL=parse.(Float64,Array(Ccsv[79,5:qa]));
@@ -150,6 +220,11 @@ ICOL=CCOL-RCOL;
 # France 131 116
 PFRA=65.3;
 AFRA=parse.(Float64,Array(Acsv[132,5:qa]))/PFRA;
+NFRA=zeros(qa-4);
+NFRA[1]=AFRA[1];
+for j=2:qa-4
+    NFRA[j]=max(AFRA[j]-AFRA[j-1],0)
+end
 BFRA=parse.(Float64,Array(Bcsv[132,5:qa]))/PFRA;
 CFRA=parse.(Float64,Array(Acsv[132,5:qa]));
 RFRA=parse.(Float64,Array(Ccsv[117,5:qa]));
@@ -157,6 +232,11 @@ IFRA=CFRA-RFRA;
 # Italia 154 139
 PITA=60.5;
 AITA=parse.(Float64,Array(Acsv[155,5:qa]))/PITA;
+NITA=zeros(qa-4);
+NITA[1]=AITA[1];
+for j=2:qa-4
+    NITA[j]=AITA[j]-AITA[j-1]
+end
 BITA=parse.(Float64,Array(Bcsv[155,5:qa]))/PITA;
 CITA=parse.(Float64,Array(Acsv[155,5:qa]));
 RITA=parse.(Float64,Array(Ccsv[140,5:qa]));
@@ -164,6 +244,11 @@ IITA=CITA-RITA;
 # Mexico 183 168
 PMEX=129;
 AMEX=parse.(Float64,Array(Acsv[184,5:qa]))/PMEX;
+NMEX=zeros(qa-4);
+NMEX[1]=AMEX[1];
+for j=2:qa-4
+    NMEX[j]=AMEX[j]-AMEX[j-1]
+end
 BMEX=parse.(Float64,Array(Bcsv[184,5:qa]))/PMEX;
 CMEX=parse.(Float64,Array(Acsv[184,5:qa]));
 RMEX=parse.(Float64,Array(Ccsv[169,5:qa]));
@@ -171,6 +256,11 @@ IMEX=CMEX-RMEX;
 # Spain 235 220
 PESP=46.8;
 AESP=parse.(Float64,Array(Acsv[236,5:qa]))/PESP;
+NESP=zeros(qa-4);
+NESP[1]=AESP[1];
+for j=2:qa-4
+    NESP[j]=max(AESP[j]-AESP[j-1],0)
+end
 BESP=parse.(Float64,Array(Bcsv[236,5:qa]))/PESP;
 CESP=parse.(Float64,Array(Acsv[236,5:qa]));
 RESP=parse.(Float64,Array(Ccsv[221,5:qa]));
@@ -178,6 +268,11 @@ IESP=CESP-RESP;
 # United Staes 251 236
 PUSA=331;
 AUSA=parse.(Float64,Array(Acsv[252,5:qa]))/PUSA;
+NUSA=zeros(qa-4);
+NUSA[1]=AUSA[1];
+for j=2:qa-4
+    NUSA[j]=AUSA[j]-AUSA[j-1]
+end
 BUSA=parse.(Float64,Array(Bcsv[252,5:qa]))/PUSA;
 CUSA=parse.(Float64,Array(Acsv[252,5:qa]));
 RUSA=parse.(Float64,Array(Ccsv[237,5:qa]));
@@ -185,6 +280,11 @@ IUSA=CUSA-RUSA;
 # United Kingdom 266 251
 PGBR=67.9;
 AGBR=parse.(Float64,Array(Acsv[267,5:qa]))/PGBR;
+NGBR=zeros(qa-4);
+NGBR[1]=AGBR[1];
+for j=2:qa-4
+    NGBR[j]=AGBR[j]-AGBR[j-1]
+end
 BGBR=parse.(Float64,Array(Bcsv[267,5:qa]))/PGBR;
 CGBR=parse.(Float64,Array(Acsv[267,5:qa]));
 RGBR=parse.(Float64,Array(Ccsv[252,5:qa]));
@@ -199,11 +299,26 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(d0+Day(D-1));
 
-p1=plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
+p1=plot([NJPN NPHI NMYS NIDN NKOR NIND NNPL NPAK NBGD NLKA],  
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Asia: daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p2=plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xlabel="date",
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
@@ -213,11 +328,12 @@ p1=plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     legend = :topleft)
 size(600,900)
 
-p2=plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
+p3=plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
@@ -226,11 +342,12 @@ p2=plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA],
    palette = :seaborn_bright, 
      legend = :topleft)
 
-p3=plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
+p4=plot([NARG NBRA NCOL NFRA NITA NMEX NESP NUSA NGBR],  
     grid=false,
-    linewidth=2, 
+    linewidth=1, 
     title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
@@ -239,11 +356,26 @@ p3=plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],
     palette = :seaborn_bright, 
     legend = :topleft)
 
-p4=plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
+p5=plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p6=plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
@@ -252,10 +384,12 @@ p4=plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],
     palette = :seaborn_bright, 
     legend = :topleft)
 
-plot(p1, p2, p3, p4, 
-     layout=(2,2), 
-     size=(1260,840), 
-     margin=Plots.Measures.Length(:mm, 5.0))
+plot(p1, p2, p3, p4, p5, p6, 
+     layout=(2,3), 
+     size=(2100,950), 
+     left_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 10.0))
 savefig("jhu.png") 
 
 plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
@@ -263,6 +397,7 @@ plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     linewidth=2, 
     title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xlabel="date",
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
@@ -272,11 +407,27 @@ plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],
     legend = :topleft)
 savefig("jhu_asia_cases.png") 
 
+plot([NJPN NPHI NMYS NIDN NKOR NIND NNPL NPAK NBGD NLKA],  
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Asia: daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+   xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("jhu_asia_new_cases.png") 
+
 plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
@@ -291,6 +442,7 @@ plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],
     linewidth=2, 
     title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="cases/1M",
@@ -300,11 +452,27 @@ plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],
     legend = :topleft)
 savefig("jhu_world_cases.png") 
 
+plot([NARG NBRA NCOL NFRA NITA NMEX NESP NUSA NGBR],  
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Argentina" "Brazil" "Colombia" "France" "Italy" "Mexico" "Spain" "United States" "United Kingdom"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("jhu_world_new_cases.png") 
+
 plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
