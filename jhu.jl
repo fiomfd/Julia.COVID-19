@@ -479,15 +479,7 @@ p6=plot([BARG BBRA BCOL BFRA BITA BMEX BESP BUSA BGBR],
     palette = :seaborn_bright, 
     legend = :topleft)
 
-plot(p1, p2, p3, p4,
-     layout=(2,2), 
-     size=(2100,950), 
-     left_margin=Plots.Measures.Length(:mm, 15.0),
-     top_margin=Plots.Measures.Length(:mm, 5.0),
-     bottom_margin=Plots.Measures.Length(:mm, 10.0))
-savefig("jhu_asia.png") 
-
-p8=plot(NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],  
+p8=plot([NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -501,9 +493,17 @@ p8=plot(NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],
    palette = :seaborn_bright, 
      legend = :topleft)
 
+plot(p1, p2, p3, p4,
+     layout=(2,2), 
+     size=(1200,800), 
+     left_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 10.0))
+savefig("jhu_asia.png") 
+
 plot(p5, p6, p7, p8,
      layout=(2,2), 
-     size=(2100,950), 
+     size=(1200,800), 
      left_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 10.0))
@@ -599,7 +599,7 @@ plot([NARG NBRA NCOL NFRA NITA NMEX NESP NUSA NGBR],
     legend = :topleft)
 savefig("jhu_world_new_cases.png") 
 
-plot(NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],  
+plot([NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],  
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -1318,3 +1318,4 @@ savefig("sir_bangladesh.png")
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 # savefig("sir_brazil.png")
+
