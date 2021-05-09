@@ -2,7 +2,7 @@
 #######################
 
 # Load packages. 
-using Plots, CSV, Dates, HTTP, DataFrames, DifferentialEquations
+using Plots, CSV, Dates, DataFrames, DifferentialEquations
 
 # Download data from the MHLW web site. 
 download("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv","time_series_covid19_confirmed_global.csv");
@@ -26,6 +26,10 @@ BJPN=parse.(Float64,Array(Bcsv[157,5:qa]))/PJPN;
 CJPN=parse.(Float64,Array(Acsv[157,5:qa]));
 RJPN=parse.(Float64,Array(Ccsv[142,5:qa]));
 IJPN=CJPN-RJPN;
+NDJPN=zeros(qa-438);
+for j=1:qa-438
+    NDJPN[j]=(BJPN[j+434]-BJPN[j+427])/7
+end
 # South Korea
 PKOR=51.3;
 AKOR=parse.(Float64,Array(Acsv[161,5:qa]))/PKOR;
@@ -38,6 +42,10 @@ BKOR=parse.(Float64,Array(Bcsv[161,5:qa]))/PKOR;
 CKOR=parse.(Float64,Array(Acsv[161,5:qa]));
 RKOR=parse.(Float64,Array(Ccsv[146,5:qa]));
 IKOR=CKOR-RKOR;
+NDKOR=zeros(qa-438);
+for j=1:qa-438
+    NDKOR[j]=(BKOR[j+434]-BKOR[j+427])/7
+end
 # Philippines
 PPHI=108;
 APHI=parse.(Float64,Array(Acsv[211,5:qa]))/PPHI;
@@ -50,6 +58,10 @@ BPHI=parse.(Float64,Array(Bcsv[211,5:qa]))/PPHI;
 CPHI=parse.(Float64,Array(Acsv[211,5:qa]));
 RPHI=parse.(Float64,Array(Ccsv[196,5:qa]));
 IPHI=CPHI-RPHI;
+NDPHI=zeros(qa-438);
+for j=1:qa-438
+    NDPHI[j]=(BPHI[j+434]-BPHI[j+427])/7
+end
 # Malaysia
 PMYS=32.6;
 AMYS=parse.(Float64,Array(Acsv[177,5:qa]))/PMYS;
@@ -62,6 +74,10 @@ BMYS=parse.(Float64,Array(Bcsv[177,5:qa]))/PMYS;
 CMYS=parse.(Float64,Array(Acsv[177,5:qa]));
 RMYS=parse.(Float64,Array(Ccsv[162,5:qa]));
 IMYS=CMYS-RMYS;
+NDMYS=zeros(qa-438);
+for j=1:qa-438
+    NDMYS[j]=(BMYS[j+434]-BMYS[j+427])/7
+end
 # Indonesia
 PIDN=271;
 AIDN=parse.(Float64,Array(Acsv[150,5:qa]))/PIDN;
@@ -74,6 +90,10 @@ BIDN=parse.(Float64,Array(Bcsv[150,5:qa]))/PIDN;
 CIDN=parse.(Float64,Array(Acsv[150,5:qa]));
 RIDN=parse.(Float64,Array(Ccsv[135,5:qa]));
 IIDN=CIDN-RIDN;
+NDIDN=zeros(qa-438);
+for j=1:qa-438
+    NDIDN[j]=(BIDN[j+434]-BIDN[j+427])/7
+end
 # Singapore
 PSIN=5.7;
 ASIN=parse.(Float64,Array(Acsv[229,5:qa]))/PSIN;
@@ -126,6 +146,10 @@ BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
 CIND=parse.(Float64,Array(Acsv[149,5:qa]));
 RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
 IIND=CIND-RIND;
+NDIND=zeros(qa-438);
+for j=1:qa-438
+    NDIND[j]=(BIND[j+434]-BIND[j+427])/7
+end
 # Nepal 192 177
 PNPL=29.5;
 ANPL=parse.(Float64,Array(Acsv[193,5:qa]))/PNPL;
@@ -138,6 +162,10 @@ BNPL=parse.(Float64,Array(Bcsv[193,5:qa]))/PNPL;
 CNPL=parse.(Float64,Array(Acsv[193,5:qa]));
 RNPL=parse.(Float64,Array(Ccsv[178,5:qa]));
 INPL=CNPL-RNPL;
+NDNPL=zeros(qa-438);
+for j=1:qa-438
+    NDNPL[j]=(BNPL[j+434]-BNPL[j+427])/7
+end
 # Pakistan 205 190
 PPAK=221;
 APAK=parse.(Float64,Array(Acsv[206,5:qa]))/PPAK;
@@ -150,6 +178,10 @@ BPAK=parse.(Float64,Array(Bcsv[206,5:qa]))/PPAK;
 CPAK=parse.(Float64,Array(Acsv[206,5:qa]));
 RPAK=parse.(Float64,Array(Ccsv[191,5:qa]));
 IPAK=CPAK-RPAK;
+NDPAK=zeros(qa-438);
+for j=1:qa-438
+    NDPAK[j]=(BPAK[j+434]-BPAK[j+427])/7
+end
 # Bangladesh 22 22
 PBGD=165;
 ABGD=parse.(Float64,Array(Acsv[22,5:qa]))/PBGD;
@@ -162,6 +194,10 @@ BBGD=parse.(Float64,Array(Bcsv[22,5:qa]))/PBGD;
 CBGD=parse.(Float64,Array(Acsv[22,5:qa]));
 RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
 IBGD=CBGD-RBGD;
+NDBGD=zeros(qa-438);
+for j=1:qa-438
+    NDBGD[j]=(BBGD[j+434]-BBGD[j+427])/7
+end
 # Sri Lanka 236 221
 PLKA=21.5;
 ALKA=parse.(Float64,Array(Acsv[237,5:qa]))/PLKA;
@@ -174,6 +210,10 @@ BLKA=parse.(Float64,Array(Bcsv[237,5:qa]))/PLKA;
 CLKA=parse.(Float64,Array(Acsv[237,5:qa]));
 RLKA=parse.(Float64,Array(Ccsv[222,5:qa]));
 ILKA=CLKA-RLKA;
+NDLKA=zeros(qa-438);
+for j=1:qa-438
+    NDLKA[j]=(BLKA[j+434]-BLKA[j+427])/7
+end
 # South Africa 233 218
 PZAF=58.8;
 AZAF=parse.(Float64,Array(Acsv[234,5:qa]))/PZAF;
@@ -298,6 +338,12 @@ l1=string(d0+Day(Int(floor((D-1)/4))));
 l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(d0+Day(D-1));
+DD=qa-438;
+dd0=Date(2021,4,1);
+dd1=d0+Day(DD-1);
+ll0=string(dd0);
+ll1=string(dd0+Day(Int(floor((DD-1)/2))));
+ll2=string(dd0+Day(DD-1));
 
 p1=plot([NJPN NPHI NMYS NIDN NKOR NIND NNPL NPAK NBGD NLKA],  
     grid=false,
@@ -436,6 +482,21 @@ plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("jhu_asia_deaths.png") 
+
+plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDIND NDNPL NDPAK NDBGD NDLKA],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+   palette = :seaborn_bright, 
+     legend = :topleft)
+savefig("jhu_asia_new_deaths.png") 
 
 plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],  
     grid=false,
@@ -1171,4 +1232,3 @@ savefig("sir_bangladesh.png")
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
 # savefig("sir_brazil.png")
-

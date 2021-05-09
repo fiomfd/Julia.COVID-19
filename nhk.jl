@@ -16,10 +16,12 @@ A0=parse.(Int64,Acsv[2:pa,2]);
 A1=parse.(Float64,Acsv[2:pa,4]);
 A2=parse.(Float64,Acsv[2:pa,5]);
 A3=parse.(Float64,Acsv[2:pa,7]);
+X=parse.(Float64,Acsv[2:pa,6]);
 (pj,qj)=size(Jcsv);
 J1=parse.(Float64,Jcsv[2:pj,2]);
 J2=parse.(Float64,Jcsv[2:pj,3]);
 J3=parse.(Float64,Jcsv[2:pj,5]);
+XJPN=parse.(Float64,Jcsv[2:pj,4]);
 
 # Plot the data
 # d0: the initial date
@@ -33,37 +35,73 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
+dd0=Date(2021,4,1);
+DD=length(J1)-441;
+ll0=string(dd0);
+ll1=string(dd0+Day(Int(floor((DD-1)/2))));
+ll2=string(dd0+Day(Int(floor(DD-1))));
+
 # Okinawa (1.46M): code 47
 rowoknw=findall(x->x==47,A0);
 NOKNW=A1[rowoknw]/1.46;
 TOKNW=A2[rowoknw]/1.46;
 DOKNW=A3[rowoknw]/1.46;
+XOKNW=X[rowoknw]/1.46;
+NDOKNW=zeros(D-441);
+for j=1:D-441
+    NDOKNW[j]=(XOKNW[j+441]+XOKNW[j+440]+XOKNW[j+439]+XOKNW[j+438]+XOKNW[j+437]+XOKNW[j+436]+XOKNW[j+435])/7
+end
 # Hokkaido (5.27M): code 1, 
 rowhkd=findall(x->x==1,A0);
 NHKD=A1[rowhkd]/5.27;
 THKD=A2[rowhkd]/5.27;
 DHKD=A3[rowhkd]/5.27;
+XHKD=X[rowhkd]/5.27;
+NDHKD=zeros(D-441);
+for j=1:D-441
+    NDHKD[j]=(XHKD[j+441]+XHKD[j+440]+XHKD[j+439]+XHKD[j+438]+XHKD[j+437]+XHKD[j+436]+XHKD[j+435])/7
+end
 # Tokyo (14M): code 13, 
 rowtky=findall(x->x==13,A0);
 NTKY=A1[rowtky]/14;
 TTKY=A2[rowtky]/14;
 DTKY=A3[rowtky]/14;
 J3TKY=A3[rowtky];
+XTKY=X[rowtky]/14;
+NDTKY=zeros(D-441);
+for j=1:D-441
+    NDTKY[j]=(XTKY[j+441]+XTKY[j+440]+XTKY[j+439]+XTKY[j+438]+XTKY[j+437]+XTKY[j+436]+XTKY[j+435])/7
+end
 # Osaka (8.81M): code 27
 rowosk=findall(x->x==27,A0);
 NOSK=A1[rowosk]/8.81;
 TOSK=A2[rowosk]/8.81;
 DOSK=A3[rowosk]/8.81;
 J3OSK=A3[rowosk];
+XOSK=X[rowosk]/8.81;
+NDOSK=zeros(D-441);
+for j=1:D-441
+    NDOSK[j]=(XOSK[j+441]+XOSK[j+440]+XOSK[j+439]+XOSK[j+438]+XOSK[j+437]+XOSK[j+436]+XOSK[j+435])/7
+end
 # Japan (126M)
 NJPN=J1/126;
 TJPN=J2/126;
 DJPN=J3/126;
+XJPN=XJPN/126;
+NDJPN=zeros(D-441);
+for j=1:D-441
+    NDJPN[j]=(XJPN[j+441]+XJPN[j+440]+XJPN[j+439]+XJPN[j+438]+XJPN[j+437]+XJPN[j+436]+XJPN[j+435])/7
+end
 # Hyogo (5.43M): code 28, 
 rowhyg=findall(x->x==28,A0);
 NHYG=A1[rowhyg]/5.43;
 THYG=A2[rowhyg]/5.43;
 DHYG=A3[rowhyg]/5.43;
+XHYG=X[rowhyg]/5.43;
+NDHYG=zeros(D-441);
+for j=1:D-441
+    NDHYG[j]=(XHYG[j+441]+XHYG[j+440]+XHYG[j+439]+XHYG[j+438]+XHYG[j+437]+XHYG[j+436]+XHYG[j+435])/7
+end
 # Kyoto (2.57M): code 26
 rowkyt=findall(x->x==26,A0);
 NKYT=A1[rowkyt]/2.57;
@@ -88,6 +126,11 @@ DKNG=A3[rowkng]/9.22;
 NSCK=(A1[rowstm]+A1[rowchb]+A1[rowkng])/22.84;
 TSCK=(A2[rowstm]+A2[rowchb]+A2[rowkng])/22.84;
 DSCK=(A3[rowstm]+A3[rowchb]+A3[rowkng])/22.84;
+XSCK=(X[rowstm]+X[rowchb]+X[rowkng])/22.84;;
+NDSCK=zeros(D-441);
+for j=1:D-441
+    NDSCK[j]=(XSCK[j+441]+XSCK[j+440]+XSCK[j+439]+XSCK[j+438]+XSCK[j+437]+XSCK[j+436]+XSCK[j+435])/7
+end
 # Miyagi (2.29M): code 4
 rowmyg=findall(x->x==4,A0);
 NMYG=A1[rowmyg]/2.29;
@@ -195,6 +238,20 @@ plot(p1, p2, p3, p4,
      size=(1260,840), 
      margin=Plots.Measures.Length(:mm, 5.0))
 savefig("nhk.png") 
+
+plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD NDSCK], 
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Japan (7-day average deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_new_deaths.png") 
 
 plot([NJPN NTKY NOSK NOKNW NHYG], 
     grid=false,
