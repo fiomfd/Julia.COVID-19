@@ -243,7 +243,7 @@ ABRA=parse.(Float64,Array(Acsv[32,5:qa]))/PBRA;
 NBRA=zeros(qa-4);
 NBRA[1]=ABRA[1];
 for j=2:qa-4
-    NBRA[j]=ABRA[j]-ABRA[j-1]
+    NBRA[j]=max(ABRA[j]-ABRA[j-1],0)
 end
 BBRA=parse.(Float64,Array(Bcsv[32,5:qa]))/PBRA;
 CBRA=parse.(Float64,Array(Acsv[32,5:qa]));
@@ -355,7 +355,7 @@ AGBR=parse.(Float64,Array(Acsv[267,5:qa]))/PGBR;
 NGBR=zeros(qa-4);
 NGBR[1]=AGBR[1];
 for j=2:qa-4
-    NGBR[j]=AGBR[j]-AGBR[j-1]
+    NGBR[j]=max(AGBR[j]-AGBR[j-1],0)
 end
 BGBR=parse.(Float64,Array(Bcsv[267,5:qa]))/PGBR;
 CGBR=parse.(Float64,Array(Acsv[267,5:qa]));
@@ -455,7 +455,7 @@ p5=plot([AARG ABRA ACOL AFRA AITA AMEX AESP AUSA AGBR],
     grid=false,
     linewidth=2, 
     title="COVID-19 in the World: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
+    right_margin=Plots.Measures.Length(:mm, 15.0),
     left_margin=Plots.Measures.Length(:mm, 5.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -496,17 +496,19 @@ p8=plot([NDARG NDBRA NDCOL NDFRA NDITA NDMEX NDESP NDUSA NDGBR],
 plot(p1, p2, p3, p4,
      layout=(2,2), 
      size=(1200,800), 
-     left_margin=Plots.Measures.Length(:mm, 15.0),
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
-     bottom_margin=Plots.Measures.Length(:mm, 10.0))
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
 savefig("jhu_asia.png") 
 
 plot(p5, p6, p7, p8,
      layout=(2,2), 
      size=(1200,800), 
-     left_margin=Plots.Measures.Length(:mm, 15.0),
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
-     bottom_margin=Plots.Measures.Length(:mm, 10.0))
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
 savefig("jhu_world.png") 
 
 plot([AJPN APHI AMYS AIDN AKOR AIND ANPL APAK ABGD ALKA],  
