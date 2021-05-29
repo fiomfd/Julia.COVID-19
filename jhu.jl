@@ -32,15 +32,15 @@ for j=1:qa-439
 end
 # South Korea
 PKOR=51.3;
-AKOR=parse.(Float64,Array(Acsv[161,5:qa]))/PKOR;
+AKOR=parse.(Float64,Array(Acsv[162,5:qa]))/PKOR;
 NKOR=zeros(qa-4);
 NKOR[1]=AKOR[1];
 for j=2:qa-4
     NKOR[j]=AKOR[j]-AKOR[j-1]
 end
-BKOR=parse.(Float64,Array(Bcsv[161,5:qa]))/PKOR;
-CKOR=parse.(Float64,Array(Acsv[161,5:qa]));
-RKOR=parse.(Float64,Array(Ccsv[146,5:qa]));
+BKOR=parse.(Float64,Array(Bcsv[162,5:qa]))/PKOR;
+CKOR=parse.(Float64,Array(Acsv[162,5:qa]));
+RKOR=parse.(Float64,Array(Ccsv[147,5:qa]));
 IKOR=CKOR-RKOR;
 NDKOR=zeros(qa-439);
 for j=1:qa-439
@@ -48,15 +48,15 @@ for j=1:qa-439
 end
 # Philippines
 PPHI=108;
-APHI=parse.(Float64,Array(Acsv[211,5:qa]))/PPHI;
+APHI=parse.(Float64,Array(Acsv[212,5:qa]))/PPHI;
 NPHI=zeros(qa-4);
 NPHI[1]=APHI[1];
 for j=2:qa-4
     NPHI[j]=APHI[j]-APHI[j-1]
 end
-BPHI=parse.(Float64,Array(Bcsv[211,5:qa]))/PPHI;
-CPHI=parse.(Float64,Array(Acsv[211,5:qa]));
-RPHI=parse.(Float64,Array(Ccsv[196,5:qa]));
+BPHI=parse.(Float64,Array(Bcsv[212,5:qa]))/PPHI;
+CPHI=parse.(Float64,Array(Acsv[212,5:qa]));
+RPHI=parse.(Float64,Array(Ccsv[197,5:qa]));
 IPHI=CPHI-RPHI;
 NDPHI=zeros(qa-439);
 for j=1:qa-439
@@ -64,15 +64,15 @@ for j=1:qa-439
 end
 # Malaysia
 PMYS=32.6;
-AMYS=parse.(Float64,Array(Acsv[177,5:qa]))/PMYS;
+AMYS=parse.(Float64,Array(Acsv[178,5:qa]))/PMYS;
 NMYS=zeros(qa-4);
 NMYS[1]=AMYS[1];
 for j=2:qa-4
     NMYS[j]=AMYS[j]-AMYS[j-1]
 end
-BMYS=parse.(Float64,Array(Bcsv[177,5:qa]))/PMYS;
-CMYS=parse.(Float64,Array(Acsv[177,5:qa]));
-RMYS=parse.(Float64,Array(Ccsv[162,5:qa]));
+BMYS=parse.(Float64,Array(Bcsv[178,5:qa]))/PMYS;
+CMYS=parse.(Float64,Array(Acsv[178,5:qa]));
+RMYS=parse.(Float64,Array(Ccsv[163,5:qa]));
 IMYS=CMYS-RMYS;
 NDMYS=zeros(qa-439);
 for j=1:qa-439
@@ -96,22 +96,22 @@ for j=1:qa-439
 end
 # Singapore
 PSIN=5.7;
-ASIN=parse.(Float64,Array(Acsv[229,5:qa]))/PSIN;
+ASIN=parse.(Float64,Array(Acsv[230,5:qa]))/PSIN;
 NSIN=zeros(qa-4);
 NSIN[1]=ASIN[1];
 for j=2:qa-4
     NSIN[j]=ASIN[j]-ASIN[j-1]
 end
-BSIN=parse.(Float64,Array(Bcsv[229,5:qa]))/PSIN;
-CSIN=parse.(Float64,Array(Acsv[229,5:qa]));
-RSIN=parse.(Float64,Array(Ccsv[214,5:qa]));
+BSIN=parse.(Float64,Array(Bcsv[230,5:qa]))/PSIN;
+CSIN=parse.(Float64,Array(Acsv[230,5:qa]));
+RSIN=parse.(Float64,Array(Ccsv[215,5:qa]));
 ISIN=CSIN-RSIN;
 # New Zealand
 PNZL=4.9;
-ANZL=parse.(Float64,Array(Acsv[199,5:qa]))/PNZL;
-BNZL=parse.(Float64,Array(Bcsv[199,5:qa]))/PNZL;
-CNZL=parse.(Float64,Array(Acsv[199,5:qa]));
-RNZL=parse.(Float64,Array(Ccsv[184,5:qa]));
+ANZL=parse.(Float64,Array(Acsv[200,5:qa]))/PNZL;
+BNZL=parse.(Float64,Array(Bcsv[200,5:qa]))/PNZL;
+CNZL=parse.(Float64,Array(Acsv[200,5:qa]));
+RNZL=parse.(Float64,Array(Ccsv[185,5:qa]));
 INZL=CNZL-RNZL;
 # Hubei
 PHubei=58.5;
@@ -152,15 +152,15 @@ for j=1:qa-439
 end
 # Nepal 192 177
 PNPL=29.5;
-ANPL=parse.(Float64,Array(Acsv[193,5:qa]))/PNPL;
+ANPL=parse.(Float64,Array(Acsv[194,5:qa]))/PNPL;
 NNPL=zeros(qa-4);
 NNPL[1]=ANPL[1];
 for j=2:qa-4
     NNPL[j]=ANPL[j]-ANPL[j-1]
 end
-BNPL=parse.(Float64,Array(Bcsv[193,5:qa]))/PNPL;
-CNPL=parse.(Float64,Array(Acsv[193,5:qa]));
-RNPL=parse.(Float64,Array(Ccsv[178,5:qa]));
+BNPL=parse.(Float64,Array(Bcsv[194,5:qa]))/PNPL;
+CNPL=parse.(Float64,Array(Acsv[194,5:qa]));
+RNPL=parse.(Float64,Array(Ccsv[179,5:qa]));
 INPL=CNPL-RNPL;
 NDNPL=zeros(qa-439);
 for j=1:qa-439
@@ -168,15 +168,15 @@ for j=1:qa-439
 end
 # Pakistan 205 190
 PPAK=221;
-APAK=parse.(Float64,Array(Acsv[206,5:qa]))/PPAK;
+APAK=parse.(Float64,Array(Acsv[207,5:qa]))/PPAK;
 NPAK=zeros(qa-4);
 NPAK[1]=APAK[1];
 for j=2:qa-4
     NPAK[j]=APAK[j]-APAK[j-1]
 end
-BPAK=parse.(Float64,Array(Bcsv[206,5:qa]))/PPAK;
-CPAK=parse.(Float64,Array(Acsv[206,5:qa]));
-RPAK=parse.(Float64,Array(Ccsv[191,5:qa]));
+BPAK=parse.(Float64,Array(Bcsv[207,5:qa]))/PPAK;
+CPAK=parse.(Float64,Array(Acsv[207,5:qa]));
+RPAK=parse.(Float64,Array(Ccsv[192,5:qa]));
 IPAK=CPAK-RPAK;
 NDPAK=zeros(qa-439);
 for j=1:qa-439
@@ -200,15 +200,15 @@ for j=1:qa-439
 end
 # Sri Lanka 236 221
 PLKA=21.5;
-ALKA=parse.(Float64,Array(Acsv[237,5:qa]))/PLKA;
+ALKA=parse.(Float64,Array(Acsv[238,5:qa]))/PLKA;
 NLKA=zeros(qa-4);
 NLKA[1]=ALKA[1];
 for j=2:qa-4
-    NLKA[j]=ALKA[j]-ALKA[j-1]
+    NLKA[j]=max(ALKA[j]-ALKA[j-1],0)
 end
-BLKA=parse.(Float64,Array(Bcsv[237,5:qa]))/PLKA;
-CLKA=parse.(Float64,Array(Acsv[237,5:qa]));
-RLKA=parse.(Float64,Array(Ccsv[222,5:qa]));
+BLKA=parse.(Float64,Array(Bcsv[238,5:qa]))/PLKA;
+CLKA=parse.(Float64,Array(Acsv[238,5:qa]));
+RLKA=parse.(Float64,Array(Ccsv[223,5:qa]));
 ILKA=CLKA-RLKA;
 NDLKA=zeros(qa-439);
 for j=1:qa-439
@@ -216,10 +216,10 @@ for j=1:qa-439
 end
 # South Africa 233 218
 PZAF=58.8;
-AZAF=parse.(Float64,Array(Acsv[234,5:qa]))/PZAF;
-BZAF=parse.(Float64,Array(Bcsv[234,5:qa]))/PZAF;
-CZAF=parse.(Float64,Array(Acsv[234,5:qa]));
-RZAF=parse.(Float64,Array(Ccsv[219,5:qa]));
+AZAF=parse.(Float64,Array(Acsv[235,5:qa]))/PZAF;
+BZAF=parse.(Float64,Array(Bcsv[235,5:qa]))/PZAF;
+CZAF=parse.(Float64,Array(Acsv[235,5:qa]));
+RZAF=parse.(Float64,Array(Ccsv[220,5:qa]));
 IZAF=CZAF-RZAF;
 # Argentina 8 8
 PARG=45.2;
@@ -303,15 +303,15 @@ for j=1:qa-439
 end
 # Mexico 183 168
 PMEX=129;
-AMEX=parse.(Float64,Array(Acsv[184,5:qa]))/PMEX;
+AMEX=parse.(Float64,Array(Acsv[185,5:qa]))/PMEX;
 NMEX=zeros(qa-4);
 NMEX[1]=AMEX[1];
 for j=2:qa-4
     NMEX[j]=AMEX[j]-AMEX[j-1]
 end
-BMEX=parse.(Float64,Array(Bcsv[184,5:qa]))/PMEX;
-CMEX=parse.(Float64,Array(Acsv[184,5:qa]));
-RMEX=parse.(Float64,Array(Ccsv[169,5:qa]));
+BMEX=parse.(Float64,Array(Bcsv[185,5:qa]))/PMEX;
+CMEX=parse.(Float64,Array(Acsv[185,5:qa]));
+RMEX=parse.(Float64,Array(Ccsv[170,5:qa]));
 IMEX=CMEX-RMEX;
 NDMEX=zeros(qa-439);
 for j=1:qa-439
@@ -319,15 +319,15 @@ for j=1:qa-439
 end
 # Spain 235 220
 PESP=46.8;
-AESP=parse.(Float64,Array(Acsv[236,5:qa]))/PESP;
+AESP=parse.(Float64,Array(Acsv[237,5:qa]))/PESP;
 NESP=zeros(qa-4);
 NESP[1]=AESP[1];
 for j=2:qa-4
     NESP[j]=max(AESP[j]-AESP[j-1],0)
 end
-BESP=parse.(Float64,Array(Bcsv[236,5:qa]))/PESP;
-CESP=parse.(Float64,Array(Acsv[236,5:qa]));
-RESP=parse.(Float64,Array(Ccsv[221,5:qa]));
+BESP=parse.(Float64,Array(Bcsv[237,5:qa]))/PESP;
+CESP=parse.(Float64,Array(Acsv[237,5:qa]));
+RESP=parse.(Float64,Array(Ccsv[222,5:qa]));
 IESP=CESP-RESP;
 NDESP=zeros(qa-439);
 for j=1:qa-439
@@ -335,15 +335,15 @@ for j=1:qa-439
 end
 # United Staes 251 236
 PUSA=331;
-AUSA=parse.(Float64,Array(Acsv[252,5:qa]))/PUSA;
+AUSA=parse.(Float64,Array(Acsv[253,5:qa]))/PUSA;
 NUSA=zeros(qa-4);
 NUSA[1]=AUSA[1];
 for j=2:qa-4
     NUSA[j]=AUSA[j]-AUSA[j-1]
 end
-BUSA=parse.(Float64,Array(Bcsv[252,5:qa]))/PUSA;
-CUSA=parse.(Float64,Array(Acsv[252,5:qa]));
-RUSA=parse.(Float64,Array(Ccsv[237,5:qa]));
+BUSA=parse.(Float64,Array(Bcsv[253,5:qa]))/PUSA;
+CUSA=parse.(Float64,Array(Acsv[253,5:qa]));
+RUSA=parse.(Float64,Array(Ccsv[238,5:qa]));
 IUSA=CUSA-RUSA;
 NDUSA=zeros(qa-439);
 for j=1:qa-439
@@ -351,15 +351,15 @@ for j=1:qa-439
 end
 # United Kingdom 266 251
 PGBR=67.9;
-AGBR=parse.(Float64,Array(Acsv[267,5:qa]))/PGBR;
+AGBR=parse.(Float64,Array(Acsv[268,5:qa]))/PGBR;
 NGBR=zeros(qa-4);
 NGBR[1]=AGBR[1];
 for j=2:qa-4
     NGBR[j]=max(AGBR[j]-AGBR[j-1],0)
 end
-BGBR=parse.(Float64,Array(Bcsv[267,5:qa]))/PGBR;
-CGBR=parse.(Float64,Array(Acsv[267,5:qa]));
-RGBR=parse.(Float64,Array(Ccsv[252,5:qa]));
+BGBR=parse.(Float64,Array(Bcsv[268,5:qa]))/PGBR;
+CGBR=parse.(Float64,Array(Acsv[268,5:qa]));
+RGBR=parse.(Float64,Array(Ccsv[253,5:qa]));
 IGBR=CGBR-RGBR;
 NDGBR=zeros(qa-439);
 for j=1:qa-439
