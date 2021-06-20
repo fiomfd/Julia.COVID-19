@@ -48,15 +48,15 @@ for j=1:qa-439
 end
 # Philippines
 PPHI=108;
-APHI=parse.(Float64,Array(Acsv[212,5:qa]))/PPHI;
+APHI=parse.(Float64,Array(Acsv[214,5:qa]))/PPHI;
 NPHI=zeros(qa-4);
 NPHI[1]=APHI[1];
 for j=2:qa-4
     NPHI[j]=APHI[j]-APHI[j-1]
 end
-BPHI=parse.(Float64,Array(Bcsv[212,5:qa]))/PPHI;
-CPHI=parse.(Float64,Array(Acsv[212,5:qa]));
-RPHI=parse.(Float64,Array(Ccsv[197,5:qa]));
+BPHI=parse.(Float64,Array(Bcsv[214,5:qa]))/PPHI;
+CPHI=parse.(Float64,Array(Acsv[214,5:qa]));
+RPHI=parse.(Float64,Array(Ccsv[199,5:qa]));
 IPHI=CPHI-RPHI;
 NDPHI=zeros(qa-439);
 for j=1:qa-439
@@ -96,22 +96,22 @@ for j=1:qa-439
 end
 # Singapore
 PSIN=5.7;
-ASIN=parse.(Float64,Array(Acsv[230,5:qa]))/PSIN;
+ASIN=parse.(Float64,Array(Acsv[232,5:qa]))/PSIN;
 NSIN=zeros(qa-4);
 NSIN[1]=ASIN[1];
 for j=2:qa-4
     NSIN[j]=ASIN[j]-ASIN[j-1]
 end
-BSIN=parse.(Float64,Array(Bcsv[230,5:qa]))/PSIN;
-CSIN=parse.(Float64,Array(Acsv[230,5:qa]));
-RSIN=parse.(Float64,Array(Ccsv[215,5:qa]));
+BSIN=parse.(Float64,Array(Bcsv[232,5:qa]))/PSIN;
+CSIN=parse.(Float64,Array(Acsv[232,5:qa]));
+RSIN=parse.(Float64,Array(Ccsv[217,5:qa]));
 ISIN=CSIN-RSIN;
 # New Zealand
 PNZL=4.9;
-ANZL=parse.(Float64,Array(Acsv[200,5:qa]))/PNZL;
-BNZL=parse.(Float64,Array(Bcsv[200,5:qa]))/PNZL;
-CNZL=parse.(Float64,Array(Acsv[200,5:qa]));
-RNZL=parse.(Float64,Array(Ccsv[185,5:qa]));
+ANZL=parse.(Float64,Array(Acsv[201,5:qa]))/PNZL;
+BNZL=parse.(Float64,Array(Bcsv[201,5:qa]))/PNZL;
+CNZL=parse.(Float64,Array(Acsv[201,5:qa]));
+RNZL=parse.(Float64,Array(Ccsv[186,5:qa]));
 INZL=CNZL-RNZL;
 # Hubei
 PHubei=58.5;
@@ -168,15 +168,15 @@ for j=1:qa-439
 end
 # Pakistan 205 190
 PPAK=221;
-APAK=parse.(Float64,Array(Acsv[207,5:qa]))/PPAK;
+APAK=parse.(Float64,Array(Acsv[208,5:qa]))/PPAK;
 NPAK=zeros(qa-4);
 NPAK[1]=APAK[1];
 for j=2:qa-4
     NPAK[j]=APAK[j]-APAK[j-1]
 end
-BPAK=parse.(Float64,Array(Bcsv[207,5:qa]))/PPAK;
-CPAK=parse.(Float64,Array(Acsv[207,5:qa]));
-RPAK=parse.(Float64,Array(Ccsv[192,5:qa]));
+BPAK=parse.(Float64,Array(Bcsv[208,5:qa]))/PPAK;
+CPAK=parse.(Float64,Array(Acsv[208,5:qa]));
+RPAK=parse.(Float64,Array(Ccsv[193,5:qa]));
 IPAK=CPAK-RPAK;
 NDPAK=zeros(qa-439);
 for j=1:qa-439
@@ -200,15 +200,15 @@ for j=1:qa-439
 end
 # Sri Lanka 236 221
 PLKA=21.5;
-ALKA=parse.(Float64,Array(Acsv[238,5:qa]))/PLKA;
+ALKA=parse.(Float64,Array(Acsv[240,5:qa]))/PLKA;
 NLKA=zeros(qa-4);
 NLKA[1]=ALKA[1];
 for j=2:qa-4
     NLKA[j]=max(ALKA[j]-ALKA[j-1],0)
 end
-BLKA=parse.(Float64,Array(Bcsv[238,5:qa]))/PLKA;
-CLKA=parse.(Float64,Array(Acsv[238,5:qa]));
-RLKA=parse.(Float64,Array(Ccsv[223,5:qa]));
+BLKA=parse.(Float64,Array(Bcsv[240,5:qa]))/PLKA;
+CLKA=parse.(Float64,Array(Acsv[240,5:qa]));
+RLKA=parse.(Float64,Array(Ccsv[225,5:qa]));
 ILKA=CLKA-RLKA;
 NDLKA=zeros(qa-439);
 for j=1:qa-439
@@ -216,10 +216,10 @@ for j=1:qa-439
 end
 # South Africa 233 218
 PZAF=58.8;
-AZAF=parse.(Float64,Array(Acsv[235,5:qa]))/PZAF;
-BZAF=parse.(Float64,Array(Bcsv[235,5:qa]))/PZAF;
-CZAF=parse.(Float64,Array(Acsv[235,5:qa]));
-RZAF=parse.(Float64,Array(Ccsv[220,5:qa]));
+AZAF=parse.(Float64,Array(Acsv[237,5:qa]))/PZAF;
+BZAF=parse.(Float64,Array(Bcsv[237,5:qa]))/PZAF;
+CZAF=parse.(Float64,Array(Acsv[237,5:qa]));
+RZAF=parse.(Float64,Array(Ccsv[222,5:qa]));
 IZAF=CZAF-RZAF;
 # Argentina 8 8
 PARG=45.2;
@@ -319,15 +319,15 @@ for j=1:qa-439
 end
 # Spain 235 220
 PESP=46.8;
-AESP=parse.(Float64,Array(Acsv[237,5:qa]))/PESP;
+AESP=parse.(Float64,Array(Acsv[239,5:qa]))/PESP;
 NESP=zeros(qa-4);
 NESP[1]=AESP[1];
 for j=2:qa-4
     NESP[j]=max(AESP[j]-AESP[j-1],0)
 end
-BESP=parse.(Float64,Array(Bcsv[237,5:qa]))/PESP;
-CESP=parse.(Float64,Array(Acsv[237,5:qa]));
-RESP=parse.(Float64,Array(Ccsv[222,5:qa]));
+BESP=parse.(Float64,Array(Bcsv[239,5:qa]))/PESP;
+CESP=parse.(Float64,Array(Acsv[239,5:qa]));
+RESP=parse.(Float64,Array(Ccsv[224,5:qa]));
 IESP=CESP-RESP;
 NDESP=zeros(qa-439);
 for j=1:qa-439
@@ -335,15 +335,15 @@ for j=1:qa-439
 end
 # United Staes 251 236
 PUSA=331;
-AUSA=parse.(Float64,Array(Acsv[253,5:qa]))/PUSA;
+AUSA=parse.(Float64,Array(Acsv[255,5:qa]))/PUSA;
 NUSA=zeros(qa-4);
 NUSA[1]=AUSA[1];
 for j=2:qa-4
     NUSA[j]=AUSA[j]-AUSA[j-1]
 end
-BUSA=parse.(Float64,Array(Bcsv[253,5:qa]))/PUSA;
-CUSA=parse.(Float64,Array(Acsv[253,5:qa]));
-RUSA=parse.(Float64,Array(Ccsv[238,5:qa]));
+BUSA=parse.(Float64,Array(Bcsv[255,5:qa]))/PUSA;
+CUSA=parse.(Float64,Array(Acsv[255,5:qa]));
+RUSA=parse.(Float64,Array(Ccsv[240,5:qa]));
 IUSA=CUSA-RUSA;
 NDUSA=zeros(qa-439);
 for j=1:qa-439
@@ -351,15 +351,15 @@ for j=1:qa-439
 end
 # United Kingdom 266 251
 PGBR=67.9;
-AGBR=parse.(Float64,Array(Acsv[268,5:qa]))/PGBR;
+AGBR=parse.(Float64,Array(Acsv[270,5:qa]))/PGBR;
 NGBR=zeros(qa-4);
 NGBR[1]=AGBR[1];
 for j=2:qa-4
     NGBR[j]=max(AGBR[j]-AGBR[j-1],0)
 end
-BGBR=parse.(Float64,Array(Bcsv[268,5:qa]))/PGBR;
-CGBR=parse.(Float64,Array(Acsv[268,5:qa]));
-RGBR=parse.(Float64,Array(Ccsv[253,5:qa]));
+BGBR=parse.(Float64,Array(Bcsv[270,5:qa]))/PGBR;
+CGBR=parse.(Float64,Array(Acsv[270,5:qa]));
+RGBR=parse.(Float64,Array(Ccsv[255,5:qa]));
 IGBR=CGBR-RGBR;
 NDGBR=zeros(qa-439);
 for j=1:qa-439
@@ -1058,7 +1058,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_japan.png")
+savefig("jhu_zsir_japan.png")
 
 # Philippines
 T0=A3T0;
@@ -1087,7 +1087,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_philippines.png")
+savefig("jhu_zsir_philippines.png")
 
 # Malaysia
 T0=A4T0;
@@ -1116,7 +1116,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_malaysia.png")
+savefig("jhu_zsir_malaysia.png")
 
 # Indonesia
 T0=A5T0;
@@ -1145,7 +1145,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_indonesia.png")
+savefig("jhu_zsir_indonesia.png")
 
 # India
 # T0=A6T0;
@@ -1174,7 +1174,7 @@ savefig("sir_indonesia.png")
 #     palette = :seaborn_bright, 
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-# savefig("sir_india.png")
+# savefig("jhu_zsir_india.png")
 
 # ##Nepal
 # T0=A7T0;
@@ -1203,7 +1203,7 @@ savefig("sir_indonesia.png")
 #     palette = :seaborn_bright, 
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-# savefig("sir_nepal.png")
+# savefig("jhu_zsir_nepal.png")
 
 # Pakistan
 T0=A8T0;
@@ -1232,7 +1232,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_pakistan.png")
+savefig("jhu_zsir_pakistan.png")
 
 # Bangladesh
 T0=A9T0;
@@ -1261,7 +1261,7 @@ plot(sol,
     palette = :seaborn_bright, 
     legend = :right)
 plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-savefig("sir_bangladesh.png")
+savefig("jhu_zsir_bangladesh.png")
 
 # ##Sri Lanka
 # T0=A10T0;
@@ -1290,7 +1290,7 @@ savefig("sir_bangladesh.png")
 #     palette = :seaborn_bright, 
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-# savefig("sir_sri_lanka.png")
+# savefig("jhu_zsir_sri_lanka.png")
 
 # ##Brazil
 # T0=A11T0;
@@ -1319,4 +1319,4 @@ savefig("sir_bangladesh.png")
 #     palette = :seaborn_bright, 
 #     legend = :right)
 # plot!(xticks = ([1 2*7 4*7;], [w0, w1, w2]))
-# savefig("sir_brazil.png")
+# savefig("jhu_zsir_brazil.png")
