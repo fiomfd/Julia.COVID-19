@@ -333,37 +333,54 @@ NDESP=zeros(qa-439);
 for j=1:qa-439
     NDESP[j]=(BESP[j+435]-BESP[j+428])/7
 end
-# United Staes 251 236
+# United Staes 
 PUSA=331;
-AUSA=parse.(Float64,Array(Acsv[255,5:qa]))/PUSA;
+AUSA=parse.(Float64,Array(Acsv[256,5:qa]))/PUSA;
 NUSA=zeros(qa-4);
 NUSA[1]=AUSA[1];
 for j=2:qa-4
     NUSA[j]=AUSA[j]-AUSA[j-1]
 end
-BUSA=parse.(Float64,Array(Bcsv[255,5:qa]))/PUSA;
-CUSA=parse.(Float64,Array(Acsv[255,5:qa]));
-RUSA=parse.(Float64,Array(Ccsv[240,5:qa]));
+BUSA=parse.(Float64,Array(Bcsv[256,5:qa]))/PUSA;
+CUSA=parse.(Float64,Array(Acsv[256,5:qa]));
+RUSA=parse.(Float64,Array(Ccsv[241,5:qa]));
 IUSA=CUSA-RUSA;
 NDUSA=zeros(qa-439);
 for j=1:qa-439
     NDUSA[j]=(BUSA[j+435]-BUSA[j+428])/7
 end
-# United Kingdom 266 251
+# United Kingdom 
 PGBR=67.9;
-AGBR=parse.(Float64,Array(Acsv[270,5:qa]))/PGBR;
+AGBR=parse.(Float64,Array(Acsv[271,5:qa]))/PGBR;
 NGBR=zeros(qa-4);
 NGBR[1]=AGBR[1];
 for j=2:qa-4
     NGBR[j]=max(AGBR[j]-AGBR[j-1],0)
 end
-BGBR=parse.(Float64,Array(Bcsv[270,5:qa]))/PGBR;
-CGBR=parse.(Float64,Array(Acsv[270,5:qa]));
-RGBR=parse.(Float64,Array(Ccsv[255,5:qa]));
+BGBR=parse.(Float64,Array(Bcsv[271,5:qa]))/PGBR;
+CGBR=parse.(Float64,Array(Acsv[271,5:qa]));
+RGBR=parse.(Float64,Array(Ccsv[256,5:qa]));
 IGBR=CGBR-RGBR;
 NDGBR=zeros(qa-439);
 for j=1:qa-439
     NDGBR[j]=(BGBR[j+435]-BGBR[j+428])/7
+end
+
+# Uganda 
+PUGA=44.3;
+AUGA=parse.(Float64,Array(Acsv[256,5:qa]))/PUGA;
+NUGA=zeros(qa-4);
+NUGA[1]=AUGA[1];
+for j=2:qa-4
+    NUGA[j]=max(AUGA[j]-AUGA[j-1],0)
+end
+BUGA=parse.(Float64,Array(Bcsv[256,5:qa]))/PUGA;
+CUGA=parse.(Float64,Array(Acsv[256,5:qa]));
+RUGA=parse.(Float64,Array(Ccsv[241,5:qa]));
+IUGA=CUGA-RUGA;
+NDUGA=zeros(qa-439);
+for j=1:qa-439
+    NDUGA[j]=(BUGA[j+435]-BUGA[j+428])/7
 end
 
 D=qa-4;
@@ -437,6 +454,63 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDIND NDNPL NDPAK NDBGD NDLKA],
    palette = :seaborn_bright, 
      legend = :topleft)
 
+p11=plot([NJPN NPHI NMYS NIDN NUGA NIND NNPL NPAK NBGD NLKA],  
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Asia: daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+
+p9=plot([AJPN APHI AMYS AIDN AUGA AIND ANPL APAK ABGD ALKA],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xlabel="date",
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    yaxis="cases/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+    palette = :seaborn_bright, 
+    legend = :topleft)
+size(600,900)
+
+p10=plot([BJPN BPHI BMYS BIDN BUGA BIND BNPL BPAK BBGD BLKA], 
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+   palette = :seaborn_bright, 
+     legend = :topleft)
+
+p12=plot([NDJPN NDPHI NDMYS NDIDN NDUGA NDIND NDNPL NDPAK NDBGD NDLKA],  
+    grid=false,
+    linewidth=2, 
+    title="COVID-19 in Asia: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    left_margin=Plots.Measures.Length(:mm, 5.0),
+    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xlabel="date",
+    yaxis="deaths/1M",
+    legendfont=font(10), 
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
+   palette = :seaborn_bright, 
+     legend = :topleft)
+
 p7=plot([NARG NBRA NCOL NFRA NITA NMEX NESP NUSA NGBR],  
     grid=false,
     linewidth=1, 
@@ -501,6 +575,24 @@ plot(p1, p2, p3, p4,
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
 savefig("jhu_asia.png") 
+
+plot(p5, p6, p7, p8,
+     layout=(2,2), 
+     size=(1200,800), 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
+savefig("jhu_world.png") 
+
+plot(p9, p10, p11, p12,
+     layout=(2,2), 
+     size=(1200,800), 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
+savefig("jhu_olympic.png") 
 
 plot(p5, p6, p7, p8,
      layout=(2,2), 
@@ -951,6 +1043,20 @@ plot([CESP IESP RESP],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("jhu_spain.png")
+
+plot([CUGA IUGA RUGA], 
+    grid=false,
+    linewidth=3, 
+    title="COVID-19 in Uganda (44.3M) \n data sourced by JHU Coronavirus Resource Center", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases",
+    legendfont=font(14), 
+    label=["total cases" "active cases" "discharged"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("jhu_uganda.png")
 
 # Japan
 A1T0=CJPN[qa-4];

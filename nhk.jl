@@ -2,7 +2,7 @@
 #######################
 
 # Load packages. 
-using Plots, CSV, Dates, HTTP, DataFrames
+using Plots, CSV, Dates, DataFrames
 
 # Download data from the MHLW web site. 
 download("https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv","nhk_news_covid19_prefectures_daily_data.csv");
@@ -207,7 +207,7 @@ p2=plot([DJPN DTKY DOSK DOKNW DHYG DHKD DSCK],
     palette = :seaborn_bright, 
     legend = :topleft)
 
-p3=plot([NJPN NTKY NOSK NOKNW NHYG], 
+p3=plot([NJPN NTKY NOSK NOKNW NHYG NHKD], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
@@ -216,11 +216,11 @@ p3=plot([NJPN NTKY NOSK NOKNW NHYG],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 
-p4=plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD NDSCK], 
+p4=plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Japan (7-day average deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
@@ -229,7 +229,7 @@ p4=plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD NDSCK],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_new_deaths.png") 
@@ -240,7 +240,7 @@ plot(p1, p2, p3, p4,
      margin=Plots.Measures.Length(:mm, 5.0))
 savefig("nhk.png") 
 
-plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD NDSCK], 
+plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Japan (7-day average deaths per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
@@ -249,12 +249,12 @@ plot([NDJPN NDTKY NDOSK NDOKNW NDHYG NDHKD NDSCK],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido" "Saitama Chiba Kanagawa"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_new_deaths.png") 
 
-plot([NJPN NTKY NOSK NOKNW NHYG], 
+plot([NJPN NTKY NOSK NOKNW NHYG NHKD], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
@@ -263,7 +263,7 @@ plot([NJPN NTKY NOSK NOKNW NHYG],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo"], 
+    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_new_cases.png") 
@@ -337,6 +337,20 @@ plot([NJPN NTKY NKYU],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_new_cases_kyushu.png") 
+
+plot([NJPN NTKY NHKD], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japan Broadcasting Corporation)", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(14), 
+    label=["Japan" "Tokyo" "Hokkaido"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("nhk_new_cases_hokkaido.png") 
 
 plot([TJPN TTKY TOSK TOKNW THYG THKD TKNG TSTM TCHB TKYT TKYU], 
     grid=false,
