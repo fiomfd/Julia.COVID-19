@@ -14,213 +14,6 @@ Bcsv=DataFrame(CSV.File("time_series_covid19_deaths_global.csv", header=false, d
 Ccsv=DataFrame(CSV.File("time_series_covid19_recovered_global.csv", header=false, delim=','));
 (pa,qa)=size(Acsv);
 
-# Japan
-PJPN=126;
-AJPN=parse.(Float64,Array(Acsv[157,5:qa]))/PJPN;
-NJPN=zeros(qa-4);
-NJPN[1]=AJPN[1];
-for j=2:qa-4
-    NJPN[j]=AJPN[j]-AJPN[j-1]
-end
-BJPN=parse.(Float64,Array(Bcsv[157,5:qa]))/PJPN;
-CJPN=parse.(Float64,Array(Acsv[157,5:qa]));
-RJPN=parse.(Float64,Array(Ccsv[142,5:qa]));
-IJPN=CJPN-RJPN;
-NDJPN=zeros(qa-439);
-for j=1:qa-439
-    NDJPN[j]=(BJPN[j+435]-BJPN[j+428])/7
-end
-# South Korea
-PKOR=51.3;
-AKOR=parse.(Float64,Array(Acsv[162,5:qa]))/PKOR;
-NKOR=zeros(qa-4);
-NKOR[1]=AKOR[1];
-for j=2:qa-4
-    NKOR[j]=AKOR[j]-AKOR[j-1]
-end
-BKOR=parse.(Float64,Array(Bcsv[162,5:qa]))/PKOR;
-CKOR=parse.(Float64,Array(Acsv[162,5:qa]));
-RKOR=parse.(Float64,Array(Ccsv[147,5:qa]));
-IKOR=CKOR-RKOR;
-NDKOR=zeros(qa-439);
-for j=1:qa-439
-    NDKOR[j]=(BKOR[j+435]-BKOR[j+428])/7
-end
-# Philippines
-PPHI=108;
-APHI=parse.(Float64,Array(Acsv[214,5:qa]))/PPHI;
-NPHI=zeros(qa-4);
-NPHI[1]=APHI[1];
-for j=2:qa-4
-    NPHI[j]=APHI[j]-APHI[j-1]
-end
-BPHI=parse.(Float64,Array(Bcsv[214,5:qa]))/PPHI;
-CPHI=parse.(Float64,Array(Acsv[214,5:qa]));
-RPHI=parse.(Float64,Array(Ccsv[199,5:qa]));
-IPHI=CPHI-RPHI;
-NDPHI=zeros(qa-439);
-for j=1:qa-439
-    NDPHI[j]=(BPHI[j+435]-BPHI[j+428])/7
-end
-# Malaysia
-PMYS=32.6;
-AMYS=parse.(Float64,Array(Acsv[178,5:qa]))/PMYS;
-NMYS=zeros(qa-4);
-NMYS[1]=AMYS[1];
-for j=2:qa-4
-    NMYS[j]=AMYS[j]-AMYS[j-1]
-end
-BMYS=parse.(Float64,Array(Bcsv[178,5:qa]))/PMYS;
-CMYS=parse.(Float64,Array(Acsv[178,5:qa]));
-RMYS=parse.(Float64,Array(Ccsv[163,5:qa]));
-IMYS=CMYS-RMYS;
-NDMYS=zeros(qa-439);
-for j=1:qa-439
-    NDMYS[j]=(BMYS[j+435]-BMYS[j+428])/7
-end
-# Indonesia
-PIDN=271;
-AIDN=parse.(Float64,Array(Acsv[150,5:qa]))/PIDN;
-NIDN=zeros(qa-4);
-NIDN[1]=AIDN[1];
-for j=2:qa-4
-    NIDN[j]=AIDN[j]-AIDN[j-1]
-end
-BIDN=parse.(Float64,Array(Bcsv[150,5:qa]))/PIDN;
-CIDN=parse.(Float64,Array(Acsv[150,5:qa]));
-RIDN=parse.(Float64,Array(Ccsv[135,5:qa]));
-IIDN=CIDN-RIDN;
-NDIDN=zeros(qa-439);
-for j=1:qa-439
-    NDIDN[j]=(BIDN[j+435]-BIDN[j+428])/7
-end
-# Singapore
-PSIN=5.7;
-ASIN=parse.(Float64,Array(Acsv[232,5:qa]))/PSIN;
-NSIN=zeros(qa-4);
-NSIN[1]=ASIN[1];
-for j=2:qa-4
-    NSIN[j]=ASIN[j]-ASIN[j-1]
-end
-BSIN=parse.(Float64,Array(Bcsv[232,5:qa]))/PSIN;
-CSIN=parse.(Float64,Array(Acsv[232,5:qa]));
-RSIN=parse.(Float64,Array(Ccsv[217,5:qa]));
-ISIN=CSIN-RSIN;
-# New Zealand
-PNZL=4.9;
-ANZL=parse.(Float64,Array(Acsv[201,5:qa]))/PNZL;
-BNZL=parse.(Float64,Array(Bcsv[201,5:qa]))/PNZL;
-CNZL=parse.(Float64,Array(Acsv[201,5:qa]));
-RNZL=parse.(Float64,Array(Ccsv[186,5:qa]));
-INZL=CNZL-RNZL;
-# Hubei
-PHubei=58.5;
-AHubei=parse.(Float64,Array(Acsv[73,5:qa]))/PHubei;
-BHubei=parse.(Float64,Array(Bcsv[73,5:qa]))/PHubei;
-CHubei=parse.(Float64,Array(Acsv[73,5:qa]));
-RHubei=parse.(Float64,Array(Ccsv[58,5:qa]));
-IHubei=CHubei-RHubei;
-# Victoria
-PVIC=6.4;
-AVIC=parse.(Float64,Array(Acsv[16,5:qa]))/PVIC;
-BVIC=parse.(Float64,Array(Bcsv[16,5:qa]))/PVIC;
-CVIC=parse.(Float64,Array(Acsv[16,5:qa]));
-RVIC=parse.(Float64,Array(Ccsv[16,5:qa]));
-IVIC=CVIC-RVIC;
-# NSW
-PNSW=7.5;
-ANSW=parse.(Float64,Array(Acsv[11,5:qa]))/PNSW;
-BNSW=parse.(Float64,Array(Bcsv[11,5:qa]))/PNSW;
-CNSW=parse.(Float64,Array(Acsv[11,5:qa]));
-RNSW=parse.(Float64,Array(Ccsv[11,5:qa]));
-INSW=CNSW-RNSW;
-# India 148 133
-PIND=1380;
-AIND=parse.(Float64,Array(Acsv[149,5:qa]))/PIND;
-NIND=zeros(qa-4);
-NIND[1]=AIND[1];
-for j=2:qa-4
-    NIND[j]=AIND[j]-AIND[j-1]
-end
-BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
-CIND=parse.(Float64,Array(Acsv[149,5:qa]));
-RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
-IIND=CIND-RIND;
-NDIND=zeros(qa-439);
-for j=1:qa-439
-    NDIND[j]=(BIND[j+435]-BIND[j+428])/7
-end
-# Nepal 192 177
-PNPL=29.5;
-ANPL=parse.(Float64,Array(Acsv[194,5:qa]))/PNPL;
-NNPL=zeros(qa-4);
-NNPL[1]=ANPL[1];
-for j=2:qa-4
-    NNPL[j]=ANPL[j]-ANPL[j-1]
-end
-BNPL=parse.(Float64,Array(Bcsv[194,5:qa]))/PNPL;
-CNPL=parse.(Float64,Array(Acsv[194,5:qa]));
-RNPL=parse.(Float64,Array(Ccsv[179,5:qa]));
-INPL=CNPL-RNPL;
-NDNPL=zeros(qa-439);
-for j=1:qa-439
-    NDNPL[j]=(BNPL[j+435]-BNPL[j+428])/7
-end
-# Pakistan 205 190
-PPAK=221;
-APAK=parse.(Float64,Array(Acsv[208,5:qa]))/PPAK;
-NPAK=zeros(qa-4);
-NPAK[1]=APAK[1];
-for j=2:qa-4
-    NPAK[j]=APAK[j]-APAK[j-1]
-end
-BPAK=parse.(Float64,Array(Bcsv[208,5:qa]))/PPAK;
-CPAK=parse.(Float64,Array(Acsv[208,5:qa]));
-RPAK=parse.(Float64,Array(Ccsv[193,5:qa]));
-IPAK=CPAK-RPAK;
-NDPAK=zeros(qa-439);
-for j=1:qa-439
-    NDPAK[j]=(BPAK[j+435]-BPAK[j+428])/7
-end
-# Bangladesh 22 22
-PBGD=165;
-ABGD=parse.(Float64,Array(Acsv[22,5:qa]))/PBGD;
-NBGD=zeros(qa-4);
-NBGD[1]=ABGD[1];
-for j=2:qa-4
-    NBGD[j]=ABGD[j]-ABGD[j-1]
-end
-BBGD=parse.(Float64,Array(Bcsv[22,5:qa]))/PBGD;
-CBGD=parse.(Float64,Array(Acsv[22,5:qa]));
-RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
-IBGD=CBGD-RBGD;
-NDBGD=zeros(qa-439);
-for j=1:qa-439
-    NDBGD[j]=(BBGD[j+435]-BBGD[j+428])/7
-end
-# Sri Lanka 236 221
-PLKA=21.5;
-ALKA=parse.(Float64,Array(Acsv[240,5:qa]))/PLKA;
-NLKA=zeros(qa-4);
-NLKA[1]=ALKA[1];
-for j=2:qa-4
-    NLKA[j]=max(ALKA[j]-ALKA[j-1],0)
-end
-BLKA=parse.(Float64,Array(Bcsv[240,5:qa]))/PLKA;
-CLKA=parse.(Float64,Array(Acsv[240,5:qa]));
-RLKA=parse.(Float64,Array(Ccsv[225,5:qa]));
-ILKA=CLKA-RLKA;
-NDLKA=zeros(qa-439);
-for j=1:qa-439
-    NDLKA[j]=(BLKA[j+435]-BLKA[j+428])/7
-end
-# South Africa 233 218
-PZAF=58.8;
-AZAF=parse.(Float64,Array(Acsv[237,5:qa]))/PZAF;
-BZAF=parse.(Float64,Array(Bcsv[237,5:qa]))/PZAF;
-CZAF=parse.(Float64,Array(Acsv[237,5:qa]));
-RZAF=parse.(Float64,Array(Ccsv[222,5:qa]));
-IZAF=CZAF-RZAF;
 # Argentina 8 8
 PARG=45.2;
 AARG=parse.(Float64,Array(Acsv[8,5:qa]))/PARG;
@@ -237,6 +30,40 @@ NDARG=zeros(qa-439);
 for j=1:qa-439
     NDARG[j]=(BARG[j+435]-BARG[j+428])/7
 end
+
+# NSW
+PNSW=7.5;
+ANSW=parse.(Float64,Array(Acsv[11,5:qa]))/PNSW;
+BNSW=parse.(Float64,Array(Bcsv[11,5:qa]))/PNSW;
+CNSW=parse.(Float64,Array(Acsv[11,5:qa]));
+RNSW=parse.(Float64,Array(Ccsv[11,5:qa]));
+INSW=CNSW-RNSW;
+
+# Victoria
+PVIC=6.4;
+AVIC=parse.(Float64,Array(Acsv[16,5:qa]))/PVIC;
+BVIC=parse.(Float64,Array(Bcsv[16,5:qa]))/PVIC;
+CVIC=parse.(Float64,Array(Acsv[16,5:qa]));
+RVIC=parse.(Float64,Array(Ccsv[16,5:qa]));
+IVIC=CVIC-RVIC;
+
+# Bangladesh 22 22
+PBGD=165;
+ABGD=parse.(Float64,Array(Acsv[22,5:qa]))/PBGD;
+NBGD=zeros(qa-4);
+NBGD[1]=ABGD[1];
+for j=2:qa-4
+    NBGD[j]=ABGD[j]-ABGD[j-1]
+end
+BBGD=parse.(Float64,Array(Bcsv[22,5:qa]))/PBGD;
+CBGD=parse.(Float64,Array(Acsv[22,5:qa]));
+RBGD=parse.(Float64,Array(Ccsv[22,5:qa]));
+IBGD=CBGD-RBGD;
+NDBGD=zeros(qa-439);
+for j=1:qa-439
+    NDBGD[j]=(BBGD[j+435]-BBGD[j+428])/7
+end
+
 # Brazil 32 32
 PBRA=213;
 ABRA=parse.(Float64,Array(Acsv[32,5:qa]))/PBRA;
@@ -253,6 +80,15 @@ NDBRA=zeros(qa-439);
 for j=1:qa-439
     NDBRA[j]=(BBRA[j+435]-BBRA[j+428])/7
 end
+
+# Hubei
+PHubei=58.5;
+AHubei=parse.(Float64,Array(Acsv[73,5:qa]))/PHubei;
+BHubei=parse.(Float64,Array(Bcsv[73,5:qa]))/PHubei;
+CHubei=parse.(Float64,Array(Acsv[73,5:qa]));
+RHubei=parse.(Float64,Array(Ccsv[58,5:qa]));
+IHubei=CHubei-RHubei;
+
 # Colombia 93 78
 PCOL=50.9;
 ACOL=parse.(Float64,Array(Acsv[94,5:qa]))/PCOL;
@@ -269,6 +105,7 @@ NDCOL=zeros(qa-439);
 for j=1:qa-439
     NDCOL[j]=(BCOL[j+435]-BCOL[j+428])/7
 end
+
 # France 131 116
 PFRA=65.3;
 AFRA=parse.(Float64,Array(Acsv[132,5:qa]))/PFRA;
@@ -285,6 +122,42 @@ NDFRA=zeros(qa-439);
 for j=1:qa-439
     NDFRA[j]=(BFRA[j+435]-BFRA[j+428])/7
 end
+
+
+# India 148 133
+PIND=1380;
+AIND=parse.(Float64,Array(Acsv[149,5:qa]))/PIND;
+NIND=zeros(qa-4);
+NIND[1]=AIND[1];
+for j=2:qa-4
+    NIND[j]=AIND[j]-AIND[j-1]
+end
+BIND=parse.(Float64,Array(Bcsv[149,5:qa]))/PIND;
+CIND=parse.(Float64,Array(Acsv[149,5:qa]));
+RIND=parse.(Float64,Array(Ccsv[134,5:qa]));
+IIND=CIND-RIND;
+NDIND=zeros(qa-439);
+for j=1:qa-439
+    NDIND[j]=(BIND[j+435]-BIND[j+428])/7
+end
+
+# Indonesia
+PIDN=271;
+AIDN=parse.(Float64,Array(Acsv[150,5:qa]))/PIDN;
+NIDN=zeros(qa-4);
+NIDN[1]=AIDN[1];
+for j=2:qa-4
+    NIDN[j]=AIDN[j]-AIDN[j-1]
+end
+BIDN=parse.(Float64,Array(Bcsv[150,5:qa]))/PIDN;
+CIDN=parse.(Float64,Array(Acsv[150,5:qa]));
+RIDN=parse.(Float64,Array(Ccsv[135,5:qa]));
+IIDN=CIDN-RIDN;
+NDIDN=zeros(qa-439);
+for j=1:qa-439
+    NDIDN[j]=(BIDN[j+435]-BIDN[j+428])/7
+end
+
 # Italia 154 139
 PITA=60.5;
 AITA=parse.(Float64,Array(Acsv[155,5:qa]))/PITA;
@@ -301,6 +174,58 @@ NDITA=zeros(qa-439);
 for j=1:qa-439
     NDITA[j]=(BITA[j+435]-BITA[j+428])/7
 end
+
+# Japan
+PJPN=126;
+AJPN=parse.(Float64,Array(Acsv[157,5:qa]))/PJPN;
+NJPN=zeros(qa-4);
+NJPN[1]=AJPN[1];
+for j=2:qa-4
+    NJPN[j]=AJPN[j]-AJPN[j-1]
+end
+BJPN=parse.(Float64,Array(Bcsv[157,5:qa]))/PJPN;
+CJPN=parse.(Float64,Array(Acsv[157,5:qa]));
+RJPN=parse.(Float64,Array(Ccsv[142,5:qa]));
+IJPN=CJPN-RJPN;
+NDJPN=zeros(qa-439);
+for j=1:qa-439
+    NDJPN[j]=(BJPN[j+435]-BJPN[j+428])/7
+end
+
+# South Korea
+PKOR=51.3;
+AKOR=parse.(Float64,Array(Acsv[162,5:qa]))/PKOR;
+NKOR=zeros(qa-4);
+NKOR[1]=AKOR[1];
+for j=2:qa-4
+    NKOR[j]=AKOR[j]-AKOR[j-1]
+end
+BKOR=parse.(Float64,Array(Bcsv[162,5:qa]))/PKOR;
+CKOR=parse.(Float64,Array(Acsv[162,5:qa]));
+RKOR=parse.(Float64,Array(Ccsv[147,5:qa]));
+IKOR=CKOR-RKOR;
+NDKOR=zeros(qa-439);
+for j=1:qa-439
+    NDKOR[j]=(BKOR[j+435]-BKOR[j+428])/7
+end
+
+# Malaysia
+PMYS=32.6;
+AMYS=parse.(Float64,Array(Acsv[178,5:qa]))/PMYS;
+NMYS=zeros(qa-4);
+NMYS[1]=AMYS[1];
+for j=2:qa-4
+    NMYS[j]=AMYS[j]-AMYS[j-1]
+end
+BMYS=parse.(Float64,Array(Bcsv[178,5:qa]))/PMYS;
+CMYS=parse.(Float64,Array(Acsv[178,5:qa]));
+RMYS=parse.(Float64,Array(Ccsv[163,5:qa]));
+IMYS=CMYS-RMYS;
+NDMYS=zeros(qa-439);
+for j=1:qa-439
+    NDMYS[j]=(BMYS[j+435]-BMYS[j+428])/7
+end
+
 # Mexico 183 168
 PMEX=129;
 AMEX=parse.(Float64,Array(Acsv[185,5:qa]))/PMEX;
@@ -317,7 +242,88 @@ NDMEX=zeros(qa-439);
 for j=1:qa-439
     NDMEX[j]=(BMEX[j+435]-BMEX[j+428])/7
 end
-# Spain 235 220
+
+# Nepal 192 177
+PNPL=29.5;
+ANPL=parse.(Float64,Array(Acsv[194,5:qa]))/PNPL;
+NNPL=zeros(qa-4);
+NNPL[1]=ANPL[1];
+for j=2:qa-4
+    NNPL[j]=ANPL[j]-ANPL[j-1]
+end
+BNPL=parse.(Float64,Array(Bcsv[194,5:qa]))/PNPL;
+CNPL=parse.(Float64,Array(Acsv[194,5:qa]));
+RNPL=parse.(Float64,Array(Ccsv[179,5:qa]));
+INPL=CNPL-RNPL;
+NDNPL=zeros(qa-439);
+for j=1:qa-439
+    NDNPL[j]=(BNPL[j+435]-BNPL[j+428])/7
+end
+
+# New Zealand
+PNZL=4.9;
+ANZL=parse.(Float64,Array(Acsv[201,5:qa]))/PNZL;
+BNZL=parse.(Float64,Array(Bcsv[201,5:qa]))/PNZL;
+CNZL=parse.(Float64,Array(Acsv[201,5:qa]));
+RNZL=parse.(Float64,Array(Ccsv[186,5:qa]));
+INZL=CNZL-RNZL;
+
+# Pakistan 205 190
+PPAK=221;
+APAK=parse.(Float64,Array(Acsv[208,5:qa]))/PPAK;
+NPAK=zeros(qa-4);
+NPAK[1]=APAK[1];
+for j=2:qa-4
+    NPAK[j]=APAK[j]-APAK[j-1]
+end
+BPAK=parse.(Float64,Array(Bcsv[208,5:qa]))/PPAK;
+CPAK=parse.(Float64,Array(Acsv[208,5:qa]));
+RPAK=parse.(Float64,Array(Ccsv[193,5:qa]));
+IPAK=CPAK-RPAK;
+NDPAK=zeros(qa-439);
+for j=1:qa-439
+    NDPAK[j]=(BPAK[j+435]-BPAK[j+428])/7
+end
+
+# Philippines
+PPHI=108;
+APHI=parse.(Float64,Array(Acsv[214,5:qa]))/PPHI;
+NPHI=zeros(qa-4);
+NPHI[1]=APHI[1];
+for j=2:qa-4
+    NPHI[j]=APHI[j]-APHI[j-1]
+end
+BPHI=parse.(Float64,Array(Bcsv[214,5:qa]))/PPHI;
+CPHI=parse.(Float64,Array(Acsv[214,5:qa]));
+RPHI=parse.(Float64,Array(Ccsv[199,5:qa]));
+IPHI=CPHI-RPHI;
+NDPHI=zeros(qa-439);
+for j=1:qa-439
+    NDPHI[j]=(BPHI[j+435]-BPHI[j+428])/7
+end
+
+# Singapore
+PSIN=5.7;
+ASIN=parse.(Float64,Array(Acsv[232,5:qa]))/PSIN;
+NSIN=zeros(qa-4);
+NSIN[1]=ASIN[1];
+for j=2:qa-4
+    NSIN[j]=ASIN[j]-ASIN[j-1]
+end
+BSIN=parse.(Float64,Array(Bcsv[232,5:qa]))/PSIN;
+CSIN=parse.(Float64,Array(Acsv[232,5:qa]));
+RSIN=parse.(Float64,Array(Ccsv[217,5:qa]));
+ISIN=CSIN-RSIN;
+
+# South Africa 233 218
+PZAF=58.8;
+AZAF=parse.(Float64,Array(Acsv[237,5:qa]))/PZAF;
+BZAF=parse.(Float64,Array(Bcsv[237,5:qa]))/PZAF;
+CZAF=parse.(Float64,Array(Acsv[237,5:qa]));
+RZAF=parse.(Float64,Array(Ccsv[222,5:qa]));
+IZAF=CZAF-RZAF;
+
+# Spain
 PESP=46.8;
 AESP=parse.(Float64,Array(Acsv[239,5:qa]))/PESP;
 NESP=zeros(qa-4);
@@ -333,6 +339,24 @@ NDESP=zeros(qa-439);
 for j=1:qa-439
     NDESP[j]=(BESP[j+435]-BESP[j+428])/7
 end
+
+# Sri Lanka 
+PLKA=21.5;
+ALKA=parse.(Float64,Array(Acsv[240,5:qa]))/PLKA;
+NLKA=zeros(qa-4);
+NLKA[1]=ALKA[1];
+for j=2:qa-4
+    NLKA[j]=max(ALKA[j]-ALKA[j-1],0)
+end
+BLKA=parse.(Float64,Array(Bcsv[240,5:qa]))/PLKA;
+CLKA=parse.(Float64,Array(Acsv[240,5:qa]));
+RLKA=parse.(Float64,Array(Ccsv[225,5:qa]));
+ILKA=CLKA-RLKA;
+NDLKA=zeros(qa-439);
+for j=1:qa-439
+    NDLKA[j]=(BLKA[j+435]-BLKA[j+428])/7
+end
+
 # United Staes 
 PUSA=331;
 AUSA=parse.(Float64,Array(Acsv[256,5:qa]))/PUSA;
@@ -349,6 +373,7 @@ NDUSA=zeros(qa-439);
 for j=1:qa-439
     NDUSA[j]=(BUSA[j+435]-BUSA[j+428])/7
 end
+
 # United Kingdom 
 PGBR=67.9;
 AGBR=parse.(Float64,Array(Acsv[271,5:qa]))/PGBR;
@@ -364,23 +389,6 @@ IGBR=CGBR-RGBR;
 NDGBR=zeros(qa-439);
 for j=1:qa-439
     NDGBR[j]=(BGBR[j+435]-BGBR[j+428])/7
-end
-
-# Uganda 
-PUGA=44.3;
-AUGA=parse.(Float64,Array(Acsv[256,5:qa]))/PUGA;
-NUGA=zeros(qa-4);
-NUGA[1]=AUGA[1];
-for j=2:qa-4
-    NUGA[j]=max(AUGA[j]-AUGA[j-1],0)
-end
-BUGA=parse.(Float64,Array(Bcsv[256,5:qa]))/PUGA;
-CUGA=parse.(Float64,Array(Acsv[256,5:qa]));
-RUGA=parse.(Float64,Array(Ccsv[241,5:qa]));
-IUGA=CUGA-RUGA;
-NDUGA=zeros(qa-439);
-for j=1:qa-439
-    NDUGA[j]=(BUGA[j+435]-BUGA[j+428])/7
 end
 
 D=qa-4;
@@ -440,6 +448,7 @@ p2=plot([BJPN BPHI BMYS BIDN BKOR BIND BNPL BPAK BBGD BLKA],
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
    palette = :seaborn_bright, 
      legend = :topleft)
+
 p4=plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDIND NDNPL NDPAK NDBGD NDLKA],  
     grid=false,
     linewidth=2, 
@@ -451,63 +460,6 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDIND NDNPL NDPAK NDBGD NDLKA],
     yaxis="deaths/1M",
     legendfont=font(10), 
     label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
-   palette = :seaborn_bright, 
-     legend = :topleft)
-
-p11=plot([NJPN NPHI NMYS NIDN NUGA NIND NNPL NPAK NBGD NLKA],  
-    grid=false,
-    linewidth=1, 
-    title="COVID-19 in Asia: daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    xlabel="date",
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
-    palette = :seaborn_bright, 
-    legend = :topleft)
-
-p9=plot([AJPN APHI AMYS AIDN AUGA AIND ANPL APAK ABGD ALKA],  
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Asia: Confirmed cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    xlabel="date",
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
-    palette = :seaborn_bright, 
-    legend = :topleft)
-size(600,900)
-
-p10=plot([BJPN BPHI BMYS BIDN BUGA BIND BNPL BPAK BBGD BLKA], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Asia: Deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="deaths/1M",
-    legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
-   palette = :seaborn_bright, 
-     legend = :topleft)
-
-p12=plot([NDJPN NDPHI NDMYS NDIDN NDUGA NDIND NDNPL NDPAK NDBGD NDLKA],  
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Asia: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
-    xlabel="date",
-    yaxis="deaths/1M",
-    legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "Uganda" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka"],
    palette = :seaborn_bright, 
      legend = :topleft)
 
@@ -584,15 +536,6 @@ plot(p5, p6, p7, p8,
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
 savefig("jhu_world.png") 
-
-plot(p9, p10, p11, p12,
-     layout=(2,2), 
-     size=(1200,800), 
-     left_margin=Plots.Measures.Length(:mm, 5.0),
-     right_margin=Plots.Measures.Length(:mm, 15.0),
-     top_margin=Plots.Measures.Length(:mm, 5.0),
-     bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("jhu_olympic.png") 
 
 plot(p5, p6, p7, p8,
      layout=(2,2), 
@@ -1043,20 +986,6 @@ plot([CESP IESP RESP],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("jhu_spain.png")
-
-plot([CUGA IUGA RUGA], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in Uganda (44.3M) \n data sourced by JHU Coronavirus Resource Center", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-savefig("jhu_uganda.png")
 
 # Japan
 A1T0=CJPN[qa-4];
