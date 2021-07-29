@@ -48,16 +48,20 @@ l1=string(d0+Day(Int(floor((L-1)/3))));
 l2=string(d0+Day(Int(floor(2*(L-1)/3))));
 l3=string(d0+Day(L-1));
 plot([A C B], 
-    grid=false,
-    linewidth=3, 
-    title="COVID-19 in Japan (126M) \n data sourced by Japanese Ministry of Health", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-plot!(xticks = ([1 floor(L/3)  floor(2*L/3) L-3;], [l0 l1 l2 l3]))
+     grid=false,
+     linewidth=3, 
+     title="COVID-19 in Japan (125M) \n data sourced by Japanese Ministry of Health", 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0),
+     xlabel="date",
+     xticks=([1 floor(L/3)  floor(2*L/3) L;], [l0 l1 l2 l3]),
+     yaxis="cases",
+     legendfont=font(14), 
+     label=["total cases" "active cases" "discharged"], 
+     palette = :seaborn_bright, 
+     legend = :topleft)
 savefig("mhlw_data.png") 
 
 # d00: the initial date. 
@@ -74,9 +78,9 @@ T0=AS[aa];
 R0=BB[bb];
 
 # D: the simulation period [days] 
-D=Float64(5*7);
+D=Float64(4*7);
 # N: the total population
-N=Float64(125710000);
+N=Float64(125360000);
 
 # d22: 7 days befor the initial date
 # T2: the total cases
@@ -107,14 +111,18 @@ l11=string(d00+Day(2*7));
 l22=string(d00+Day(4*7));
 
 plot(sol, 
-    grid=false,
-    linewidth=3, 
-    title="SIR model for COVID-19 in Japan (126M)\n data sourced by Japanese Ministry of Health", 
-    xlabel="date",
-    yaxis="cases",
-    legendfont=font(14), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :right)
-plot!(xticks = ([0 2*7  4*7;], [l00 l11 l22]))
+     grid=false,
+     linewidth=3, 
+     title="SIR model for COVID-19 in Japan (125M)\n data sourced by Japanese Ministry of Health", 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0),
+     xlabel="date",
+     xticks = ([0 2*7  4*7;], [l00 l11 l22]),
+     yaxis="cases",
+     legendfont=font(14), 
+     label=["total cases" "active cases" "discharged"], 
+     palette = :seaborn_bright, 
+     legend = :right)
 savefig("mhlw_sir.png") 
