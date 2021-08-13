@@ -103,91 +103,12 @@ for j=1:D-441
     NDHYG[j]=(XHYG[j+441]+XHYG[j+440]+XHYG[j+439]+XHYG[j+438]+XHYG[j+437]+XHYG[j+436]+XHYG[j+435])/7
 end
 
-# Kyoto (2.57M): code 26
-rowkyt=findall(x->x==26,A0);
-NKYT=A1[rowkyt]/2.57;
-TKYT=A2[rowkyt]/2.57;
-DKYT=A3[rowkyt]/2.57;
-# Saitama (7.34M): code 11, 
-rowstm=findall(x->x==11,A0);
-NSTM=A1[rowstm]/7.34;
-TSTM=A2[rowstm]/7.34;
-DSTM=A3[rowstm]/7.34;
-# Chiba (6.28M): code 12
-rowchb=findall(x->x==12,A0);
-NCHB=A1[rowchb]/6.28;
-TCHB=A2[rowchb]/6.28;
-DCHB=A3[rowchb]/6.28;
-# kanagawa (9.22M): code 14
-rowkng=findall(x->x==14,A0);
-NKNG=A1[rowkng]/9.22;
-TKNG=A2[rowkng]/9.22;
-DKNG=A3[rowkng]/9.22;
-# SCK (7.34+6.28+9.22=22.84)
-NSCK=(A1[rowstm]+A1[rowchb]+A1[rowkng])/22.84;
-TSCK=(A2[rowstm]+A2[rowchb]+A2[rowkng])/22.84;
-DSCK=(A3[rowstm]+A3[rowchb]+A3[rowkng])/22.84;
-XSCK=(X[rowstm]+X[rowchb]+X[rowkng])/22.84;;
-NDSCK=zeros(D-441);
-for j=1:D-441
-    NDSCK[j]=(XSCK[j+441]+XSCK[j+440]+XSCK[j+439]+XSCK[j+438]+XSCK[j+437]+XSCK[j+436]+XSCK[j+435])/7
-end
-# Miyagi (2.29M): code 4
-rowmyg=findall(x->x==4,A0);
-NMYG=A1[rowmyg]/2.29;
-TMYG=A2[rowmyg]/2.29;
-DMYG=A3[rowmyg]/2.29;
-# Aomori (1.23M): code 2
-rowamr=findall(x->x==2,A0);
-NAMR=A1[rowamr]/1.23;
-TAMR=A2[rowamr]/1.23;
-DAMR=A3[rowamr]/1.23;
-# Fukuoka (5.11M): code 40
-rowfuk=findall(x->x==40,A0);
-NFUK=A1[rowfuk]/5.11;
-TFUK=A2[rowfuk]/5.11;
-DFUK=A3[rowfuk]/5.11;
-# Saga (0.807M): code 41
-rowsag=findall(x->x==41,A0);
-NSAG=A1[rowsag]/0.807;
-TSAG=A2[rowsag]/0.807;
-DSAG=A3[rowsag]/0.807;
-# Nagasaki (1.31M): code 42
-rownsk=findall(x->x==42,A0);
-NNSK=A1[rownsk]/1.31;
-TNSK=A2[rownsk]/1.31;
-DNSK=A3[rownsk]/1.31;
-# Kumamoto (1.73M): code 43
-rowkum=findall(x->x==43,A0);
-NKUM=A1[rowkum]/1.73;
-TKUM=A2[rowkum]/1.73;
-DKUM=A3[rowkum]/1.73;
-# Oita (1.12M): code 44
-rowoit=findall(x->x==44,A0);
-NOIT=A1[rowoit]/1.12;
-TOIT=A2[rowoit]/1.12;
-DOIT=A3[rowoit]/1.12;
-# Miyazaki (1.06M): code 45
-rowmzk=findall(x->x==45,A0);
-NMZK=A1[rowmzk]/1.06;
-TMZK=A2[rowmzk]/1.06;
-DMZK=A3[rowmzk]/1.06;
-# Kagoshima (1.58M): code 46
-rowkgm=findall(x->x==46,A0);
-NKGM=A1[rowkgm]/1.58;
-TKGM=A2[rowkgm]/1.58;
-DKGN=A3[rowkgm]/1.58;
-# Kyushu (5.11+0.81+1.31+1.73+1.12+1.06+1.58=12.72)
-NKYU=(A1[rowfuk]+A1[rowsag]+A1[rownsk]+A1[rowkum]+A1[rowoit]+A1[rowmzk]+A1[rowkgm])/12.72;
-TKYU=(A2[rowfuk]+A2[rowsag]+A2[rownsk]+A2[rowkum]+A2[rowoit]+A2[rowmzk]+A2[rowkgm])/12.72;
-DKYU=(A3[rowfuk]+A3[rowsag]+A3[rownsk]+A3[rowkum]+A3[rowoit]+A3[rowmzk]+A3[rowkgm])/12.72;
-
-p1=plot([TJPN TTKYT OKNW TOSK THYG THKD], 
+p1=plot([TJPN TTKY TOKNW TOSK THYG THKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa ""Osaka" "Hyogo" "Hokkaido"], 
-    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)", 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
+    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -285,12 +206,12 @@ plot([J3 J3TKY J3OSK],
     legend = :topleft)
 savefig("nhk_japan_deaths.png") 
 
-plot([TJPN TTKYT OKNW TOSK THYG THKD], 
+plot([TJPN TTKY TOKNW TOSK THYG THKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa ""Osaka" "Hyogo" "Hokkaido"], 
-    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)", 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
+    title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -325,8 +246,7 @@ plot([NJPN NTKY NOKNW NOSK NHYG NHKD],
     label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("nhk_new_new.cases_png") 
-
+savefig("nhk_new_cases.png") 
 
 plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
     grid=false,
