@@ -18,15 +18,13 @@ A0=parse.(Int64,Acsv[2:pa,2]);
 A1=parse.(Float64,Acsv[2:pa,4]);
 X=parse.(Float64,Acsv[2:pa,6]);
 (pj,qj)=size(Jcsv);
-J1=parse.(Float64,Jcsv[2:pj,2]);
 (pw,qw)=size(Wcsv);
 
 # Plot the data
 # d0: the initial date
 # df: the final day
-pj=min(pj,qw+3);
-d0=Date(2021,4,1)
-D=pj-442;
+d0=Date(2021,7,1)
+D=qw-530;
 d1=d0+Day(floor((D-1)/2));
 d2=d0+Day(D-1);
 l0=string(d0);
@@ -36,55 +34,55 @@ l2=string(d2);
 # Okinawa (1.46M): code 47
 rowoknw=findall(x->x==47,A0);
 XNOKNW=A1[rowoknw]/1.458870;
-NOKNW=XNOKNW[442:pj-1];
+NOKNW=XNOKNW[533:qw+2];
 
 # Tokyo (14M): code 13, 
 rowtky=findall(x->x==13,A0);
 XNTKY=A1[rowtky]/14.049146;
-NTKY=XNTKY[442:pj-1];
+NTKY=XNTKY[533:qw+2];
 
 # Japan (125.36M)
-XNJPN=parse.(Float64,Jcsv[443:pj,2]);
+XNJPN=parse.(Float64,Jcsv[534:qw+3,2]);
 NJPN=XNJPN/125.36
 
 # Indonesia
 PIDN=271;
 AIDN=parse.(Float64,Array(Wcsv[150,5:qw]))/PIDN;
-NIDN=zeros(qw-439);
-for j=1:qw-439
-    NIDN[j]=AIDN[435+j]-AIDN[434+j]
+NIDN=zeros(qw-530);
+for j=1:qw-530
+    NIDN[j]=AIDN[526+j]-AIDN[525+j]
 end
 
 # Malaysia
 PMYS=32.6;
 AMYS=parse.(Float64,Array(Wcsv[178,5:qw]))/PMYS;
-NMYS=zeros(qw-439);
-for j=1:qw-439
-    NMYS[j]=AMYS[435+j]-AMYS[434+j]
+NMYS=zeros(qw-530);
+for j=1:qw-530
+    NMYS[j]=AMYS[526+j]-AMYS[525+j]
 end
 
 # Thailand
 PTHA=70.0;
 ATHA=parse.(Float64,Array(Wcsv[250,5:qw]))/PTHA;
-NTHA=zeros(qw-439);
-for j=1:qw-439
-    NTHA[j]=ATHA[435+j]-ATHA[434+j]
+NTHA=zeros(qw-530);
+for j=1:qw-530
+    NTHA[j]=ATHA[526+j]-ATHA[525+j]
 end
 
 # United Staes 
 PUSA=331;
 AUSA=parse.(Float64,Array(Wcsv[256,5:qw]))/PUSA;
-NUSA=zeros(qw-439);
-for j=1:qw-439
-    NUSA[j]=AUSA[435+j]-AUSA[434+j]
+NUSA=zeros(qw-530);
+for j=1:qw-530
+    NUSA[j]=AUSA[526+j]-AUSA[525+j]
 end
 
 # United Kingdom 
 PGBR=67.9;
 AGBR=parse.(Float64,Array(Wcsv[271,5:qw]))/PGBR;
-NGBR=zeros(qw-439);
-for j=1:qw-439
-    NGBR[j]=max(AGBR[435+j]-AGBR[434+j],0)
+NGBR=zeros(qw-530);
+for j=1:qw-530
+    NGBR[j]=max(AGBR[526+j]-AGBR[525+j],0)
 end
 
 plot([NJPN NTKY NOKNW NIDN NMYS NTHA NUSA NGBR], 
