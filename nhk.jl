@@ -103,11 +103,11 @@ for j=1:D-441
     NDHYG[j]=(XHYG[j+441]+XHYG[j+440]+XHYG[j+439]+XHYG[j+438]+XHYG[j+437]+XHYG[j+436]+XHYG[j+435])/7
 end
 
-p1=plot([TJPN TTKY TOKNW TOSK THYG THKD], 
+p1=plot([TJPN TTKY TOKNW], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
+    label=["Japan" "Tokyo" "Okinawa"], 
     title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
@@ -129,7 +129,7 @@ p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     palette = :seaborn_bright, 
     legend = :topleft)
 
-p3=plot([NJPN NTKY NOKNW NOSK NHYG NHKD], 
+p3=plot([NJPN NTKY NOKNW], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japanese Public TV)", 
@@ -206,11 +206,11 @@ plot([J3 J3TKY J3OSK],
     legend = :topleft)
 savefig("nhk_japan_deaths.png") 
 
-plot([TJPN TTKY TOKNW TOSK THYG THKD], 
+plot([TJPN TTKY TOKNW], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
+    label=["Japan" "Tokyo" "Okinawa"], 
     title="COVID-19 in Japan (total cases per 1M) \n data sourced by NHK (Japanese Public TV)",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
@@ -234,7 +234,7 @@ plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     legend = :topleft)
 savefig("nhk_deaths.png") 
 
-plot([NJPN NTKY NOKNW NOSK NHYG NHKD], 
+plot([NJPN NTKY NOKNW], 
     grid=false,
     linewidth=1, 
     title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by NHK (Japanese Public TV)", 
@@ -243,7 +243,7 @@ plot([NJPN NTKY NOKNW NOSK NHYG NHKD],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
+    label=["Japan" "Tokyo" "Okinawa"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("nhk_new_cases.png") 
