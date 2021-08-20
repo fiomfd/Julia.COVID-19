@@ -133,7 +133,7 @@ for j=1:qw-530
     NVNM[j]=AVNM[526+j]-AVNM[525+j]
 end
 
-plot([NJPN NNSW NSIN NKOR NVNM IDN], 
+plot([NJPN NNSW NSIN NKOR NVNM NIDN], 
     grid=false,
     linewidth=1, 
     title="COVID-19 daily new cases per 1M \n data sourced by JHU", 
