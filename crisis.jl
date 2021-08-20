@@ -175,7 +175,7 @@ q=plot([NJPN NNSW NSIN NKOR NVNM NIDN],
 savefig("new_delta.png") 
 
 plot(p, q,  
-     layout=(2,2), 
+     layout=(1,2), 
      size=(1260,420), 
      left_margin=Plots.Measures.Length(:mm, 5.0),
      right_margin=Plots.Measures.Length(:mm, 15.0),
