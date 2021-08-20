@@ -254,7 +254,7 @@ plot(p1, p2, p3, p4,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("mhwl.png") 
+savefig("mhlw.png") 
 
 plot([CJPN CTKY COKNW], 
     grid=false,
@@ -268,7 +268,7 @@ plot([CJPN CTKY COKNW],
     yaxis="cases/1M",    
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhwl_cases.png") 
+savefig("mhlw_cases.png") 
 
 plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
     grid=false,
@@ -282,7 +282,7 @@ plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"],
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhwl_deaths.png") 
+savefig("mhlw_deaths.png") 
 
 plot([NJPN NTKY NOKNW], 
     grid=false,
@@ -296,7 +296,7 @@ plot([NJPN NTKY NOKNW],
     label=["Japan" "Tokyo" "Okinawa"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhwl_new_cases.png") 
+savefig("mhlw_new_cases.png") 
 
 plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
     grid=false,
@@ -310,7 +310,7 @@ plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhwl_recent_deaths.png") 
+savefig("mhlw_recent_deaths.png") 
 
 
 # 
@@ -463,4 +463,4 @@ plot(q1, q2, q3, q4, q5, q6,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("mhwl_sir.png") 
+savefig("mhlw_sir.png") 
