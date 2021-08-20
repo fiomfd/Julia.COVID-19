@@ -98,6 +98,19 @@ plot([NJPN NTKY NOKNW NMYS NTHA NUSA NGBR],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("new_cases.png") 
+#
+p=plot([NJPN NTKY NOKNW NMYS NTHA NUSA NGBR], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 daily new cases per 1M \n data sourced by JHU and NHK", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/2) D;], [l0 l1 l2]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(8), 
+    label=["Japan" "Tokyo" "Okinawa" "Malaysia" "Thailand" "United States" "United Kingdom"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
 
 ################################################
 
@@ -146,3 +159,26 @@ plot([NJPN NNSW NSIN NKOR NVNM NIDN],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("new_delta.png") 
+#
+q=plot([NJPN NNSW NSIN NKOR NVNM NIDN], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 daily new cases per 1M \n data sourced by JHU", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/2) D;], [l0 l1 l2]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(8), 
+    label=["Japan" "New South Wales" "Singapore" "South Korea" "Vietnam" "Indonesia"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("new_delta.png") 
+
+plot(p, q,  
+     layout=(2,2), 
+     size=(1260,420), 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
+savefig("crisis.png") 
