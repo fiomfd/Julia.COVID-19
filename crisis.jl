@@ -85,7 +85,7 @@ for j=1:qw-530
     NGBR[j]=max(AGBR[526+j]-AGBR[525+j],0)
 end
 
-plot([NJPN NTKY NOKNW NIDN NMYS NTHA NUSA NGBR], 
+plot([NJPN NTKY NOKNW NMYS NTHA NUSA NGBR], 
     grid=false,
     linewidth=1, 
     title="COVID-19 daily new cases per 1M \n data sourced by JHU and NHK", 
@@ -93,8 +93,56 @@ plot([NJPN NTKY NOKNW NIDN NMYS NTHA NUSA NGBR],
     xticks = ([1 floor(D/2) D;], [l0 l1 l2]),
     xlabel="date",
     yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Indonesia" "Malaysia" "Thailand" "United States" "United Kingdom"], 
+    legendfont=font(8), 
+    label=["Japan" "Tokyo" "Okinawa" "Malaysia" "Thailand" "United States" "United Kingdom"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("new_cases.png") 
+
+################################################
+
+# NSW
+PNSW=8.2;
+ANSW=parse.(Float64,Array(Wcsv[11,5:qw]))/PNSW;
+NNSW=zeros(qw-530);
+for j=1:qw-530
+    NNSW[j]=ANSW[526+j]-ANSW[525+j]
+end
+
+# South Korea
+PKOR=51.318552;
+AKOR=parse.(Float64,Array(Wcsv[162,5:qw]))/PKOR;
+NKOR=zeros(qw-530);
+for j=1:qw-530
+    NKOR[j]=AKOR[526+j]-AKOR[525+j]
+end
+
+# Singapore
+PSIN=5.902011;
+ASIN=parse.(Float64,Array(Wcsv[232,5:qw]))/PSIN;
+NSIN=zeros(qw-530);
+for j=1:qw-530
+    NSIN[j]=ASIN[526+j]-ASIN[525+j]
+end
+
+# Vietnam
+PVNM=98.32;
+AVNM=parse.(Float64,Array(Wcsv[276,5:qw]))/PVNM;
+NVNM=zeros(qw-530);
+for j=1:qw-530
+    NVNM[j]=AVNM[526+j]-AVNM[525+j]
+end
+
+plot([NJPN NNSW NSIN NKOR NVNM IDN], 
+    grid=false,
+    linewidth=1, 
+    title="COVID-19 daily new cases per 1M \n data sourced by JHU", 
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(D/2) D;], [l0 l1 l2]),
+    xlabel="date",
+    yaxis="cases/1M",
+    legendfont=font(8), 
+    label=["Japan" "New South Wales" "Singapore" "South Korea" "Vietnam" "Indonesia"], 
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("new_delta.png") 
