@@ -5,15 +5,15 @@
 using Plots, CSV, Dates, DataFrames, DifferentialEquations
 
 # Download data from the MHLW web site. 
-download("https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv","mhlw_new_cases.csv");
-download("https://covid19.mhlw.go.jp/public/opendata/confirmed_cases_cumulative_daily.csv","mhlw_cases.csv");
-download("https://covid19.mhlw.go.jp/public/opendata/deaths_cumulative_daily.csv","mhlw_deaths.csv");
-download("https://covid19.mhlw.go.jp/public/opendata/requiring_inpatient_care_etc_daily.csv","mhlw_recovered.csv");
+download("https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv","./csv/mhlw_new_cases.csv");
+download("https://covid19.mhlw.go.jp/public/opendata/confirmed_cases_cumulative_daily.csv","./csv/mhlw_cases.csv");
+download("https://covid19.mhlw.go.jp/public/opendata/deaths_cumulative_daily.csv","./csv/mhlw_deaths.csv");
+download("https://covid19.mhlw.go.jp/public/opendata/requiring_inpatient_care_etc_daily.csv","./csv/mhlw_recovered.csv");
 
-Ncsv=DataFrame(CSV.File("mhlw_new_cases.csv", header=false, delim=','));
-Ccsv=DataFrame(CSV.File("mhlw_cases.csv", header=false, delim=','));
-Dcsv=DataFrame(CSV.File("mhlw_deaths.csv", header=false, delim=','));
-Rcsv=DataFrame(CSV.File("mhlw_recovered.csv", header=false, delim=','));
+Ncsv=DataFrame(CSV.File("./csv/mhlw_new_cases.csv", header=false, delim=','));
+Ccsv=DataFrame(CSV.File("./csv/mhlw_cases.csv", header=false, delim=','));
+Dcsv=DataFrame(CSV.File("./csv/mhlw_deaths.csv", header=false, delim=','));
+Rcsv=DataFrame(CSV.File("./csv/mhlw_recovered.csv", header=false, delim=','));
 (pa,qa)=size(Ccsv);
 I1=Ncsv[4994:pa+4992,2];
 N1=parse.(Float64,Ncsv[4994:pa+4992,3]);
@@ -30,8 +30,8 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
-dd0=Date(2021,4,1);
-DD=D-327;
+dd0=Date(2021,7,1);
+DD=Int64(D-418);
 ll0=string(dd0);
 ll1=string(dd0+Day(Int(floor((DD-1)/2))));
 ll2=string(dd0+Day(Int(floor(DD-1))));
@@ -44,8 +44,8 @@ CJPN=C1[ROWJPN]/PJPN;
 DJPN=D1[ROWJPN]/PJPN;
 RJPN=R1[ROWJPN]/PJPN;
 AJPN=CJPN-RJPN-DJPN;
-NDJPN=zeros(Int(D-327));
-for j=1:D-327
+NDJPN=zeros(DD);
+for j=1:DD
     NDJPN[j]=(DJPN[j+327]-DJPN[j+321])/7
 end
 
@@ -57,9 +57,9 @@ CTKY=C1[ROWTKY]/PTKY;
 DTKY=D1[ROWTKY]/PTKY;
 RTKY=R1[ROWTKY]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
-NDTKY=zeros(Int(D-327));
-for j=1:D-327
-    NDTKY[j]=(DTKY[j+327]-DTKY[j+321])/7
+NDTKY=zeros(DD);
+for j=1:DD
+    NDTKY[j]=(DTKY[j+418]-DTKY[j+411])/7
 end
 
 # Okinawa
@@ -70,9 +70,9 @@ COKNW=C1[ROWOKNW]/POKNW;
 DOKNW=D1[ROWOKNW]/POKNW;
 ROKNW=R1[ROWOKNW]/POKNW;
 AOKNW=COKNW-ROKNW-DOKNW;
-NDOKNW=zeros(Int(D-327));
-for j=1:D-327
-    NDOKNW[j]=(DOKNW[j+327]-DOKNW[j+321])/7
+NDOKNW=zeros(DD);
+for j=1:DD
+    NDOKNW[j]=(DOKNW[j+418]-DOKNW[j+411])/7
 end
 
 # Osaka
@@ -83,9 +83,9 @@ COSK=C1[ROWOSK]/POSK;
 DOSK=D1[ROWOSK]/POSK;
 ROSK=R1[ROWOSK]/POSK;
 AOSK=COSK-ROSK-DOSK;
-NDOSK=zeros(Int(D-327));
-for j=1:D-327
-    NDOSK[j]=(DOSK[j+327]-DOSK[j+321])/7
+NDOSK=zeros(DD);
+for j=1:DD
+    NDOSK[j]=(DOSK[j+418]-DOSK[j+411])/7
 end
 
 # Hyogo
@@ -96,9 +96,9 @@ CHYG=C1[ROWHYG]/PHYG;
 DHYG=D1[ROWHYG]/PHYG;
 RHYG=R1[ROWHYG]/PHYG;
 AHYG=CHYG-RHYG-DHYG;
-NDHYG=zeros(Int(D-327));
-for j=1:D-327
-    NDHYG[j]=(DHYG[j+327]-DHYG[j+321])/7
+NDHYG=zeros(DD);
+for j=1:DD
+    NDHYG[j]=(DHYG[j+418]-DHYG[j+411])/7
 end
  
 # Hokkaido
@@ -109,9 +109,9 @@ CHKD=C1[ROWHKD]/PHKD;
 DHKD=D1[ROWHKD]/PHKD;
 RHKD=R1[ROWHKD]/PHKD;
 AHKD=CHKD-RHKD-DHKD;
-NDHKD=zeros(Int(D-327));
-for j=1:D-327
-    NDHKD[j]=(DHKD[j+327]-DHKD[j+321])/7
+NDHKD=zeros(DD);
+for j=1:DD
+    NDHKD[j]=(DHKD[j+418]-DHKD[j+411])/7
 end
 
 q1=plot([CJPN AJPN RJPN], 
@@ -139,7 +139,7 @@ plot([CJPN AJPN RJPN],
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_japan.png") 
+savefig("./mhlw/mhlw_japan.png") 
 
 q2=plot([CTKY ATKY RTKY], 
     grid=false,
@@ -166,7 +166,7 @@ plot([CTKY ATKY RTKY],
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_tokyo.png") 
+savefig("./mhlw/mhlw_tokyo.png") 
 
 q3=plot([COKNW AOKNW ROKNW], 
     grid=false,
@@ -193,7 +193,7 @@ plot([COKNW AOKNW ROKNW],
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_okinawa.png") 
+savefig("./mhlw/mhlw_okinawa.png") 
 
 p1=plot([CJPN CTKY COKNW], 
     grid=false,
@@ -254,7 +254,7 @@ plot(p1, p2, p3, p4,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("mhlw.png") 
+savefig("./mhlw/mhlw.png") 
 
 plot([CJPN CTKY COKNW], 
     grid=false,
@@ -268,7 +268,7 @@ plot([CJPN CTKY COKNW],
     yaxis="cases/1M",    
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_cases.png") 
+savefig("./mhlw/mhlw_cases.png") 
 
 plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
     grid=false,
@@ -282,7 +282,7 @@ plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"],
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_deaths.png") 
+savefig("./mhlw/mhlw_deaths.png") 
 
 plot([NJPN NTKY NOKNW], 
     grid=false,
@@ -296,7 +296,7 @@ plot([NJPN NTKY NOKNW],
     label=["Japan" "Tokyo" "Okinawa"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_new_cases.png") 
+savefig("./mhlw/mhlw_new_cases.png") 
 
 plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
     grid=false,
@@ -310,7 +310,7 @@ plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_recent_deaths.png") 
+savefig("./mhlw/mhlw_recent_deaths.png") 
 
 
 # 
@@ -364,7 +364,7 @@ plot(sol,
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_sir_japan.png")
+savefig("./mhlw/mhlw_sir_japan.png")
 
 # Tokyo
 T0=CTKY[D];
@@ -409,7 +409,7 @@ plot(sol,
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_sir_tokyo.png")
+savefig("./mhlw/mhlw_sir_tokyo.png")
 
 # Okinawa
 T0=COKNW[D];
@@ -454,7 +454,7 @@ plot(sol,
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("mhlw_sir_okinawa.png")
+savefig("./mhlw/mhlw_sir_okinawa.png")
 
 plot(q1, q2, q3, q4, q5, q6,  
      layout=(2,3), 
@@ -463,4 +463,4 @@ plot(q1, q2, q3, q4, q5, q6,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("mhlw_sir.png") 
+savefig("./mhlw/mhlw_sir.png") 
