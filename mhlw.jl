@@ -15,8 +15,10 @@ Ccsv=DataFrame(CSV.File("./csv/mhlw_cases.csv", header=false, delim=','));
 Dcsv=DataFrame(CSV.File("./csv/mhlw_deaths.csv", header=false, delim=','));
 Rcsv=DataFrame(CSV.File("./csv/mhlw_recovered.csv", header=false, delim=','));
 (pa,qa)=size(Ccsv);
-I1=Ncsv[4994:pa+4992,2];
-N1=parse.(Float64,Ncsv[4994:pa+4992,3]);
+(pb,qb)=size(Ncsv);
+I1=Ccsv[2:pa,2];
+I2=Ncsv[2:pb,2];
+N1=parse.(Float64,Ncsv[2:pb,3]);
 C1=parse.(Float64,Ccsv[2:pa,3]);
 D1=parse.(Float64,Dcsv[2:pa,3]);
 R1=parse.(Float64,Rcsv[2:pa,4]);
@@ -38,9 +40,17 @@ ll2=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
 ROWJPN=findall(x->x=="ALL",I1);
+ROWJPN2=findall(x->x=="ALL",I2);
 PJPN=125.36;
-NJPN=N1[ROWJPN]/PJPN;
+OJPN=N1[ROWJPN2]/PJPN;
 CJPN=C1[ROWJPN]/PJPN;
+NJPN=zeros(D);
+for j=1:7
+    NJPN[j]=(OJPN[j+104]+OJPN[j+103]+OJPN[j+102]+OJPN[j+101]+OJPN[j+100]+OJPN[j+99]+OJPN[j+98])/7;
+end
+for j=8:D
+    NJPN[j]=(CJPN[j]-CJPN[j-7])/7;
+end
 DJPN=D1[ROWJPN]/PJPN;
 RJPN=R1[ROWJPN]/PJPN;
 AJPN=CJPN-RJPN-DJPN;
@@ -51,9 +61,17 @@ end
 
 # Tokyo
 ROWTKY=findall(x->x=="Tokyo",I1);
+ROWTKY2=findall(x->x=="Tokyo",I2);
 PTKY=14.049146;
-NTKY=N1[ROWTKY]/PTKY;
+OTKY=N1[ROWTKY2]/PTKY;
 CTKY=C1[ROWTKY]/PTKY;
+NTKY=zeros(D);
+for j=1:7
+    NTKY[j]=(OTKY[j+104]+OTKY[j+103]+OTKY[j+102]+OTKY[j+101]+OTKY[j+100]+OTKY[j+99]+OTKY[j+98])/7;
+end
+for j=8:D
+    NTKY[j]=(CTKY[j]-CTKY[j-7])/7;
+end
 DTKY=D1[ROWTKY]/PTKY;
 RTKY=R1[ROWTKY]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
@@ -64,9 +82,17 @@ end
 
 # Okinawa
 ROWOKNW=findall(x->x=="Okinawa",I1);
+ROWOKNW2=findall(x->x=="Okinawa",I2);
 POKNW=1.458870;
-NOKNW=N1[ROWOKNW]/POKNW;
+OOKNW=N1[ROWOKNW2]/POKNW;
 COKNW=C1[ROWOKNW]/POKNW;
+NOKNW=zeros(D);
+for j=1:7
+    NOKNW[j]=(OOKNW[j+104]+OOKNW[j+103]+OOKNW[j+102]+OOKNW[j+101]+OOKNW[j+100]+OOKNW[j+99]+OOKNW[j+98])/7;
+end
+for j=8:D
+    NOKNW[j]=(COKNW[j]-COKNW[j-7])/7;
+end
 DOKNW=D1[ROWOKNW]/POKNW;
 ROKNW=R1[ROWOKNW]/POKNW;
 AOKNW=COKNW-ROKNW-DOKNW;
@@ -126,35 +152,9 @@ q1=plot([CJPN AJPN RJPN],
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-#
-plot([CJPN AJPN RJPN], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Japan (125.36M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
 savefig("./mhlw/mhlw_japan.png") 
 
 q2=plot([CTKY ATKY RTKY], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Tokyo (14.049146M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-#
-plot([CTKY ATKY RTKY], 
     grid=false,
     linewidth=2, 
     title="COVID-19 in Tokyo (14.049146M) \n data sourced by MOH of Japan", 
@@ -180,19 +180,6 @@ q3=plot([COKNW AOKNW ROKNW],
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-#
-plot([COKNW AOKNW ROKNW], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Okinawa (1.458870M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
 savefig("./mhlw/mhlw_okinawa.png") 
 
 p1=plot([CJPN CTKY COKNW], 
@@ -200,68 +187,7 @@ p1=plot([CJPN CTKY COKNW],
     linewidth=2, 
     legendfont=font(10), 
     label=["Japan" "Tokyo" "Okinawa"], 
-    title="COVID-19 in Japan (total cases per 1M) \n data sourced by MOH of Japan",
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases/1M",    
-    palette = :seaborn_bright, 
-    legend = :topleft)
-
-p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
-    grid=false,
-    linewidth=2, 
-    legendfont=font(10), 
-    title="COVID-19 in Japan (deaths per 1M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="deaths/1M",
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"],
-    palette = :seaborn_bright, 
-    legend = :topleft)
-
-p3=plot([NJPN NTKY NOKNW], 
-    grid=false,
-    linewidth=1, 
-    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-
-p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 in Japan (7-day average deaths per 1M) \n data sourced by MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
-    xlabel="date",
-    yaxis="deaths/1M",
-    legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-
-plot(p1, p2, p3, p4, 
-     layout=(2,2), 
-     size=(1260,840), 
-     left_margin=Plots.Measures.Length(:mm, 5.0),
-     right_margin=Plots.Measures.Length(:mm, 15.0),
-     top_margin=Plots.Measures.Length(:mm, 5.0),
-     bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("./mhlw/mhlw.png") 
-
-plot([CJPN CTKY COKNW], 
-    grid=false,
-    linewidth=2, 
-    legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa"], 
-    title="COVID-19 in Japan (total cases per 1M) \n data sourced by MOH of Japan",
+    title="COVID-19: total cases per 1M \n data sourced by MOH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -270,11 +196,11 @@ plot([CJPN CTKY COKNW],
     legend = :topleft)
 savefig("./mhlw/mhlw_cases.png") 
 
-plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
+p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    title="COVID-19 in Japan (deaths per 1M) \n data sourced by MOH of Japan", 
+    title="COVID-19: deaths per 1M \n data sourced by MOH of Japan", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -284,10 +210,10 @@ plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     legend = :topleft)
 savefig("./mhlw/mhlw_deaths.png") 
 
-plot([NJPN NTKY NOKNW], 
+p3=plot([NJPN NTKY NOKNW], 
     grid=false,
-    linewidth=1, 
-    title="COVID-19 in Japan (daily new cases per 1M) \n data sourced by MOH of Japan", 
+    linewidth=2, 
+    title="COVID-19: 7-day average of new cases per 1M) \n data sourced by MOH of Japan", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
@@ -298,10 +224,10 @@ plot([NJPN NTKY NOKNW],
     legend = :topleft)
 savefig("./mhlw/mhlw_new_cases.png") 
 
-plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
+p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
     grid=false,
     linewidth=2, 
-    title="COVID-19 in Japan (7-day average deaths per 1M) \n data sourced by MOH of Japan", 
+    title="COVID-19: 7-day average deaths per 1M \n data sourced by MOH of Japan", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
     xlabel="date",
@@ -312,6 +238,14 @@ plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     legend = :topleft)
 savefig("./mhlw/mhlw_recent_deaths.png") 
 
+plot(p1, p2, p3, p4, 
+     layout=(2,2), 
+     size=(1260,840), 
+     left_margin=Plots.Measures.Length(:mm, 5.0),
+     right_margin=Plots.Measures.Length(:mm, 15.0),
+     top_margin=Plots.Measures.Length(:mm, 5.0),
+     bottom_margin=Plots.Measures.Length(:mm, 5.0))
+savefig("./mhlw/mhlw.png") 
 
 # 
 # SIR
@@ -338,20 +272,6 @@ prob = ODEProblem(f,u0,tspan);
 sol = solve(prob, maxiters=Int(1e6));
 #
 q4=plot(sol, 
-    grid=false,
-    linewidth=3, 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    title="SIR model for COVID-19/1M in Japan (125M) \n data sourced by MOH of Japan", 
-    xlabel="date",
-    xticks = ([0 2*7 4*7;], [w0, w1, w2]), 
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-#
-plot(sol, 
     grid=false,
     linewidth=3, 
     right_margin=Plots.Measures.Length(:mm, 10.0),
@@ -395,20 +315,6 @@ q5=plot(sol,
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
     legend = :topleft)
-#
-plot(sol, 
-    grid=false,
-    linewidth=3, 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    title="SIR model for COVID-19/1M in Tokyo (14M) \n data sourced by MOH of Japan", 
-    xlabel="date",
-    xticks = ([0 2*7 4*7;], [w0, w1, w2]), 
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
 savefig("./mhlw/mhlw_sir_tokyo.png")
 
 # Okinawa
@@ -428,20 +334,6 @@ prob = ODEProblem(f,u0,tspan);
 sol = solve(prob, maxiters=Int(1e6));
 #
 q6=plot(sol, 
-    grid=false,
-    linewidth=3, 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    left_margin=Plots.Measures.Length(:mm, 5.0),
-    title="SIR model for COVID-19/1M in Okinawa (1.46M) \n data sourced by MOH of Japan", 
-    xlabel="date",
-    xticks = ([0 2*7 4*7;], [w0, w1, w2]), 
-    yaxis="cases/1M",
-    legendfont=font(10), 
-    label=["total cases" "active cases" "discharged"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-#
-plot(sol, 
     grid=false,
     linewidth=3, 
     right_margin=Plots.Measures.Length(:mm, 10.0),
