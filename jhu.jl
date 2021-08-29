@@ -41,9 +41,12 @@ for j=8:D
     NARG[j]=(AARG[j]-AARG[j-7])/7
 end
 BARG=parse.(Float64,Array(Bcsv[8,5:qw]))/PARG;
-NDARG=zeros(DD);
-for j=1:DD
-    NDARG[j]=(BARG[j+526]-BARG[j+519])/7
+NDARG=zeros(D);
+for j=1:7
+    NDARG[j]=BARG[j]/7
+end
+for j=8:D
+    NDARG[j]=(BARG[j]-BARG[j-7])/7
 end
 
 # Bangladesh
@@ -57,9 +60,12 @@ for j=8:D
     NBGD[j]=(ABGD[j]-ABGD[j-7])/7
 end
 BBGD=parse.(Float64,Array(Bcsv[22,5:qw]))/PBGD;
-NDBGD=zeros(DD);
-for j=1:DD
-    NDBGD[j]=(BBGD[j+526]-BBGD[j+519])/7
+NDBGD=zeros(D);
+for j=1:7
+    NDBGD[j]=BBGD[j]/7
+end
+for j=8:D
+    NDBGD[j]=(BBGD[j]-BBGD[j-7])/7
 end
 
 # Brazil 
@@ -73,9 +79,12 @@ for j=8:D
     NBRA[j]=(ABRA[j]-ABRA[j-7])/7
 end
 BBRA=parse.(Float64,Array(Bcsv[32,5:qw]))/PBRA;
-NDBRA=zeros(DD);
-for j=1:DD
-    NDBRA[j]=(BBRA[j+526]-BBRA[j+519])/7
+NDBRA=zeros(D);
+for j=1:7
+    NDBRA[j]=BBRA[j]/7
+end
+for j=8:D
+    NDBRA[j]=(BBRA[j]-BBRA[j-7])/7
 end
 
 # Colombia 
@@ -89,9 +98,12 @@ for j=8:D
     NCOL[j]=(ACOL[j]-ACOL[j-7])/7
 end
 BCOL=parse.(Float64,Array(Bcsv[94,5:qw]))/PCOL;
-NDCOL=zeros(DD);
-for j=1:DD
-    NDCOL[j]=(BCOL[j+526]-BCOL[j+519])/7
+NDCOL=zeros(D);
+for j=1:7
+    NDCOL[j]=BCOL[j]/7
+end
+for j=8:D
+    NDCOL[j]=(BCOL[j]-BCOL[j-7])/7
 end
 
 # France Italy Spain 
@@ -114,9 +126,12 @@ DFRA=parse.(Float64,Array(Bcsv[132,5:qw]))
 DITA=parse.(Float64,Array(Bcsv[155,5:qw]));
 DESP=parse.(Float64,Array(Bcsv[239,5:qw]));
 BFIE=(DFRA+DITA+DESP)/PFIE;
-NDFIE=zeros(DD);
-for j=1:DD
-    NDFIE[j]=(BFIE[j+526]-BFIE[j+519])/7
+NDFIE=zeros(D);
+for j=1:7
+    NDFIE[j]=BFIE[j]/7
+end
+for j=8:D
+    NDFIE[j]=(BFIE[j]-BFIE[j-7])/7
 end
 
 # India 
@@ -130,9 +145,12 @@ for j=8:D
     NIND[j]=(AIND[j]-AIND[j-7])/7
 end
 BIND=parse.(Float64,Array(Bcsv[149,5:qw]))/PIND;
-NDIND=zeros(DD);
-for j=1:DD
-    NDIND[j]=(BIND[j+526]-BIND[j+519])/7
+NDIND=zeros(D);
+for j=1:7
+    NDIND[j]=BIND[j]/7
+end
+for j=8:D
+    NDIND[j]=(BIND[j]-BIND[j-7])/7
 end
 
 # Indonesia
@@ -146,9 +164,12 @@ for j=8:D
     NIDN[j]=(AIDN[j]-AIDN[j-7])/7
 end
 BIDN=parse.(Float64,Array(Bcsv[150,5:qw]))/PIDN;
-NDIDN=zeros(DD);
-for j=1:DD
-    NDIDN[j]=(BIDN[j+526]-BIDN[j+519])/7
+NDIDN=zeros(D);
+for j=1:7
+    NDIDN[j]=BIDN[j]/7
+end
+for j=8:D
+    NDIDN[j]=(BIDN[j]-BIDN[j-7])/7
 end
 
 # Japan
@@ -162,9 +183,12 @@ for j=8:D
     NJPN[j]=(AJPN[j]-AJPN[j-7])/7
 end
 BJPN=parse.(Float64,Array(Bcsv[157,5:qw]))/PJPN;
-NDJPN=zeros(DD);
-for j=1:DD
-    NDJPN[j]=(BJPN[j+526]-BJPN[j+519])/7
+NDJPN=zeros(D);
+for j=1:7
+    NDJPN[j]=BJPN[j]/7
+end
+for j=8:D
+    NDJPN[j]=(BJPN[j]-BJPN[j-7])/7
 end
 
 # South Korea
@@ -178,9 +202,12 @@ for j=8:D
     NKOR[j]=(AKOR[j]-AKOR[j-7])/7
 end
 BKOR=parse.(Float64,Array(Bcsv[162,5:qw]))/PKOR;
-NDKOR=zeros(DD);
-for j=1:DD
-    NDKOR[j]=(BKOR[j+526]-BKOR[j+519])/7
+NDKOR=zeros(D);
+for j=1:7
+    NDKOR[j]=BKOR[j]/7
+end
+for j=8:D
+    NDKOR[j]=(BKOR[j]-BKOR[j-7])/7
 end
 
 # Malaysia
@@ -194,9 +221,12 @@ for j=8:D
     NMYS[j]=(AMYS[j]-AMYS[j-7])/7
 end
 BMYS=parse.(Float64,Array(Bcsv[178,5:qw]))/PMYS;
-NDMYS=zeros(DD);
-for j=1:DD
-    NDMYS[j]=(BMYS[j+526]-BMYS[j+519])/7
+NDMYS=zeros(D);
+for j=1:7
+    NDMYS[j]=BMYS[j]/7
+end
+for j=8:D
+    NDMYS[j]=(BMYS[j]-BMYS[j-7])/7
 end
 
 # Mexico 
@@ -210,9 +240,12 @@ for j=8:D
     NMEX[j]=(AMEX[j]-AMEX[j-7])/7
 end
 BMEX=parse.(Float64,Array(Bcsv[185,5:qw]))/PMEX;
-NDMEX=zeros(DD);
-for j=1:DD
-    NDMEX[j]=(BMEX[j+526]-BMEX[j+519])/7
+NDMEX=zeros(D);
+for j=1:7
+    NDMEX[j]=BMEX[j]/7
+end
+for j=8:D
+    NDMEX[j]=(BMEX[j]-BMEX[j-7])/7
 end
 
 # Nepal
@@ -226,9 +259,12 @@ for j=8:D
     NNPL[j]=(ANPL[j]-ANPL[j-7])/7
 end
 BNPL=parse.(Float64,Array(Bcsv[194,5:qw]))/PNPL;
-NDNPL=zeros(DD);
-for j=1:DD
-    NDNPL[j]=(BNPL[j+526]-BNPL[j+519])/7
+NDNPL=zeros(D);
+for j=1:7
+    NDNPL[j]=BNPL[j]/7
+end
+for j=8:D
+    NDNPL[j]=(BNPL[j]-BNPL[j-7])/7
 end
 
 # Pakistan 205 190
@@ -242,9 +278,12 @@ for j=8:D
     NPAK[j]=(APAK[j]-APAK[j-7])/7
 end
 BPAK=parse.(Float64,Array(Bcsv[208,5:qw]))/PPAK;
-NDPAK=zeros(DD);
-for j=1:DD
-    NDPAK[j]=(BPAK[j+526]-BPAK[j+519])/7
+NDPAK=zeros(D);
+for j=1:7
+    NDPAK[j]=BPAK[j]/7
+end
+for j=8:D
+    NDPAK[j]=(BPAK[j]-BPAK[j-7])/7
 end
 
 # Philippines
@@ -258,9 +297,12 @@ for j=8:D
     NPHI[j]=(APHI[j]-APHI[j-7])/7
 end
 BPHI=parse.(Float64,Array(Bcsv[214,5:qw]))/PPHI;
-NDPHI=zeros(DD);
-for j=1:DD
-    NDPHI[j]=(BPHI[j+526]-BPHI[j+519])/7
+NDPHI=zeros(D);
+for j=1:7
+    NDPHI[j]=BPHI[j]/7
+end
+for j=8:D
+    NDPHI[j]=(BPHI[j]-BPHI[j-7])/7
 end
 
 # Sri Lanka 
@@ -274,9 +316,12 @@ for j=8:D
     NLKA[j]=(ALKA[j]-ALKA[j-7])/7
 end
 BLKA=parse.(Float64,Array(Bcsv[240,5:qw]))/PLKA;
-NDLKA=zeros(DD);
-for j=1:DD
-    NDLKA[j]=(BLKA[j+526]-BLKA[j+519])/7
+NDLKA=zeros(D);
+for j=1:7
+    NDLKA[j]=BLKA[j]/7
+end
+for j=8:D
+    NDLKA[j]=(BLKA[j]-BLKA[j-7])/7
 end
 
 # Thailand
@@ -290,9 +335,12 @@ for j=8:D
     NTHA[j]=(ATHA[j]-ATHA[j-7])/7
 end
 BTHA=parse.(Float64,Array(Bcsv[250,5:qw]))/PTHA;
-NDTHA=zeros(DD);
-for j=1:DD
-    NDTHA[j]=(BTHA[j+526]-BTHA[j+519])/7
+NDTHA=zeros(D);
+for j=1:7
+    NDTHA[j]=BTHA[j]/7
+end
+for j=8:D
+    NDTHA[j]=(BTHA[j]-BTHA[j-7])/7
 end
 
 # United Staes 
@@ -306,9 +354,12 @@ for j=8:D
     NUSA[j]=(AUSA[j]-AUSA[j-7])/7
 end
 BUSA=parse.(Float64,Array(Bcsv[256,5:qw]))/PUSA;
-NDUSA=zeros(DD);
-for j=1:DD
-    NDUSA[j]=(BUSA[j+526]-BUSA[j+519])/7
+NDUSA=zeros(D);
+for j=1:7
+    NDUSA[j]=BUSA[j]/7
+end
+for j=8:D
+    NDUSA[j]=(BUSA[j]-BUSA[j-7])/7
 end
 
 # United Kingdom 
@@ -322,9 +373,12 @@ for j=8:D
     NGBR[j]=(AGBR[j]-AGBR[j-7])/7
 end
 BGBR=parse.(Float64,Array(Bcsv[271,5:qw]))/PGBR;
-NDGBR=zeros(DD);
-for j=1:DD
-    NDGBR[j]=(BGBR[j+526]-BGBR[j+519])/7
+NDGBR=zeros(D);
+for j=1:7
+    NDGBR[j]=BGBR[j]/7
+end
+for j=8:D
+    NDGBR[j]=(BGBR[j]-BGBR[j-7])/7
 end
 
 p1=plot([AJPN APHI AMYS AIDN AIND ANPL APAK ABGD ALKA ATHA],  
@@ -378,7 +432,7 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDTHA],
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     left_margin=Plots.Measures.Length(:mm, 5.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
@@ -435,7 +489,7 @@ p8=plot([NDUSA NDGBR NDARG NDBRA NDCOL NDMEX NDFIE],
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     left_margin=Plots.Measures.Length(:mm, 5.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 

@@ -44,15 +44,18 @@ PJPN=125.36;
 TJPN=J2/PJPN;
 NJPN=zeros(D)
 for j=1:7
-    NJPN[j]=TJPN[j]/j
+    NJPN[j]=TJPN[j]/j;
 end
 for j=8:D
-    NJPN[j]=(TJPN[j]-TJPN[j-7])/7
+    NJPN[j]=(TJPN[j]-TJPN[j-7])/7;
 end
 DJPN=J3/PJPN;
-NDJPN=zeros(DD);
-for j=1:DD
-    NDJPN[j]=(DJPN[j+532]-DJPN[j+525])/7
+NDJPN=zeros(D);
+for j=1:7
+    NDJPN[j]=(NDJPN[j]-NDJPN[1])/j;
+end
+for j=8:D
+    NDJPN[j]=(DJPN[j]-DJPN[j-7])/7;
 end
 
 # Okinawa (1.46M): code 47
@@ -61,15 +64,18 @@ POKNW=1.458870;
 TOKNW=A2[ROWOKNW]/POKNW;
 NOKNW=zeros(D)
 for j=1:7
-    NOKNW[j]=TOKNW[j]/j
+    NOKNW[j]=TOKNW[j]/j;
 end
 for j=8:D
-    NOKNW[j]=(TOKNW[j]-TOKNW[j-7])/7
+    NOKNW[j]=(TOKNW[j]-TOKNW[j-7])/7;
 end
 DOKNW=A3[ROWOKNW]/POKNW;
-NDOKNW=zeros(DD);
-for j=1:DD
-    NDOKNW[j]=(DOKNW[j+532]-DOKNW[j+525])/7
+NDOKNW=zeros(D);
+for j=1:7
+    NDOKNW[j]=(NDOKNW[j]-NDOKNW[1])/j;
+end
+for j=8:D
+    NDOKNW[j]=(DOKNW[j]-DOKNW[j-7])/7;
 end
 
 # Tokyo (14M): code 13,
@@ -84,9 +90,12 @@ for j=8:D
     NTKY[j]=(TTKY[j]-TTKY[j-7])/7
 end
 DTKY=A3[ROWTKY]/PTKY;
-NDTKY=zeros(DD);
-for j=1:DD
-    NDTKY[j]=(DTKY[j+532]-DTKY[j+525])/7
+NDTKY=zeros(D);
+for j=1:7
+    NDTKY[j]=(NDTKY[j]-NDTKY[1])/j;
+end
+for j=8:D
+    NDTKY[j]=(DTKY[j]-DTKY[j-7])/7;
 end
 
 # Osaka (8.81M): code 27
@@ -95,9 +104,12 @@ ROWOSK=findall(x->x==27,A0);
 NOSK=A1[ROWOSK]/POSK;
 TOSK=A2[ROWOSK]/POSK;
 DOSK=A3[ROWOSK]/POSK;
-NDOSK=zeros(DD);
-for j=1:DD
-    NDOSK[j]=(DOSK[j+532]-DOSK[j+525])/7
+NDOSK=zeros(D);
+for j=1:7
+    NDOSK[j]=(NDOSK[j]-NDOSK[1])/j;
+end
+for j=8:D
+    NDOSK[j]=(DOSK[j]-DOSK[j-7])/7;
 end
 
 # Hyogo (5.43M): code 28, 
@@ -106,9 +118,12 @@ rowhyg=findall(x->x==28,A0);
 NHYG=A1[rowhyg]/PHYG;
 THYG=A2[rowhyg]/PHYG;
 DHYG=A3[rowhyg]/PHYG;
-NDHYG=zeros(DD);
-for j=1:DD
-    NDHYG[j]=(DHYG[j+532]-DHYG[j+525])/7
+NDHYG=zeros(D);
+for j=1:7
+    NDHYG[j]=(NDHYG[j]-NDHYG[1])/j;
+end
+for j=8:D
+    NDHYG[j]=(DHYG[j]-DHYG[j-7])/7;
 end
 
 # Hokkaido (5.27M): code 1, 
@@ -117,9 +132,12 @@ ROWHKD=findall(x->x==1,A0);
 NHKD=A1[ROWHKD]/PHKD;
 THKD=A2[ROWHKD]/PHKD;
 DHKD=A3[ROWHKD]/PHKD;
-NDHKD=zeros(DD);
-for j=1:DD
-    NDHKD[j]=(DHKD[j+532]-DHKD[j+525])/7
+NDHKD=zeros(D);
+for j=1:7
+    NDHKD[j]=(NDHKD[j]-NDHKD[1])/j;
+end
+for j=8:D
+    NDHKD[j]=(DHKD[j]-DHKD[j-7])/7;
 end
 
 p1=plot([TJPN TTKY TOKNW], 
@@ -169,7 +187,7 @@ p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by NHK (Japanese Public TV)", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 

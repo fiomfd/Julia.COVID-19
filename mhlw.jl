@@ -54,9 +54,12 @@ end
 DJPN=D1[ROWJPN]/PJPN;
 RJPN=R1[ROWJPN]/PJPN;
 AJPN=CJPN-RJPN-DJPN;
-NDJPN=zeros(DD);
-for j=1:DD
-    NDJPN[j]=(DJPN[j+327]-DJPN[j+321])/7
+NDJPN=zeros(D);
+for j=1:7
+    NDJPN[j]=(DJPN[j]-DJPN[1])/j;
+end
+for j=8:D
+    NDJPN[j]=(DJPN[j]-DJPN[j-7])/7;
 end
 
 # Tokyo
@@ -75,9 +78,12 @@ end
 DTKY=D1[ROWTKY]/PTKY;
 RTKY=R1[ROWTKY]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
-NDTKY=zeros(DD);
-for j=1:DD
-    NDTKY[j]=(DTKY[j+418]-DTKY[j+411])/7
+NDTKY=zeros(D);
+for j=1:7
+    NDTKY[j]=(DTKY[j]-DTKY[1])/j;
+end
+for j=8:D
+    NDTKY[j]=(DTKY[j]-DTKY[j-7])/7;
 end
 
 # Okinawa
@@ -96,9 +102,12 @@ end
 DOKNW=D1[ROWOKNW]/POKNW;
 ROKNW=R1[ROWOKNW]/POKNW;
 AOKNW=COKNW-ROKNW-DOKNW;
-NDOKNW=zeros(DD);
-for j=1:DD
-    NDOKNW[j]=(DOKNW[j+418]-DOKNW[j+411])/7
+NDOKNW=zeros(D);
+for j=1:7
+    NDOKNW[j]=(DOKNW[j]-DOKNW[1])/j;
+end
+for j=8:D
+    NDOKNW[j]=(DOKNW[j]-DOKNW[j-7])/7;
 end
 
 # Osaka
@@ -109,9 +118,12 @@ COSK=C1[ROWOSK]/POSK;
 DOSK=D1[ROWOSK]/POSK;
 ROSK=R1[ROWOSK]/POSK;
 AOSK=COSK-ROSK-DOSK;
-NDOSK=zeros(DD);
-for j=1:DD
-    NDOSK[j]=(DOSK[j+418]-DOSK[j+411])/7
+NDOSK=zeros(D);
+for j=1:7
+    NDOSK[j]=(DOSK[j]-DOSK[1])/j;
+end
+for j=8:D
+    NDOSK[j]=(DOSK[j]-DOSK[j-7])/7;
 end
 
 # Hyogo
@@ -122,9 +134,12 @@ CHYG=C1[ROWHYG]/PHYG;
 DHYG=D1[ROWHYG]/PHYG;
 RHYG=R1[ROWHYG]/PHYG;
 AHYG=CHYG-RHYG-DHYG;
-NDHYG=zeros(DD);
-for j=1:DD
-    NDHYG[j]=(DHYG[j+418]-DHYG[j+411])/7
+NDHYG=zeros(D);
+for j=1:7
+    NDHYG[j]=(DHYG[j]-DHYG[1])/j;
+end
+for j=8:D
+    NDHYG[j]=(DHYG[j]-DHYG[j-7])/7;
 end
  
 # Hokkaido
@@ -135,9 +150,12 @@ CHKD=C1[ROWHKD]/PHKD;
 DHKD=D1[ROWHKD]/PHKD;
 RHKD=R1[ROWHKD]/PHKD;
 AHKD=CHKD-RHKD-DHKD;
-NDHKD=zeros(DD);
-for j=1:DD
-    NDHKD[j]=(DHKD[j+418]-DHKD[j+411])/7
+NDHKD=zeros(D);
+for j=1:7
+    NDHKD[j]=(DHKD[j]-DHKD[1])/j;
+end
+for j=8:D
+    NDHKD[j]=(DHKD[j]-DHKD[j-7])/7;
 end
 
 q1=plot([CJPN AJPN RJPN], 
@@ -229,7 +247,7 @@ p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by MOH of Japan", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
+    xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
