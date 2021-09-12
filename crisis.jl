@@ -65,6 +65,14 @@ for j=1:DD
     NNSW[j]=(ANSW[526+j]-ANSW[519+j])/7
 end
 
+# Victoria
+PVIC=6.7;
+AVIC=parse.(Float64,Array(Wcsv[16,5:qw]))/PVIC;
+NVIC=zeros(DD);
+for j=1:DD
+    NVIC[j]=(AVIC[526+j]-AVIC[519+j])/7
+end
+
 # Brazil 
 PBRA=214.289417;
 BBRA=parse.(Float64,Array(Xcsv[32,5:qw]))/PBRA;
@@ -102,6 +110,20 @@ for j=1:DD
     NDIDN[j]=(BIDN[j+526]-BIDN[j+519])/7
 end
 
+# Israel
+PISR=8.789774;
+AISR=parse.(Float64,Array(Wcsv[154,5:qw]))/PISR;
+NISR=zeros(DD);
+for j=1:DD
+    NISR[j]=(AISR[526+j]-AISR[519+j])/7
+end
+BISR=parse.(Float64,Array(Xcsv[154,5:qw]))/PISR;
+NDISR=zeros(DD);
+for j=1:DD
+    NDISR[j]=(BISR[j+526]-BISR[j+519])/7
+end
+
+
 # Japan
 PJPN=125.36;
 AJPN=parse.(Float64,Array(Wcsv[157,5:qw]))/PJPN;
@@ -132,6 +154,24 @@ BMEX=parse.(Float64,Array(Xcsv[185,5:qw]))/PMEX;
 NDMEX=zeros(DD);
 for j=1:DD
     NDMEX[j]=(BMEX[j+526]-BMEX[j+519])/7
+end
+
+# Peru
+PPER=33.510887;
+APER=parse.(Float64,Array(Wcsv[213,5:qw]))/PPER;
+NPER=zeros(DD);
+for j=1:DD
+    NPER[j]=(APER[526+j]-APER[519+j])/7
+end
+BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
+NDMYS=zeros(DD);
+for j=1:DD
+    NDMYS[j]=(BMYS[j+526]-BMYS[j+519])/7
+end
+BPER=parse.(Float64,Array(Xcsv[213,5:qw]))/PPER;
+NDPER=zeros(DD);
+for j=1:DD
+    NDPER[j]=(BPER[j+526]-BPER[j+519])/7
 end
 
 # Philippines
@@ -215,7 +255,7 @@ for j=1:DD
     NVNM[j]=(AVNM[526+j]-AVNM[519+j])/7
 end
 
-p=plot([NJPN NTKY NOKNW NMYS NTHA NBWN NLKA NUSA NGBR], 
+p=plot([NUSA NPHI NOKNW NMYS NTHA NBWN NNSW NLKA NISR NGBR], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -224,12 +264,12 @@ p=plot([NJPN NTKY NOKNW NMYS NTHA NBWN NLKA NUSA NGBR],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Malaysia" "Thailand" "Brunei" "Sri Lanka" "United States" "United Kingdom"], 
+    label=["United States" "Philippines" "Okinawa" "Malaysia" "Thailand" "Brunei" "New South Wales" "Sri Lanka" "Israel" "United Kingdom"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NPHI NSIN NKOR NVNM NIDN NNSW], 
+q=plot([NJPN NTKY NSIN NKOR NVNM NVIC NIDN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -238,12 +278,12 @@ q=plot([NJPN NPHI NSIN NKOR NVNM NIDN NNSW],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Philippines" "Singapore" "South Korea" "Vietnam" "Indonesia" "New South Wales"], 
+    label=["Japan" "Tokyo" "Singapore" "South Korea" "Vietnam" "Victoria ""Indonesia"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
 
-r=plot([NDARG NDBRA NDCOL NDIDN NDMYS NDMEX NDPHI NDLKA NDTHA NDUSA],  
+r=plot([NDARG NDBRA NDIDN NDMYS NDMEX NDPER NDLKA NDTHA NDUSA NDISR],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -252,15 +292,15 @@ r=plot([NDARG NDBRA NDCOL NDIDN NDMYS NDMEX NDPHI NDLKA NDTHA NDUSA],
     xticks = ([1 floor(DD/2) DD;], [ll0 ll1 ll2]),
     xlabel="date",
     yaxis="deaths/1M",
-    legendfont=font(10), 
-    label=["Argentina" "Brazil" "Colombia" "Indonesia" "Malaysia" "Mexico" "Philippines" "Sri Lanka" "Thailand" "United States"],
+    legendfont=font(8), 
+    label=["Argentina" "Brazil" "Indonesia" "Malaysia" "Mexico" "Peru" "Sri Lanka" "Thailand" "United States" "Israel"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./crisis/deaths.png") 
 
 plot(p, q, r, 
-     layout=(1,3), 
-     size=(1890,420), 
+     layout=3, 
+     size=(1260,840), 
      left_margin=Plots.Measures.Length(:mm, 5.0),
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
