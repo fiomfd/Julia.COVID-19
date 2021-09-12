@@ -278,7 +278,7 @@ q=plot([NJPN NTKY NSIN NKOR NVNM NVIC NIDN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Singapore" "South Korea" "Vietnam" "Victoria ""Indonesia"], 
+    label=["Japan" "Tokyo" "Singapore" "South Korea" "Vietnam" "Victoria "Indonesia"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
