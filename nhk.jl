@@ -101,8 +101,14 @@ end
 # Osaka (8.81M): code 27
 POSK=8.798545;
 ROWOSK=findall(x->x==27,A0);
-NOSK=A1[ROWOSK]/POSK;
 TOSK=A2[ROWOSK]/POSK;
+NOSK=zeros(D)
+for j=1:7
+    NOSK[j]=TOSK[j]/j
+end
+for j=8:D
+    NOSK[j]=(TOSK[j]-TOSK[j-7])/7
+end
 DOSK=A3[ROWOSK]/POSK;
 NDOSK=zeros(D);
 for j=1:7
@@ -115,8 +121,14 @@ end
 # Hyogo (5.43M): code 28, 
 PHYG=5.446455;
 rowhyg=findall(x->x==28,A0);
-NHYG=A1[rowhyg]/PHYG;
 THYG=A2[rowhyg]/PHYG;
+NHYG=zeros(D)
+for j=1:7
+    NHYG[j]=THYG[j]/j
+end
+for j=8:D
+    NHYG[j]=(THYG[j]-THYG[j-7])/7
+end
 DHYG=A3[rowhyg]/PHYG;
 NDHYG=zeros(D);
 for j=1:7
@@ -129,8 +141,14 @@ end
 # Hokkaido (5.27M): code 1, 
 PHKD=5.207185;
 ROWHKD=findall(x->x==1,A0);
-NHKD=A1[ROWHKD]/PHKD;
 THKD=A2[ROWHKD]/PHKD;
+NHKD=zeros(D)
+for j=1:7
+    NHKD[j]=THKD[j]/j
+end
+for j=8:D
+    NHKD[j]=(THKD[j]-THKD[j-7])/7
+end
 DHKD=A3[ROWHKD]/PHKD;
 NDHKD=zeros(D);
 for j=1:7
@@ -140,11 +158,31 @@ for j=8:D
     NDHKD[j]=(DHKD[j]-DHKD[j-7])/7;
 end
 
-p1=plot([TJPN TTKY TOKNW], 
+# Chiba: code 12 
+PCHB=6.282457;
+ROWCHB=findall(x->x==12,A0);
+TCHB=A2[ROWCHB]/PCHB;
+NCHB=zeros(D)
+for j=1:7
+    NCHB[j]=TCHB[j]/j
+end
+for j=8:D
+    NCHB[j]=(TCHB[j]-TCHB[j-7])/7
+end
+DCHB=A3[ROWCHB]/PCHB;
+NDCHB=zeros(D);
+for j=1:7
+    NDCHB[j]=(NDCHB[j]-NDCHB[1])/j;
+end
+for j=8:D
+    NDCHB[j]=(DCHB[j]-DCHB[j-7])/7;
+end
+
+p1=plot([TJPN TTKY TOKNW TOSK], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
     title="COVID-19: total cases per 1M \n data sourced by NHK (Japanese Public TV)",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
@@ -168,7 +206,7 @@ p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     legend = :topleft)
 savefig("./nhk/nhk_deaths.png") 
 
-p3=plot([NJPN NTKY NOKNW], 
+p3=plot([NJPN NTKY NOKNW NOSK], 
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by NHK (Japanese Public TV)", 
@@ -177,7 +215,7 @@ p3=plot([NJPN NTKY NOKNW],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Osaka" "Okinawa" "Hyogo" "Hokkaido"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./nhk/nhk_new_cases.png") 

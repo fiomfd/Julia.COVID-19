@@ -112,9 +112,17 @@ end
 
 # Osaka
 ROWOSK=findall(x->x=="Osaka",I1);
+ROWOSK2=findall(x->x=="Osaka",I2);
 POSK=8.798545;
-NOSK=N1[ROWOSK]/POSK;
+OOSK=N1[ROWOSK2]/POSK;
 COSK=C1[ROWOSK]/POSK;
+NOSK=zeros(D);
+for j=1:7
+    NOSK[j]=(OOSK[j+104]+OOSK[j+103]+OOSK[j+102]+OOSK[j+101]+OOSK[j+100]+OOSK[j+99]+OOSK[j+98])/7;
+end
+for j=8:D
+    NOSK[j]=(COSK[j]-COSK[j-7])/7;
+end
 DOSK=D1[ROWOSK]/POSK;
 ROSK=R1[ROWOSK]/POSK;
 AOSK=COSK-ROSK-DOSK;
@@ -200,11 +208,11 @@ q3=plot([COKNW AOKNW ROKNW],
     legend = :topleft)
 savefig("./mhlw/mhlw_okinawa.png") 
 
-p1=plot([CJPN CTKY COKNW], 
+p1=plot([CJPN CTKY COKNW COSK], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
     title="COVID-19: total cases per 1M \n data sourced by MOH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
@@ -228,7 +236,7 @@ p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     legend = :topleft)
 savefig("./mhlw/mhlw_deaths.png") 
 
-p3=plot([NJPN NTKY NOKNW], 
+p3=plot([NJPN NTKY NOKNW NOSK], 
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M) \n data sourced by MOH of Japan", 
@@ -237,7 +245,7 @@ p3=plot([NJPN NTKY NOKNW],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_new_cases.png") 
@@ -301,7 +309,7 @@ q4=plot(sol,
     legendfont=font(10), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
-    legend = :topleft)
+    legend = :right)
 savefig("./mhlw/mhlw_sir_japan.png")
 
 # Tokyo
@@ -332,7 +340,7 @@ q5=plot(sol,
     legendfont=font(10), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
-    legend = :topleft)
+    legend = :right)
 savefig("./mhlw/mhlw_sir_tokyo.png")
 
 # Okinawa
@@ -363,7 +371,7 @@ q6=plot(sol,
     legendfont=font(10), 
     label=["total cases" "active cases" "discharged"], 
     palette = :seaborn_bright, 
-    legend = :topleft)
+    legend = :right)
 savefig("./mhlw/mhlw_sir_okinawa.png")
 
 plot(q1, q2, q3, q4, q5, q6,  
@@ -373,4 +381,4 @@ plot(q1, q2, q3, q4, q5, q6,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("./mhlw/mhlw_sir.png") 
+savefig("./mhlw/sir.png") 
