@@ -276,7 +276,7 @@ end
 
 # Vietnam
 PVNM=98.341025;
-AVNM=parse.(Float64,Array(Wcsv[276,5:qw]))/PVNM;
+AVNM=parse.(Float64,Array(Wcsv[277,5:qw]))/PVNM;
 NVNM=zeros(DD);
 for j=1:DD
     NVNM[j]=(AVNM[557+j]-AVNM[550+j])/7
