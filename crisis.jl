@@ -255,12 +255,12 @@ end
 
 # United Staes 
 PUSA=333.225477;
-AUSA=parse.(Float64,Array(Wcsv[256,5:qw]))/PUSA;
+AUSA=parse.(Float64,Array(Wcsv[257,5:qw]))/PUSA;
 NUSA=zeros(DD);
 for j=1:DD
     NUSA[j]=(AUSA[557+j]-AUSA[550+j])/7
 end
-BUSA=parse.(Float64,Array(Xcsv[256,5:qw]))/PUSA;
+BUSA=parse.(Float64,Array(Xcsv[257,5:qw]))/PUSA;
 NDUSA=zeros(DD);
 for j=1:DD
     NDUSA[j]=(BUSA[j+557]-BUSA[j+550])/7
@@ -268,7 +268,7 @@ end
 
 # United Kingdom 
 PGBR=68.294438;
-AGBR=parse.(Float64,Array(Wcsv[271,5:qw]))/PGBR;
+AGBR=parse.(Float64,Array(Wcsv[272,5:qw]))/PGBR;
 NGBR=zeros(DD);
 for j=1:DD
     NGBR[j]=(max(AGBR[557+j]-AGBR[550+j],0))/7

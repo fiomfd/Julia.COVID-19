@@ -345,7 +345,7 @@ end
 
 # United Staes 
 PUSA=333.225477;
-AUSA=parse.(Float64,Array(Acsv[256,5:qw]))/PUSA;
+AUSA=parse.(Float64,Array(Acsv[257,5:qw]))/PUSA;
 NUSA=zeros(D);
 for j=1:7
     NUSA[j]=AUSA[j]/7
@@ -353,7 +353,7 @@ end
 for j=8:D
     NUSA[j]=(AUSA[j]-AUSA[j-7])/7
 end
-BUSA=parse.(Float64,Array(Bcsv[256,5:qw]))/PUSA;
+BUSA=parse.(Float64,Array(Bcsv[257,5:qw]))/PUSA;
 NDUSA=zeros(D);
 for j=1:7
     NDUSA[j]=BUSA[j]/7
@@ -364,7 +364,7 @@ end
 
 # United Kingdom 
 PGBR=68.294438;
-AGBR=parse.(Float64,Array(Acsv[271,5:qw]))/PGBR;
+AGBR=parse.(Float64,Array(Acsv[272,5:qw]))/PGBR;
 NGBR=zeros(D);
 for j=1:7
     NGBR[j]=AGBR[j]/7
@@ -372,7 +372,7 @@ end
 for j=8:D
     NGBR[j]=(AGBR[j]-AGBR[j-7])/7
 end
-BGBR=parse.(Float64,Array(Bcsv[271,5:qw]))/PGBR;
+BGBR=parse.(Float64,Array(Bcsv[272,5:qw]))/PGBR;
 NDGBR=zeros(D);
 for j=1:7
     NDGBR[j]=BGBR[j]/7
