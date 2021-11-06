@@ -190,11 +190,6 @@ NPHI=zeros(DD);
 for j=1:DD
     NPHI[j]=(APHI[557+j]-APHI[550+j])/7
 end
-BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
-NDMYS=zeros(DD);
-for j=1:DD
-    NDMYS[j]=(BMYS[j+557]-BMYS[j+550])/7
-end
 BPHI=parse.(Float64,Array(Xcsv[214,5:qw]))/PPHI;
 NDPHI=zeros(DD);
 for j=1:DD
@@ -208,11 +203,6 @@ NRUS=zeros(DD);
 for j=1:DD
     NRUS[j]=(ARUS[557+j]-ARUS[550+j])/7
 end
-BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
-NDMYS=zeros(DD);
-for j=1:DD
-    NDMYS[j]=(BMYS[j+557]-BMYS[j+550])/7
-end
 BRUS=parse.(Float64,Array(Xcsv[219,5:qw]))/PRUS;
 NDRUS=zeros(DD);
 for j=1:DD
@@ -225,6 +215,11 @@ ASIN=parse.(Float64,Array(Wcsv[232,5:qw]))/PSIN;
 NSIN=zeros(DD);
 for j=1:DD
     NSIN[j]=(ASIN[557+j]-ASIN[550+j])/7
+end
+BSIN=parse.(Float64,Array(Xcsv[232,5:qw]))/PSIN;
+NDSIN=zeros(DD);
+for j=1:DD
+    NDSIN[j]=(BSIN[j+557]-BSIN[j+550])/7
 end
 
 # Sri Lanka
@@ -310,7 +305,7 @@ q=plot([NJPN NTKY NOKNW NKOR NVNM NNSW],
     legend = :topright)
 savefig("./crisis/delta.png") 
 
-r=plot([NDARG NDBRA NDOKNW NDMYS NDMEX NDLKA NDRUS NDTHA NDISR NDUSA],  
+r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDISR NDUSA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -320,187 +315,13 @@ r=plot([NDARG NDBRA NDOKNW NDMYS NDMEX NDLKA NDRUS NDTHA NDISR NDUSA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Argentina" "Brazil" "Okinawa" "Malaysia" "Mexico" "Sri Lanka" "Russia" "Thailand" "Israel" "United States"],
+    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "Sri Lanka" "Russia" "Thailand" "Israel" "United States"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
 
-# Download data from the MHLW web site. 
-download("https://raw.githubusercontent.com/govex/COVID-19/master/data_tables/vaccine_data/global_data/time_series_covid19_vaccine_global.csv","./csv/jhu_vaccinated.csv");
-
-Vcsv=DataFrame(CSV.File("./csv/jhu_vaccinated.csv", header=false, delim=','));
-(m,n)=size(Vcsv);
-ROW=Vcsv[2:m,1];
-UID=Vcsv[2:m,7];
-VAC=Vcsv[2:m,5];
-
-# Plot the data
-# d0: the initial date
-# df: the final day
-
-# Brunei Darussalam
-PBWN=4422.05;
-ROWBWN=findall(x->x=="Brunei",ROW);
-VACBWN=VAC[ROWBWN];
-(DBWN,)=size(VACBWN);
-DATEBWN=Date(2021,4,2);
-d0=Date(2021,8,1);
-d3=DATEBWN+Day(DBWN+16);
-diff=d3-d0;
-D=1+Dates.value(diff);
-d1=d0+Day(floor((D-1)/3));
-d2=d0+Day(floor(2*(D-1)/3));
-l0=string(d0);
-l1=string(d1);
-l2=string(d2);
-l3=string(d3);
-FVACBWN=zeros(DBWN);
-for j=1:DBWN
-    FVACBWN[j]=parse(Float64,VACBWN[j]);
-end
-VBWN=FVACBWN[DBWN-D+1:DBWN]/PBWN;
-
-# China
-PCHN=14460554.93;
-ROWCHN=findall(x->x=="China",ROW);
-PVACCHN=VAC[ROWCHN];
-PUIDCHN=UID[ROWCHN];
-UIDCHN=findall(x->x=="156",PUIDCHN);
-VACCHN=PVACCHN[UIDCHN];
-(DCHN,)=size(VACCHN);
-FVACCHN=zeros(DCHN);
-for j=1:DCHN
-    FVACCHN[j]=parse(Float64,VACCHN[j]);
-end
-VCHN=FVACCHN[DCHN-D+1:DCHN]/PCHN;
-
-# Japan
-PJPN=1253600
-ROWJPN=findall(x->x=="Japan",ROW);
-VACJPN=VAC[ROWJPN];
-(DJPN,)=size(VACJPN);
-FVACJPN=zeros(DJPN);
-for j=1:DJPN
-    FVACJPN[j]=parse(Float64,VACJPN[j]);
-end
-VJPN=FVACJPN[DJPN-D+1:DJPN]/PJPN;
-
-# NSW
-#PNSW=8.196;
-
-# Indonesia
-PIDN=2768332.06;
-ROWIDN=findall(x->x=="Indonesia",ROW);
-PVACIDN=VAC[ROWIDN];
-PUIDIDN=UID[ROWIDN];
-UIDIDN=findall(x->x=="360",PUIDIDN);
-VACIDN=PVACIDN[UIDIDN];
-(DIDN,)=size(VACIDN);
-FVACIDN=zeros(DIDN);
-for j=1:DIDN
-    FVACIDN[j]=parse(Float64,VACIDN[j]);
-end
-VIDN=FVACIDN[DIDN-D+1:DIDN]/PIDN;
-
-# South Korea
-#PKOR=51.318552;
-
-# Malaysia
-PMYS=326600;
-ROWMYS=findall(x->x=="Malaysia",ROW);
-PVACMYS=VAC[ROWMYS];
-PUIDMYS=UID[ROWMYS];
-UIDMYS=findall(x->x=="458",PUIDMYS);
-VACMYS=PVACMYS[UIDMYS];
-(DMYS,)=size(VACMYS);
-FVACMYS=zeros(DMYS);
-for j=1:DMYS
-    FVACMYS[j]=parse(Float64,VACMYS[j]);
-end
-VMYS=FVACMYS[DMYS-D+1:DMYS]/PMYS;
-
-# Philippines
-PPHI=1112491.16;
-ROWPHI=findall(x->x=="Philippines",ROW);
-VACPHI=VAC[ROWPHI];
-(DPHI,)=size(VACPHI);
-FVACPHI=zeros(DPHI);
-for j=1:DPHI
-    FVACPHI[j]=parse(Float64,VACPHI[j]);
-end
-VPHI=FVACPHI[DPHI-D+1:DPHI]/PPHI;
-
-# Singapore
-PSIN=59020.11;
-ROWSIN=findall(x->x=="Singapore",ROW);
-VACSIN=VAC[ROWSIN];
-(DSIN,)=size(VACSIN);
-FVACSIN=zeros(DSIN);
-for j=1:DSIN
-    FVACSIN[j]=parse(Float64,VACSIN[j]);
-end
-VSIN=FVACSIN[DSIN-D+1:DSIN]/PSIN;
-
-# Thailand
-PTHA=700006.62;
-ROWTHA=findall(x->x=="Thailand",ROW);
-VACTHA=VAC[ROWTHA];
-(DTHA,)=size(VACTHA);
-FVACTHA=zeros(DTHA);
-for j=1:DTHA
-    FVACTHA[j]=parse(Float64,VACTHA[j]);
-end
-VTHA=FVACTHA[DTHA-D+1:DTHA]/PTHA;
-
-# United Staes 
-PUSA=3332254.77;
-ROWUSA=findall(x->x=="US",ROW);
-VACUSA=VAC[ROWUSA];
-(DUSA,)=size(VACUSA);
-FVACUSA=zeros(DUSA);
-for j=1:DUSA
-    FVACUSA[j]=parse(Float64,VACUSA[j]);
-end
-VUSA=FVACUSA[DUSA-D+1:DUSA]/PUSA;
-
-# Vietnam
-PVNM=983405.93;
-ROWVNM=findall(x->x=="Vietnam",ROW);
-VACVNM=VAC[ROWVNM];
-(DVNM,)=size(VACVNM);
-FVACVNM=zeros(DVNM);
-for j=1:DVNM
-    FVACVNM[j]=parse(Float64,VACVNM[j]);
-end
-VVNM=FVACVNM[DVNM-D+1:DVNM]/PVNM;
-
-# Sri Lanka
-#PLKA=21.516097;
-# United Kingdom 
-#PGBR=68.294438;
-# Okinawa
-#POKNW=1.458870;
-# Tokyo
-#PTKY=14.049146;
-# NSW
-#PNSW=8.196;
-
-s=plot([VBWN VMYS VPHI VSIN VTHA VVNM VCHN VIDN VJPN VUSA], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 fully vaccinated \n data sourced by JHU Centers for Civic Impact", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(D/3) floor(2*D/3) D;], [l0 l1 l2 l3]),
-    xlabel="date",
-    yaxis="%",
-    legendfont=font(8), 
-    label=["Brunei Darussalam" "Malaysia" "Philippines" "Singapore" "Thailand" "Vietnam" "China" "Indonesia" "Japan" "United States"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-savefig("./crisis/vaccination_asia.png") 
-
-plot(p, q, s, r,
-     layout=4, 
+plot(p, q, r,
+     layout=3, 
      size=(1260,840), 
      left_margin=Plots.Measures.Length(:mm, 5.0),
      right_margin=Plots.Measures.Length(:mm, 15.0),
