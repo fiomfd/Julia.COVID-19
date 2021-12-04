@@ -32,19 +32,17 @@ ll1=string(dd1);
 ll2=string(dd2);
 ll3=string(dd3);
 
-L=Ccsv[2:pa,2];
-J=parse.(Float64,Ccsv[2:pa,3]);
-K=parse.(Float64,Dcsv[2:pa,3]);
+J=parse.(Float64,Ccsv[2:pa,2:qa]);
+K=parse.(Float64,Dcsv[2:pa,2:qa]);
 
 # Okinawa
 POKNW=1.458870;
-ROWOKNW=findall(x->x=="Okinawa",L);
-COKNW=J[ROWOKNW]/POKNW
+COKNW=J[:,48]/POKNW
 NOKNW=zeros(DD);
 for j=1:DD
     NOKNW[j]=(COKNW[j+449]-COKNW[j+442])/7
 end
-DOKNW=K[ROWOKNW]/POKNW
+DOKNW=K[:,48]/POKNW
 NDOKNW=zeros(DD);
 for j=1:DD
     NDOKNW[j]=(DOKNW[j+449]-DOKNW[j+442])/7
@@ -52,8 +50,7 @@ end
 
 # Tokyo
 PTKY=14.049146;
-ROWTKY=findall(x->x=="Tokyo",L);
-CTKY=J[ROWTKY]/PTKY
+CTKY=J[:,14]/PTKY
 NTKY=zeros(DD);
 for j=1:DD
     NTKY[j]=(CTKY[j+449]-CTKY[j+442])/7
@@ -277,7 +274,7 @@ for j=1:DD
     NVNM[j]=(AVNM[557+j]-AVNM[550+j])/7
 end
 
-p=plot([NBWN NMYS NPHI NSIN NTHA NVIC NRUS NGBR NISR NUSA], 
+p=plot([NBWN NMYS NVNM NSIN NTHA NVIC NRUS NKOR NGBR NUSA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -286,12 +283,12 @@ p=plot([NBWN NMYS NPHI NSIN NTHA NVIC NRUS NGBR NISR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Brunei Darussalam" "Malaysia" "Philippines" "Singapore" "Thailand" "Victoria" "Russia" "United Kingdom" "Israel" "United States"], 
+    label=["Brunei Darussalam" "Malaysia" "Vietnam" "Singapore" "Thailand" "Victoria" "Russia" "South Korea" "United Kingdom" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NOKNW NKOR NVNM NNSW], 
+q=plot([NJPN NTKY NOKNW NPHI NNSW], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -300,7 +297,7 @@ q=plot([NJPN NTKY NOKNW NKOR NVNM NNSW],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "South Korea" "Vietnam" "New South Wales"], 
+    label=["Japan" "Tokyo" "Okinawa" "Philippines" "New South Wales"], 
     palette = :seaborn_bright, 
     legend = :topright)
 savefig("./crisis/delta.png") 

@@ -16,15 +16,15 @@ Dcsv=DataFrame(CSV.File("./csv/mhlw_deaths.csv", header=false, delim=','));
 Rcsv=DataFrame(CSV.File("./csv/mhlw_recovered.csv", header=false, delim=','));
 (pa,qa)=size(Ccsv);
 (pb,qb)=size(Ncsv);
-I1=Ccsv[2:pa,2];
-I2=Ncsv[2:pb,2];
-N1=parse.(Float64,Ncsv[2:pb,3]);
-C1=parse.(Float64,Ccsv[2:pa,3]);
-D1=parse.(Float64,Dcsv[2:pa,3]);
-R1=parse.(Float64,Rcsv[2:pa,4]);
+(pc,qc)=size(Rcsv);
+
+N1=parse.(Float64,Ncsv[2:pb,2:qb]);
+C1=parse.(Float64,Ccsv[2:pa,2:qa]);
+D1=parse.(Float64,Dcsv[2:pa,2:qa]);
+R1=parse.(Float64,Rcsv[2:pc,2:qc]);
 
 d0=Date(2020,5,9)
-D=Int64(floor((pa-1)/48));
+D=Int64(pa-1);
 df=d0+Day(D-1);
 l0=string(d0);
 l1=string(d0+Day(Int(floor((D-1)/4))));
@@ -39,11 +39,9 @@ ll1=string(dd0+Day(Int(floor((DD-1)/2))));
 ll2=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
-ROWJPN=findall(x->x=="ALL",I1);
-ROWJPN2=findall(x->x=="ALL",I2);
 PJPN=125.36;
-OJPN=N1[ROWJPN2]/PJPN;
-CJPN=C1[ROWJPN]/PJPN;
+OJPN=N1[:,1]/PJPN;
+CJPN=C1[:,1]/PJPN;
 NJPN=zeros(D);
 for j=1:7
     NJPN[j]=(OJPN[j+104]+OJPN[j+103]+OJPN[j+102]+OJPN[j+101]+OJPN[j+100]+OJPN[j+99]+OJPN[j+98])/7;
@@ -51,8 +49,8 @@ end
 for j=8:D
     NJPN[j]=(CJPN[j]-CJPN[j-7])/7;
 end
-DJPN=D1[ROWJPN]/PJPN;
-RJPN=R1[ROWJPN]/PJPN;
+DJPN=D1[:,1]/PJPN;
+RJPN=R1[:,2]/PJPN;
 AJPN=CJPN-RJPN-DJPN;
 NDJPN=zeros(D);
 for j=1:7
@@ -63,11 +61,9 @@ for j=8:D
 end
 
 # Tokyo
-ROWTKY=findall(x->x=="Tokyo",I1);
-ROWTKY2=findall(x->x=="Tokyo",I2);
 PTKY=14.049146;
-OTKY=N1[ROWTKY2]/PTKY;
-CTKY=C1[ROWTKY]/PTKY;
+OTKY=N1[:,14]/PTKY;
+CTKY=C1[:,14]/PTKY;
 NTKY=zeros(D);
 for j=1:7
     NTKY[j]=(OTKY[j+104]+OTKY[j+103]+OTKY[j+102]+OTKY[j+101]+OTKY[j+100]+OTKY[j+99]+OTKY[j+98])/7;
@@ -75,8 +71,8 @@ end
 for j=8:D
     NTKY[j]=(CTKY[j]-CTKY[j-7])/7;
 end
-DTKY=D1[ROWTKY]/PTKY;
-RTKY=R1[ROWTKY]/PTKY;
+DTKY=D1[:,14]/PTKY;
+RTKY=R1[:,41]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
 NDTKY=zeros(D);
 for j=1:7
@@ -87,11 +83,9 @@ for j=8:D
 end
 
 # Okinawa
-ROWOKNW=findall(x->x=="Okinawa",I1);
-ROWOKNW2=findall(x->x=="Okinawa",I2);
 POKNW=1.458870;
-OOKNW=N1[ROWOKNW2]/POKNW;
-COKNW=C1[ROWOKNW]/POKNW;
+OOKNW=N1[:,48]/POKNW;
+COKNW=C1[:,48]/POKNW;
 NOKNW=zeros(D);
 for j=1:7
     NOKNW[j]=(OOKNW[j+104]+OOKNW[j+103]+OOKNW[j+102]+OOKNW[j+101]+OOKNW[j+100]+OOKNW[j+99]+OOKNW[j+98])/7;
@@ -99,8 +93,8 @@ end
 for j=8:D
     NOKNW[j]=(COKNW[j]-COKNW[j-7])/7;
 end
-DOKNW=D1[ROWOKNW]/POKNW;
-ROKNW=R1[ROWOKNW]/POKNW;
+DOKNW=D1[:,48]/POKNW;
+ROKNW=R1[:,143]/POKNW;
 AOKNW=COKNW-ROKNW-DOKNW;
 NDOKNW=zeros(D);
 for j=1:7
@@ -111,11 +105,9 @@ for j=8:D
 end
 
 # Osaka
-ROWOSK=findall(x->x=="Osaka",I1);
-ROWOSK2=findall(x->x=="Osaka",I2);
 POSK=8.798545;
-OOSK=N1[ROWOSK2]/POSK;
-COSK=C1[ROWOSK]/POSK;
+OOSK=N1[:,28]/POSK;
+COSK=C1[:,28]/POSK;
 NOSK=zeros(D);
 for j=1:7
     NOSK[j]=(OOSK[j+104]+OOSK[j+103]+OOSK[j+102]+OOSK[j+101]+OOSK[j+100]+OOSK[j+99]+OOSK[j+98])/7;
@@ -123,8 +115,8 @@ end
 for j=8:D
     NOSK[j]=(COSK[j]-COSK[j-7])/7;
 end
-DOSK=D1[ROWOSK]/POSK;
-ROSK=R1[ROWOSK]/POSK;
+DOSK=D1[:,28]/POSK;
+ROSK=R1[:,83]/POSK;
 AOSK=COSK-ROSK-DOSK;
 NDOSK=zeros(D);
 for j=1:7
@@ -135,12 +127,11 @@ for j=8:D
 end
 
 # Hyogo
-ROWHYG=findall(x->x=="Hyogo",I1);
 PHYG=5.446455;
-NHYG=N1[ROWHYG]/PHYG;
-CHYG=C1[ROWHYG]/PHYG;
-DHYG=D1[ROWHYG]/PHYG;
-RHYG=R1[ROWHYG]/PHYG;
+NHYG=N1[:,29]/PHYG;
+CHYG=C1[:,29]/PHYG;
+DHYG=D1[:,29]/PHYG;
+RHYG=R1[:,86]/PHYG;
 AHYG=CHYG-RHYG-DHYG;
 NDHYG=zeros(D);
 for j=1:7
@@ -151,12 +142,11 @@ for j=8:D
 end
  
 # Hokkaido
-ROWHKD=findall(x->x=="Hokkaido",I1);
 PHKD=5.207185;
-NHKD=N1[ROWHKD]/PHKD;
-CHKD=C1[ROWHKD]/PHKD;
-DHKD=D1[ROWHKD]/PHKD;
-RHKD=R1[ROWHKD]/PHKD;
+NHKD=N1[:,2]/PHKD;
+CHKD=C1[:,2]/PHKD;
+DHKD=D1[:,2]/PHKD;
+RHKD=R1[:,5]/PHKD;
 AHKD=CHKD-RHKD-DHKD;
 NDHKD=zeros(D);
 for j=1:7
