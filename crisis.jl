@@ -265,6 +265,11 @@ NGBR=zeros(DD);
 for j=1:DD
     NGBR[j]=(max(AGBR[557+j]-AGBR[550+j],0))/7
 end
+BGBR=parse.(Float64,Array(Xcsv[272,5:qw]))/PGBR;
+NDGBR=zeros(DD);
+for j=1:DD
+    NDGBR[j]=(BGBR[j+557]-BGBR[j+550])/7
+end
 
 # Vietnam
 PVNM=98.341025;
@@ -302,7 +307,7 @@ q=plot([NJPN NTKY NOKNW NPHI NNSW],
     legend = :topright)
 savefig("./crisis/delta.png") 
 
-r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDISR NDUSA],  
+r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDGBR NDUSA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -312,7 +317,7 @@ r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDISR NDUSA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "Sri Lanka" "Russia" "Thailand" "Israel" "United States"],
+    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "Sri Lanka" "Russia" "Thailand" "United Kingdam" "United States"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
