@@ -288,7 +288,7 @@ p=plot([NKOR NMYS NVNM NSIN NNSW NVIC NRUS NIDN NGBR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["South Korea" "Malaysia" "Vietnam" "Singapore" "New South Wales" "Victoria" "Indonesia" "United Kingdom" "United States"], 
+    label=["South Korea" "Malaysia" "Vietnam" "Singapore" "New South Wales" "Victoria" "Russia" "Indonesia" "United Kingdom" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
