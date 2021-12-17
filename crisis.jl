@@ -279,7 +279,7 @@ for j=1:DD
     NVNM[j]=(AVNM[557+j]-AVNM[550+j])/7
 end
 
-p=plot([NBWN NMYS NVNM NSIN NTHA NVIC NRUS NKOR NGBR NUSA], 
+p=plot([NKOR NMYS NVNM NSIN NNSW NVIC NRUS NIDN NGBR NUSA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -288,12 +288,12 @@ p=plot([NBWN NMYS NVNM NSIN NTHA NVIC NRUS NKOR NGBR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Brunei Darussalam" "Malaysia" "Vietnam" "Singapore" "Thailand" "Victoria" "Russia" "South Korea" "United Kingdom" "United States"], 
+    label=["South Korea" "Malaysia" "Vietnam" "Singapore" "New South Wales" "Victoria" "Russia" "South Korea" "United Kingdom" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NOKNW NPHI NNSW], 
+q=plot([NJPN NTKY NOKNW NPHI NBWN NTHA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -302,7 +302,7 @@ q=plot([NJPN NTKY NOKNW NPHI NNSW],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Philippines" "New South Wales"], 
+    label=["Japan" "Tokyo" "Okinawa" "Philippines" "Brunei Darussalam" "Thailand" ], 
     palette = :seaborn_bright, 
     legend = :topright)
 savefig("./crisis/delta.png") 
