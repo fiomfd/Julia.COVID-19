@@ -1,6 +1,5 @@
 # crisis.jl
 #######################
-
 # Load packages. 
 using Plots, CSV, Dates, DataFrames
 
@@ -58,6 +57,11 @@ end
 
 # Argentina
 PARG=45.670451;
+AARG=parse.(Float64,Array(Wcsv[8,5:qw]))/PARG;
+NARG=zeros(DD);
+for j=1:DD
+    NARG[j]=(AARG[679+j]-AARG[672+j])/7
+end
 BARG=parse.(Float64,Array(Xcsv[8,5:qw]))/PARG;
 NDARG=zeros(DD);
 for j=1:DD
@@ -80,6 +84,22 @@ for j=1:DD
     NVIC[j]=(AVIC[679+j]-AVIC[672+j])/7
 end
 
+# Australia
+PAUS=25.739256;
+AACT=parse.(Float64,Array(Wcsv[10,5:qw]));
+ANSW=parse.(Float64,Array(Wcsv[11,5:qw]));
+ANT=parse.(Float64,Array(Wcsv[12,5:qw]));
+AQLD=parse.(Float64,Array(Wcsv[13,5:qw]));
+ASA=parse.(Float64,Array(Wcsv[14,5:qw]));
+ATAS=parse.(Float64,Array(Wcsv[15,5:qw]));
+AVIC=parse.(Float64,Array(Wcsv[16,5:qw]));
+AWA=parse.(Float64,Array(Wcsv[17,5:qw]));
+AAUS=(AACT+ANSW+ANT+AQLD+ASA+ATAS+AVIC+AWA)/PAUS;
+NAUS=zeros(DD);
+for j=1:DD
+    NAUS[j]=(AAUS[679+j]-AAUS[672+j])/7
+end
+
 # Brazil 
 PBRA=214.289417;
 BBRA=parse.(Float64,Array(Xcsv[32,5:qw]))/PBRA;
@@ -94,6 +114,14 @@ ABWN=parse.(Float64,Array(Wcsv[33,5:qw]))/PBWN;
 NBWN=zeros(DD);
 for j=1:DD
     NBWN[j]=(ABWN[679+j]-ABWN[672+j])/7
+end
+
+# Shaanxi
+PShaanxi=8.275000;
+AShaanxi=parse.(Float64,Array(Wcsv[83,5:qw]))/PShaanxi;
+NShaanxi=zeros(DD);
+for j=1:DD
+    NShaanxi[j]=(AShaanxi[679+j]-AShaanxi[672+j])/7
 end
 
 # Colombia 
@@ -279,7 +307,30 @@ for j=1:DD
     NVNM[j]=(AVNM[679+j]-AVNM[672+j])/7
 end
 
-p=plot([NKOR NMYS NOKNW NSIN NNSW NVIC NRUS NVNM NGBR NUSA], 
+# France Italy Spain 
+PFRA=65.439014;
+PITA=60.359899;
+PESP=46.775535;
+PFIE=PFRA+PITA+PESP;
+AFRA=parse.(Float64,Array(Wcsv[132,5:qw]));
+AITA=parse.(Float64,Array(Wcsv[155,5:qw]));
+AESP=parse.(Float64,Array(Wcsv[239,5:qw]));
+AFIE=(AFRA+AITA+AESP)/PFIE;
+NFIE=zeros(DD);
+for j=1:DD
+    NFIE[j]=(AFIE[679+j]-AFIE[672+j])/7
+end
+BFRA=parse.(Float64,Array(Xcsv[132,5:qw]))
+BITA=parse.(Float64,Array(Xcsv[155,5:qw]));
+BESP=parse.(Float64,Array(Xcsv[239,5:qw]));
+BFIE=(BFRA+BITA+BESP)/PFIE;
+NDFIE=zeros(DD);
+NDGBR=zeros(DD);
+for j=1:DD
+    NDFIE[j]=max((BFIE[j+679]-BGBR[j+672]),0)/7
+end
+
+p=plot([NAUS NARG NOKNW NNSW NVIC NFIE NRUS NVNM NGBR NUSA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -288,12 +339,12 @@ p=plot([NKOR NMYS NOKNW NSIN NNSW NVIC NRUS NVNM NGBR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["South Korea" "Malaysia" "Okinawa" "Singapore" "New South Wales" "Victoria" "Russia" "Vietnam" "United Kingdom" "United States"], 
+    label=["Australia" "Argentina" "Okinawa" "New South Wales" "Victoria" "FRA+ITA+ESP" "Russia" "Vietnam" "United Kingdom" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NPHI NBWN NTHA NIDN], 
+q=plot([NJPN NTKY NOKNW NPHI NBWN NTHA NMYS NShaanxi NKOR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -302,12 +353,12 @@ q=plot([NJPN NTKY NPHI NBWN NTHA NIDN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Philippines" "Brunei Darussalam" "Thailand" "Indonesia"], 
+    label=["Japan" "Tokyo" "Okinawa" "Philippines" "Brunei Darussalam" "Thailand" "Malaysia" "Shaanxi" "South Korea" "Singapore" ], 
     palette = :seaborn_bright, 
-    legend = :topright)
+    legend = :top)
 savefig("./crisis/delta.png") 
 
-r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDGBR NDUSA],  
+r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDFIE NDRUS NDTHA NDGBR NDUSA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -317,7 +368,7 @@ r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDLKA NDRUS NDTHA NDGBR NDUSA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "Sri Lanka" "Russia" "Thailand" "United Kingdam" "United States"],
+    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "FRA+ITA+ESP" "Russia" "Thailand" "United Kingdam" "United States"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 

@@ -229,7 +229,7 @@ savefig("./mhlw/mhlw_deaths.png")
 p3=plot([NJPN NTKY NOKNW NOSK], 
     grid=false,
     linewidth=2, 
-    title="COVID-19: 7-day average of new cases per 1M) \n data sourced by MOH of Japan", 
+    title="COVID-19: 7-day average of new cases per 1M \n data sourced by MOH of Japan", 
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     xlabel="date",

@@ -49,6 +49,41 @@ for j=8:D
     NDARG[j]=(BARG[j]-BARG[j-7])/7
 end
 
+# Australia
+PAUS=25.739256;
+AACT=parse.(Float64,Array(Acsv[10,5:qw]));
+ANSW=parse.(Float64,Array(Acsv[11,5:qw]));
+ANT=parse.(Float64,Array(Acsv[12,5:qw]));
+AQLD=parse.(Float64,Array(Acsv[13,5:qw]));
+ASA=parse.(Float64,Array(Acsv[14,5:qw]));
+ATAS=parse.(Float64,Array(Acsv[15,5:qw]));
+AVIC=parse.(Float64,Array(Acsv[16,5:qw]));
+AWA=parse.(Float64,Array(Acsv[17,5:qw]));
+AAUS=(AACT+ANSW+ANT+AQLD+ASA+ATAS+AVIC+AWA)/PAUS;
+NAUS=zeros(D);
+for j=1:7
+    NAUS[j]=AAUS[j]/7
+end
+for j=8:D
+    NAUS[j]=(AAUS[j]-AAUS[j-7])/7
+end
+BACT=parse.(Float64,Array(Bcsv[10,5:qw]));
+BNSW=parse.(Float64,Array(Bcsv[11,5:qw]));
+BNT=parse.(Float64,Array(Bcsv[12,5:qw]));
+BQLD=parse.(Float64,Array(Bcsv[13,5:qw]));
+BSA=parse.(Float64,Array(Bcsv[14,5:qw]));
+BTAS=parse.(Float64,Array(Bcsv[15,5:qw]));
+BVIC=parse.(Float64,Array(Bcsv[16,5:qw]));
+BWA=parse.(Float64,Array(Bcsv[17,5:qw]));
+BAUS=(BACT+BNSW+BNT+BQLD+BSA+BTAS+BVIC+BWA)/PAUS;
+NDAUS=zeros(D);
+for j=1:7
+    NDAUS[j]=BAUS[j]/7
+end
+for j=8:D
+    NDAUS[j]=(BAUS[j]-BAUS[j-7])/7
+end
+
 # Bangladesh
 PBGD=166.567052;
 ABGD=parse.(Float64,Array(Acsv[22,5:qw]))/PBGD;
@@ -381,7 +416,7 @@ for j=8:D
     NDGBR[j]=(BGBR[j]-BGBR[j-7])/7
 end
 
-p1=plot([AJPN APHI AMYS AIDN AIND ANPL APAK ABGD ALKA ATHA],  
+p1=plot([AJPN APHI AMYS AIDN AIND ANPL ABGD ALKA APAK ATHA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -391,12 +426,12 @@ p1=plot([AJPN APHI AMYS AIDN AIND ANPL APAK ABGD ALKA ATHA],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("./jhu/jhu_asia_cases.png") 
+savefig("./jhu/asia_cases.png") 
 
-p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BPAK BBGD BLKA BTHA], 
+p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BBGD BLKA BPAK BTHA], 
     grid=false,
     linewidth=2, 
     title="COVID-19: deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -406,12 +441,12 @@ p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BPAK BBGD BLKA BTHA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
    palette = :seaborn_bright, 
      legend = :topleft)
-savefig("./jhu/jhu_asia_deaths.png") 
+savefig("./jhu/asia_deaths.png") 
 
-p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NPAK NBGD NLKA NTHA],  
+p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NBGD NLKA NPAK NTHA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -421,12 +456,12 @@ p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NPAK NBGD NLKA NTHA],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
     palette = :seaborn_bright, 
     legend = :topleft)
-savefig("./jhu/jhu_asia_new_cases.png") 
+savefig("./jhu/asia_new_cases.png") 
 
-p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDTHA],  
+p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDPAK NDTHA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -436,12 +471,12 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDTHA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Pakistan" "Bangladesh" "Sri Lanka" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
    palette = :seaborn_bright, 
      legend = :topleft)
-savefig("./jhu/jhu_asia_recent_deaths.png") 
+savefig("./jhu/asia_recent_deaths.png") 
 
-p5=plot([AUSA AGBR AARG ABRA ACOL AMEX AFIE],  
+p5=plot([AUSA AGBR AARG ABRA ACOL AMEX AFIE AAUS],  
     grid=false,
     linewidth=2, 
     title="COVID-19: cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -451,11 +486,12 @@ p5=plot([AUSA AGBR AARG ABRA ACOL AMEX AFIE],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP"],
+    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP" "Australia"],
     palette = :seaborn_bright, 
     legend = :topleft)
+savefig("./jhu/world_cases.png") 
 
-p6=plot([BUSA BGBR BARG BBRA BCOL BMEX BFIE],  
+p6=plot([BUSA BGBR BARG BBRA BCOL BMEX BFIE BAUS],  
     grid=false,
     linewidth=2, 
     title="COVID-19: deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -465,11 +501,12 @@ p6=plot([BUSA BGBR BARG BBRA BCOL BMEX BFIE],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP"],
+    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP" "Australia"],
     palette = :seaborn_bright, 
     legend = :topleft)
+savefig("./jhu/world_deaths.png") 
 
-p7=plot([NUSA NGBR NARG NBRA NCOL NMEX NFIE],  
+p7=plot([NUSA NGBR NARG NBRA NCOL NMEX NFIE NAUS],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day-average of new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -479,11 +516,12 @@ p7=plot([NUSA NGBR NARG NBRA NCOL NMEX NFIE],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP"],
+    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP" "Australia"],
     palette = :seaborn_bright, 
     legend = :topleft)
+savefig("./jhu/world_new_cases.png") 
 
-p8=plot([NDUSA NDGBR NDARG NDBRA NDCOL NDMEX NDFIE],  
+p8=plot([NDUSA NDGBR NDARG NDBRA NDCOL NDMEX NDFIE NDAUS],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -493,9 +531,10 @@ p8=plot([NDUSA NDGBR NDARG NDBRA NDCOL NDMEX NDFIE],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP"],
+    label=["United States" "United Kingdom" "Argentina" "Brazil" "Colombia" "Mexico" "FRA+ITA+ESP" "Australia"],
    palette = :seaborn_bright, 
      legend = :topleft)
+savefig("./jhu/world_recent_deaths.png") 
 
 plot(p1, p2, p3, p4,
      layout=(2,2), 
