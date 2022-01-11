@@ -132,6 +132,19 @@ for j=1:DD
     NDCOL[j]=(BCOL[j+679]-BCOL[j+672])/7
 end
 
+# India 
+PIND=1395.531433;
+AIND=parse.(Float64,Array(Wcsv[149,5:qw]))/PIND;
+NIND=zeros(DD);
+for j=1:DD
+    NIND[j]=(AIND[679+j]-AIND[672+j])/7
+end
+BIND=parse.(Float64,Array(Xcsv[149,5:qw]))/PIND;
+NDIND=zeros(DD);
+for j=1:DD
+    NDIND[j]=(BIND[j+679]-BIND[j+672])/7
+end
+
 # Indonesia
 PIDN=276.833206;
 AIDN=parse.(Float64,Array(Wcsv[150,5:qw]))/PIDN;
@@ -330,7 +343,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+679]-BGBR[j+672]),0)/7
 end
 
-p=plot([NAUS NARG NOKNW NNSW NVIC NFIE NRUS NVNM NGBR NUSA], 
+p=plot([NAUS NPHI NOKNW NNSW NVIC NFIE NRUS NARG NGBR NUSA], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -339,12 +352,12 @@ p=plot([NAUS NARG NOKNW NNSW NVIC NFIE NRUS NVNM NGBR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Australia" "Argentina" "Okinawa" "New South Wales" "Victoria" "FRA+ITA+ESP" "Russia" "Vietnam" "United Kingdom" "United States"], 
+    label=["Australia" "Philippines" "Okinawa" "New South Wales" "Victoria" "FRA+ITA+ESP" "Russia" "Argentina" "United Kingdom" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NOKNW NPHI NBWN NTHA NMYS NShaanxi NKOR NSIN], 
+q=plot([NJPN NTKY NVNM NPHI NBWN NTHA NMYS NIND NKOR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -353,9 +366,9 @@ q=plot([NJPN NTKY NOKNW NPHI NBWN NTHA NMYS NShaanxi NKOR NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Philippines" "Brunei Darussalam" "Thailand" "Malaysia" "Shaanxi" "South Korea" "Singapore" ], 
+    label=["Japan" "Tokyo" "Vietnam" "Philippines" "Brunei Darussalam" "Thailand" "Malaysia" "India" "South Korea" "Singapore" ], 
     palette = :seaborn_bright, 
-    legend = :top)
+    legend = :topleft)
 savefig("./crisis/delta.png") 
 
 r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDFIE NDRUS NDTHA NDGBR NDUSA],  
