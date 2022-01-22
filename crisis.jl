@@ -55,6 +55,19 @@ for j=1:DD
     NTKY[j]=(CTKY[j+571]-CTKY[j+564])/7
 end
 
+# Osaka
+POSK=8.798545;
+COSK=J[:,28]/POSK
+NOSK=zeros(DD);
+for j=1:DD
+    NOSK[j]=(COSK[j+571]-COSK[j+564])/7
+end
+DOSK=K[:,28]/POSK
+NDOSK=zeros(DD);
+for j=1:DD
+    NDOSK[j]=(DOSK[j+571]-DOSK[j+564])/7
+end
+
 # Argentina
 PARG=45.670451;
 AARG=parse.(Float64,Array(Wcsv[8,5:qw]))/PARG;
@@ -98,6 +111,19 @@ AAUS=(AACT+ANSW+ANT+AQLD+ASA+ATAS+AVIC+AWA)/PAUS;
 NAUS=zeros(DD);
 for j=1:DD
     NAUS[j]=(AAUS[679+j]-AAUS[672+j])/7
+end
+BACT=parse.(Float64,Array(Xcsv[10,5:qw]));
+BNSW=parse.(Float64,Array(Xcsv[11,5:qw]));
+BNT=parse.(Float64,Array(Xcsv[12,5:qw]));
+BQLD=parse.(Float64,Array(Xcsv[13,5:qw]));
+BSA=parse.(Float64,Array(Xcsv[14,5:qw]));
+BTAS=parse.(Float64,Array(Xcsv[15,5:qw]));
+BVIC=parse.(Float64,Array(Xcsv[16,5:qw]));
+BWA=parse.(Float64,Array(Xcsv[17,5:qw]));
+BAUS=(BACT+BNSW+BNT+BQLD+BSA+BTAS+BVIC+BWA)/PAUS;
+NDAUS=zeros(DD);
+for j=1:DD
+    NDAUS[j]=(BAUS[679+j]-BAUS[672+j])/7
 end
 
 # Brazil 
@@ -194,6 +220,11 @@ NMYS=zeros(DD);
 for j=1:DD
     NMYS[j]=(AMYS[679+j]-AMYS[672+j])/7
 end
+BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
+NDMYS=zeros(DD);
+for j=1:DD
+    NDMYS[j]=(BMYS[j+679]-BMYS[j+672])/7
+end
 
 # Mexico 
 PMEX=130.482814;
@@ -209,11 +240,6 @@ APER=parse.(Float64,Array(Wcsv[213,5:qw]))/PPER;
 NPER=zeros(DD);
 for j=1:DD
     NPER[j]=(APER[679+j]-APER[672+j])/7
-end
-BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
-NDMYS=zeros(DD);
-for j=1:DD
-    NDMYS[j]=(BMYS[j+679]-BMYS[j+672])/7
 end
 BPER=parse.(Float64,Array(Xcsv[213,5:qw]))/PPER;
 NDPER=zeros(DD);
@@ -338,9 +364,8 @@ BITA=parse.(Float64,Array(Xcsv[155,5:qw]));
 BESP=parse.(Float64,Array(Xcsv[239,5:qw]));
 BFIE=(BFRA+BITA+BESP)/PFIE;
 NDFIE=zeros(DD);
-NDGBR=zeros(DD);
 for j=1:DD
-    NDFIE[j]=max((BFIE[j+679]-BGBR[j+672]),0)/7
+    NDFIE[j]=max((BFIE[j+679]-BFIE[j+672]),0)/7
 end
 
 p=plot([NAUS NPHI NOKNW NNSW NVIC NFIE NRUS NARG NGBR NUSA], 
@@ -357,7 +382,7 @@ p=plot([NAUS NPHI NOKNW NNSW NVIC NFIE NRUS NARG NGBR NUSA],
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NVNM NPHI NBWN NTHA NMYS NIND NKOR NSIN], 
+q=plot([NJPN NTKY NPHI NOSK NVNM NTHA NMYS NIND NKOR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -366,12 +391,12 @@ q=plot([NJPN NTKY NVNM NPHI NBWN NTHA NMYS NIND NKOR NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Vietnam" "Philippines" "Brunei Darussalam" "Thailand" "Malaysia" "India" "South Korea" "Singapore" ], 
+    label=["Japan" "Tokyo" "Philippines" "Osaka" "Vietnam" "Thailand" "Malaysia" "India" "South Korea" "Singapore" ], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
 
-r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDFIE NDRUS NDTHA NDGBR NDUSA],  
+r=plot([NDMYS NDBRA NDOKNW NDTHA NDMEX NDFIE NDRUS NDAUS NDGBR NDUSA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -381,7 +406,7 @@ r=plot([NDMYS NDBRA NDOKNW NDSIN NDMEX NDFIE NDRUS NDTHA NDGBR NDUSA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Malaysia" "Brazil" "Okinawa" "Singapore" "Mexico" "FRA+ITA+ESP" "Russia" "Thailand" "United Kingdam" "United States"],
+    label=["Malaysia" "Brazil" "Okinawa" "Thailand" "Mexico" "FRA+ITA+ESP" "Russia" "Australia" "United Kingdam" "United States"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
