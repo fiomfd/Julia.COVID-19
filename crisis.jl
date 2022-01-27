@@ -368,7 +368,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+679]-BFIE[j+672]),0)/7
 end
 
-p=plot([NAUS NPHI NOKNW NNSW NVIC NFIE NRUS NARG NGBR NUSA], 
+p=plot([NUSA NGBR NOKNW NOSK NAUS NNSW NVIC NARG NFIE NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -377,12 +377,12 @@ p=plot([NAUS NPHI NOKNW NNSW NVIC NFIE NRUS NARG NGBR NUSA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Australia" "Philippines" "Okinawa" "New South Wales" "Victoria" "FRA+ITA+ESP" "Russia" "Argentina" "United Kingdom" "United States"], 
+    label=["United States" "United Kingdom" "Okinawa" "Osaka" "Australia" "New South Wales" "Victoria" "Argentina" "FRA+ITA+ESP" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NPHI NOSK NVNM NTHA NMYS NIND NKOR NSIN], 
+q=plot([NJPN NTKY NPHI NBWN NVNM NTHA NMYS NIND NKOR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -391,12 +391,12 @@ q=plot([NJPN NTKY NPHI NOSK NVNM NTHA NMYS NIND NKOR NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Philippines" "Osaka" "Vietnam" "Thailand" "Malaysia" "India" "South Korea" "Singapore" ], 
+    label=["Japan" "Tokyo" "Philippines" "Brunei Darussalam" "Vietnam" "Thailand" "Malaysia" "India" "South Korea" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
 
-r=plot([NDMYS NDBRA NDOKNW NDTHA NDMEX NDFIE NDRUS NDAUS NDGBR NDUSA],  
+r=plot([NDUSA NDGBR NDOKNW NDOSK NDAUS NDMEX NDFIE NDMYS NDRUS NDBRA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -406,7 +406,7 @@ r=plot([NDMYS NDBRA NDOKNW NDTHA NDMEX NDFIE NDRUS NDAUS NDGBR NDUSA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Malaysia" "Brazil" "Okinawa" "Thailand" "Mexico" "FRA+ITA+ESP" "Russia" "Australia" "United Kingdam" "United States"],
+   label=["United States" "United Kingdom" "Okinawa" "Osaka" "Australia" "Mexico" "FRA+ITA+ESP" "Malaysia" "Russia" "Brazil"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 

@@ -340,6 +340,25 @@ for j=8:D
     NDPHI[j]=(BPHI[j]-BPHI[j-7])/7
 end
 
+# Singapore 
+PSIN=5.902011;
+ASIN=parse.(Float64,Array(Acsv[232,5:qw]))/PSIN;
+NSIN=zeros(D);
+for j=1:7
+    NSIN[j]=ASIN[j]/7
+end
+for j=8:D
+    NSIN[j]=(ASIN[j]-ASIN[j-7])/7
+end
+BSIN=parse.(Float64,Array(Bcsv[232,5:qw]))/PSIN;
+NDSIN=zeros(D);
+for j=1:7
+    NDSIN[j]=BSIN[j]/7
+end
+for j=8:D
+    NDSIN[j]=(BSIN[j]-BSIN[j-7])/7
+end
+
 # Sri Lanka 
 PLKA=21.516097;
 ALKA=parse.(Float64,Array(Acsv[240,5:qw]))/PLKA;
@@ -416,7 +435,7 @@ for j=8:D
     NDGBR[j]=(BGBR[j]-BGBR[j-7])/7
 end
 
-p1=plot([AJPN APHI AMYS AIDN AIND ANPL ABGD ALKA APAK ATHA],  
+p1=plot([AJPN APHI AMYS AIDN AIND ANPL ABGD ALKA ATHA ASIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -426,12 +445,12 @@ p1=plot([AJPN APHI AMYS AIDN AIND ANPL ABGD ALKA APAK ATHA],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_cases.png") 
 
-p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BBGD BLKA BPAK BTHA], 
+p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BBGD BLKA BTHA BSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19: deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -441,12 +460,12 @@ p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BBGD BLKA BPAK BTHA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_deaths.png") 
 
-p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NBGD NLKA NPAK NTHA],  
+p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NBGD NLKA NTHA NSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -456,12 +475,12 @@ p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NBGD NLKA NPAK NTHA],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_new_cases.png") 
 
-p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDPAK NDTHA],  
+p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDBGD NDLKA NDTHA NDSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -471,7 +490,7 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDPAK NDBGD NDLKA NDPAK NDTHA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Pakistan" "Thailand"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "Bangladesh" "Sri Lanka" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_recent_deaths.png") 
