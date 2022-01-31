@@ -368,7 +368,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+679]-BFIE[j+672]),0)/7
 end
 
-p=plot([NUSA NGBR NOKNW NOSK NAUS NNSW NVIC NARG NFIE NSIN], 
+p=plot([NUSA NTKY NOKNW NOSK NAUS NNSW NVIC NFIE NGBR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -377,12 +377,12 @@ p=plot([NUSA NGBR NOKNW NOSK NAUS NNSW NVIC NARG NFIE NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["United States" "United Kingdom" "Okinawa" "Osaka" "Australia" "New South Wales" "Victoria" "Argentina" "FRA+ITA+ESP" "Singapore"], 
+    label=["United States" "Tokyo" "Okinawa" "Osaka" "Australia" "New South Wales" "Victoria" "FRA+ITA+ESP" "United Kingdom" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NPHI NBWN NVNM NTHA NMYS NIND NKOR NSIN], 
+q=plot([NJPN NTKY NOKNW NOSK NVNM NKOR NMYS NIND NPHI NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -391,7 +391,7 @@ q=plot([NJPN NTKY NPHI NBWN NVNM NTHA NMYS NIND NKOR NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Philippines" "Brunei Darussalam" "Vietnam" "Thailand" "Malaysia" "India" "South Korea" "Singapore"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Vietnam" "South Korea" "Malaysia" "India" "Philippines" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
