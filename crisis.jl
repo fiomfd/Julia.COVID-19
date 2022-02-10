@@ -204,6 +204,11 @@ NJPN=zeros(DD);
 for j=1:DD
     NJPN[j]=(AJPN[679+j]-AJPN[672+j])/7
 end
+BJPN=parse.(Float64,Array(Xcsv[157,5:qw]))/PJPN;
+NDJPN=zeros(DD);
+for j=1:DD
+    NDJPN[j]=(BJPN[j+679]-BJPN[j+672])/7
+end
 
 # South Korea
 PKOR=51.318552;
@@ -396,7 +401,7 @@ q=plot([NJPN NTKY NOKNW NOSK NVNM NKOR NMYS NIND NPHI NSIN],
     legend = :topleft)
 savefig("./crisis/delta.png") 
 
-r=plot([NDUSA NDGBR NDOKNW NDOSK NDAUS NDMEX NDFIE NDMYS NDRUS NDBRA],  
+r=plot([NDJPN NDGBR NDOKNW NDOSK NDAUS NDMEX NDFIE NDRUS NDBRA NDUSA],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -406,7 +411,7 @@ r=plot([NDUSA NDGBR NDOKNW NDOSK NDAUS NDMEX NDFIE NDMYS NDRUS NDBRA],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-   label=["United States" "United Kingdom" "Okinawa" "Osaka" "Australia" "Mexico" "FRA+ITA+ESP" "Malaysia" "Russia" "Brazil"], 
+   label=["Japan" "United Kingdom" "Okinawa" "Osaka" "Australia" "Mexico" "FRA+ITA+ESP" "Russia" "Brazil" "United States"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
