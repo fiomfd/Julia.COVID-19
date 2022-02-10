@@ -70,12 +70,12 @@ end
 
 # Argentina
 PARG=45.670451;
-AARG=parse.(Float64,Array(Wcsv[8,5:qw]))/PARG;
+AARG=parse.(Float64,Array(Wcsv[9,5:qw]))/PARG;
 NARG=zeros(DD);
 for j=1:DD
     NARG[j]=(AARG[679+j]-AARG[672+j])/7
 end
-BARG=parse.(Float64,Array(Xcsv[8,5:qw]))/PARG;
+BARG=parse.(Float64,Array(Xcsv[9,5:qw]))/PARG;
 NDARG=zeros(DD);
 for j=1:DD
     NDARG[j]=(BARG[j+679]-BARG[j+672])/7
@@ -83,7 +83,7 @@ end
 
 # NSW
 PNSW=8.196;
-ANSW=parse.(Float64,Array(Wcsv[11,5:qw]))/PNSW;
+ANSW=parse.(Float64,Array(Wcsv[12,5:qw]))/PNSW;
 NNSW=zeros(DD);
 for j=1:DD
     NNSW[j]=(ANSW[679+j]-ANSW[672+j])/7
@@ -91,7 +91,7 @@ end
 
 # Victoria
 PVIC=6.7;
-AVIC=parse.(Float64,Array(Wcsv[16,5:qw]))/PVIC;
+AVIC=parse.(Float64,Array(Wcsv[17,5:qw]))/PVIC;
 NVIC=zeros(DD);
 for j=1:DD
     NVIC[j]=(AVIC[679+j]-AVIC[672+j])/7
@@ -99,27 +99,27 @@ end
 
 # Australia
 PAUS=25.739256;
-AACT=parse.(Float64,Array(Wcsv[10,5:qw]));
-ANSW=parse.(Float64,Array(Wcsv[11,5:qw]));
-ANT=parse.(Float64,Array(Wcsv[12,5:qw]));
-AQLD=parse.(Float64,Array(Wcsv[13,5:qw]));
-ASA=parse.(Float64,Array(Wcsv[14,5:qw]));
-ATAS=parse.(Float64,Array(Wcsv[15,5:qw]));
-AVIC=parse.(Float64,Array(Wcsv[16,5:qw]));
-AWA=parse.(Float64,Array(Wcsv[17,5:qw]));
+AACT=parse.(Float64,Array(Wcsv[11,5:qw]));
+ANSW=parse.(Float64,Array(Wcsv[12,5:qw]));
+ANT=parse.(Float64,Array(Wcsv[13,5:qw]));
+AQLD=parse.(Float64,Array(Wcsv[14,5:qw]));
+ASA=parse.(Float64,Array(Wcsv[15,5:qw]));
+ATAS=parse.(Float64,Array(Wcsv[16,5:qw]));
+AVIC=parse.(Float64,Array(Wcsv[17,5:qw]));
+AWA=parse.(Float64,Array(Wcsv[18,5:qw]));
 AAUS=(AACT+ANSW+ANT+AQLD+ASA+ATAS+AVIC+AWA)/PAUS;
 NAUS=zeros(DD);
 for j=1:DD
     NAUS[j]=(AAUS[679+j]-AAUS[672+j])/7
 end
-BACT=parse.(Float64,Array(Xcsv[10,5:qw]));
-BNSW=parse.(Float64,Array(Xcsv[11,5:qw]));
-BNT=parse.(Float64,Array(Xcsv[12,5:qw]));
-BQLD=parse.(Float64,Array(Xcsv[13,5:qw]));
-BSA=parse.(Float64,Array(Xcsv[14,5:qw]));
-BTAS=parse.(Float64,Array(Xcsv[15,5:qw]));
-BVIC=parse.(Float64,Array(Xcsv[16,5:qw]));
-BWA=parse.(Float64,Array(Xcsv[17,5:qw]));
+BACT=parse.(Float64,Array(Xcsv[11,5:qw]));
+BNSW=parse.(Float64,Array(Xcsv[12,5:qw]));
+BNT=parse.(Float64,Array(Xcsv[13,5:qw]));
+BQLD=parse.(Float64,Array(Xcsv[14,5:qw]));
+BSA=parse.(Float64,Array(Xcsv[15,5:qw]));
+BTAS=parse.(Float64,Array(Xcsv[16,5:qw]));
+BVIC=parse.(Float64,Array(Xcsv[17,5:qw]));
+BWA=parse.(Float64,Array(Xcsv[18,5:qw]));
 BAUS=(BACT+BNSW+BNT+BQLD+BSA+BTAS+BVIC+BWA)/PAUS;
 NDAUS=zeros(DD);
 for j=1:DD
@@ -128,7 +128,7 @@ end
 
 # Brazil 
 PBRA=214.289417;
-BBRA=parse.(Float64,Array(Xcsv[32,5:qw]))/PBRA;
+BBRA=parse.(Float64,Array(Xcsv[33,5:qw]))/PBRA;
 NDBRA=zeros(DD);
 for j=1:DD
     NDBRA[j]=(BBRA[j+679]-BBRA[j+672])/7
@@ -136,7 +136,7 @@ end
 
 # Brunei Darussalam
 PBWN=0.442205;
-ABWN=parse.(Float64,Array(Wcsv[33,5:qw]))/PBWN;
+ABWN=parse.(Float64,Array(Wcsv[34,5:qw]))/PBWN;
 NBWN=zeros(DD);
 for j=1:DD
     NBWN[j]=(ABWN[679+j]-ABWN[672+j])/7
@@ -144,7 +144,7 @@ end
 
 # Shaanxi
 PShaanxi=8.275000;
-AShaanxi=parse.(Float64,Array(Wcsv[83,5:qw]))/PShaanxi;
+AShaanxi=parse.(Float64,Array(Wcsv[84,5:qw]))/PShaanxi;
 NShaanxi=zeros(DD);
 for j=1:DD
     NShaanxi[j]=(AShaanxi[679+j]-AShaanxi[672+j])/7
@@ -152,7 +152,7 @@ end
 
 # Colombia 
 PCOL=51.503463;
-BCOL=parse.(Float64,Array(Xcsv[94,5:qw]))/PCOL;
+BCOL=parse.(Float64,Array(Xcsv[95,5:qw]))/PCOL;
 NDCOL=zeros(DD);
 for j=1:DD
     NDCOL[j]=(BCOL[j+679]-BCOL[j+672])/7
@@ -160,12 +160,12 @@ end
 
 # India 
 PIND=1395.531433;
-AIND=parse.(Float64,Array(Wcsv[149,5:qw]))/PIND;
+AIND=parse.(Float64,Array(Wcsv[150,5:qw]))/PIND;
 NIND=zeros(DD);
 for j=1:DD
     NIND[j]=(AIND[679+j]-AIND[672+j])/7
 end
-BIND=parse.(Float64,Array(Xcsv[149,5:qw]))/PIND;
+BIND=parse.(Float64,Array(Xcsv[150,5:qw]))/PIND;
 NDIND=zeros(DD);
 for j=1:DD
     NDIND[j]=(BIND[j+679]-BIND[j+672])/7
@@ -173,12 +173,12 @@ end
 
 # Indonesia
 PIDN=276.833206;
-AIDN=parse.(Float64,Array(Wcsv[150,5:qw]))/PIDN;
+AIDN=parse.(Float64,Array(Wcsv[151,5:qw]))/PIDN;
 NIDN=zeros(DD);
 for j=1:DD
     NIDN[j]=(AIDN[679+j]-AIDN[672+j])/7
 end
-BIDN=parse.(Float64,Array(Xcsv[150,5:qw]))/PIDN;
+BIDN=parse.(Float64,Array(Xcsv[151,5:qw]))/PIDN;
 NDIDN=zeros(DD);
 for j=1:DD
     NDIDN[j]=(BIDN[j+679]-BIDN[j+672])/7
@@ -186,12 +186,12 @@ end
 
 # Israel
 PISR=8.789774;
-AISR=parse.(Float64,Array(Wcsv[154,5:qw]))/PISR;
+AISR=parse.(Float64,Array(Wcsv[155,5:qw]))/PISR;
 NISR=zeros(DD);
 for j=1:DD
     NISR[j]=(AISR[679+j]-AISR[672+j])/7
 end
-BISR=parse.(Float64,Array(Xcsv[154,5:qw]))/PISR;
+BISR=parse.(Float64,Array(Xcsv[155,5:qw]))/PISR;
 NDISR=zeros(DD);
 for j=1:DD
     NDISR[j]=(BISR[j+679]-BISR[j+672])/7
@@ -199,12 +199,12 @@ end
 
 # Japan
 PJPN=125.36;
-AJPN=parse.(Float64,Array(Wcsv[157,5:qw]))/PJPN;
+AJPN=parse.(Float64,Array(Wcsv[158,5:qw]))/PJPN;
 NJPN=zeros(DD);
 for j=1:DD
     NJPN[j]=(AJPN[679+j]-AJPN[672+j])/7
 end
-BJPN=parse.(Float64,Array(Xcsv[157,5:qw]))/PJPN;
+BJPN=parse.(Float64,Array(Xcsv[158,5:qw]))/PJPN;
 NDJPN=zeros(DD);
 for j=1:DD
     NDJPN[j]=(BJPN[j+679]-BJPN[j+672])/7
@@ -212,7 +212,7 @@ end
 
 # South Korea
 PKOR=51.318552;
-AKOR=parse.(Float64,Array(Wcsv[162,5:qw]))/PKOR;
+AKOR=parse.(Float64,Array(Wcsv[163,5:qw]))/PKOR;
 NKOR=zeros(DD);
 for j=1:DD
     NKOR[j]=(AKOR[679+j]-AKOR[672+j])/7
@@ -220,12 +220,12 @@ end
 
 # Malaysia
 PMYS=32.66;
-AMYS=parse.(Float64,Array(Wcsv[178,5:qw]))/PMYS;
+AMYS=parse.(Float64,Array(Wcsv[179,5:qw]))/PMYS;
 NMYS=zeros(DD);
 for j=1:DD
     NMYS[j]=(AMYS[679+j]-AMYS[672+j])/7
 end
-BMYS=parse.(Float64,Array(Xcsv[178,5:qw]))/PMYS;
+BMYS=parse.(Float64,Array(Xcsv[179,5:qw]))/PMYS;
 NDMYS=zeros(DD);
 for j=1:DD
     NDMYS[j]=(BMYS[j+679]-BMYS[j+672])/7
@@ -233,7 +233,7 @@ end
 
 # Mexico 
 PMEX=130.482814;
-BMEX=parse.(Float64,Array(Xcsv[185,5:qw]))/PMEX;
+BMEX=parse.(Float64,Array(Xcsv[186,5:qw]))/PMEX;
 NDMEX=zeros(DD);
 for j=1:DD
     NDMEX[j]=(BMEX[j+679]-BMEX[j+672])/7
@@ -241,12 +241,12 @@ end
 
 # Peru
 PPER=33.510887;
-APER=parse.(Float64,Array(Wcsv[213,5:qw]))/PPER;
+APER=parse.(Float64,Array(Wcsv[214,5:qw]))/PPER;
 NPER=zeros(DD);
 for j=1:DD
     NPER[j]=(APER[679+j]-APER[672+j])/7
 end
-BPER=parse.(Float64,Array(Xcsv[213,5:qw]))/PPER;
+BPER=parse.(Float64,Array(Xcsv[214,5:qw]))/PPER;
 NDPER=zeros(DD);
 for j=1:DD
     NDPER[j]=(BPER[j+679]-BPER[j+672])/7
@@ -254,12 +254,12 @@ end
 
 # Philippines
 PPHI=111.249116;
-APHI=parse.(Float64,Array(Wcsv[214,5:qw]))/PPHI;
+APHI=parse.(Float64,Array(Wcsv[215,5:qw]))/PPHI;
 NPHI=zeros(DD);
 for j=1:DD
     NPHI[j]=(APHI[679+j]-APHI[672+j])/7
 end
-BPHI=parse.(Float64,Array(Xcsv[214,5:qw]))/PPHI;
+BPHI=parse.(Float64,Array(Xcsv[215,5:qw]))/PPHI;
 NDPHI=zeros(DD);
 for j=1:DD
     NDPHI[j]=(BPHI[j+679]-BPHI[j+672])/7
@@ -267,12 +267,12 @@ end
 
 # Russia
 PRUS=146.013169;
-ARUS=parse.(Float64,Array(Wcsv[219,5:qw]))/PRUS;
+ARUS=parse.(Float64,Array(Wcsv[220,5:qw]))/PRUS;
 NRUS=zeros(DD);
 for j=1:DD
     NRUS[j]=(ARUS[679+j]-ARUS[672+j])/7
 end
-BRUS=parse.(Float64,Array(Xcsv[219,5:qw]))/PRUS;
+BRUS=parse.(Float64,Array(Xcsv[220,5:qw]))/PRUS;
 NDRUS=zeros(DD);
 for j=1:DD
     NDRUS[j]=(BRUS[j+679]-BRUS[j+672])/7
@@ -280,12 +280,12 @@ end
 
 # Singapore
 PSIN=5.902011;
-ASIN=parse.(Float64,Array(Wcsv[232,5:qw]))/PSIN;
+ASIN=parse.(Float64,Array(Wcsv[233,5:qw]))/PSIN;
 NSIN=zeros(DD);
 for j=1:DD
     NSIN[j]=(ASIN[679+j]-ASIN[672+j])/7
 end
-BSIN=parse.(Float64,Array(Xcsv[232,5:qw]))/PSIN;
+BSIN=parse.(Float64,Array(Xcsv[233,5:qw]))/PSIN;
 NDSIN=zeros(DD);
 for j=1:DD
     NDSIN[j]=(BSIN[j+679]-BSIN[j+672])/7
@@ -293,12 +293,12 @@ end
 
 # Sri Lanka
 PLKA=21.516097;
-ALKA=parse.(Float64,Array(Wcsv[240,5:qw]))/PLKA;
+ALKA=parse.(Float64,Array(Wcsv[241,5:qw]))/PLKA;
 NLKA=zeros(DD);
 for j=1:DD
     NLKA[j]=(ALKA[679+j]-ALKA[672+j])/7
 end
-BLKA=parse.(Float64,Array(Xcsv[240,5:qw]))/PLKA;
+BLKA=parse.(Float64,Array(Xcsv[241,5:qw]))/PLKA;
 NDLKA=zeros(DD);
 for j=1:DD
     NDLKA[j]=(BLKA[j+679]-BLKA[j+672])/7
@@ -306,12 +306,12 @@ end
 
 # Thailand
 PTHA=70.000662;
-ATHA=parse.(Float64,Array(Wcsv[250,5:qw]))/PTHA;
+ATHA=parse.(Float64,Array(Wcsv[251,5:qw]))/PTHA;
 NTHA=zeros(DD);
 for j=1:DD
     NTHA[j]=(ATHA[679+j]-ATHA[672+j])/7
 end
-BTHA=parse.(Float64,Array(Xcsv[250,5:qw]))/PTHA;
+BTHA=parse.(Float64,Array(Xcsv[251,5:qw]))/PTHA;
 NDTHA=zeros(DD);
 for j=1:DD
     NDTHA[j]=(BTHA[j+679]-BTHA[j+672])/7
@@ -319,12 +319,12 @@ end
 
 # United Staes 
 PUSA=333.225477;
-AUSA=parse.(Float64,Array(Wcsv[257,5:qw]))/PUSA;
+AUSA=parse.(Float64,Array(Wcsv[258,5:qw]))/PUSA;
 NUSA=zeros(DD);
 for j=1:DD
     NUSA[j]=(AUSA[679+j]-AUSA[672+j])/7
 end
-BUSA=parse.(Float64,Array(Xcsv[257,5:qw]))/PUSA;
+BUSA=parse.(Float64,Array(Xcsv[258,5:qw]))/PUSA;
 NDUSA=zeros(DD);
 for j=1:DD
     NDUSA[j]=(BUSA[j+679]-BUSA[j+672])/7
@@ -332,12 +332,12 @@ end
 
 # United Kingdom 
 PGBR=68.294438;
-AGBR=parse.(Float64,Array(Wcsv[272,5:qw]))/PGBR;
+AGBR=parse.(Float64,Array(Wcsv[273,5:qw]))/PGBR;
 NGBR=zeros(DD);
 for j=1:DD
     NGBR[j]=(max(AGBR[679+j]-AGBR[672+j],0))/7
 end
-BGBR=parse.(Float64,Array(Xcsv[272,5:qw]))/PGBR;
+BGBR=parse.(Float64,Array(Xcsv[273,5:qw]))/PGBR;
 NDGBR=zeros(DD);
 for j=1:DD
     NDGBR[j]=(BGBR[j+679]-BGBR[j+672])/7
@@ -345,7 +345,7 @@ end
 
 # Vietnam
 PVNM=98.341025;
-AVNM=parse.(Float64,Array(Wcsv[277,5:qw]))/PVNM;
+AVNM=parse.(Float64,Array(Wcsv[278,5:qw]))/PVNM;
 NVNM=zeros(DD);
 for j=1:DD
     NVNM[j]=(AVNM[679+j]-AVNM[672+j])/7
@@ -356,17 +356,17 @@ PFRA=65.439014;
 PITA=60.359899;
 PESP=46.775535;
 PFIE=PFRA+PITA+PESP;
-AFRA=parse.(Float64,Array(Wcsv[132,5:qw]));
-AITA=parse.(Float64,Array(Wcsv[155,5:qw]));
-AESP=parse.(Float64,Array(Wcsv[239,5:qw]));
+AFRA=parse.(Float64,Array(Wcsv[133,5:qw]));
+AITA=parse.(Float64,Array(Wcsv[156,5:qw]));
+AESP=parse.(Float64,Array(Wcsv[240,5:qw]));
 AFIE=(AFRA+AITA+AESP)/PFIE;
 NFIE=zeros(DD);
 for j=1:DD
     NFIE[j]=(AFIE[679+j]-AFIE[672+j])/7
 end
-BFRA=parse.(Float64,Array(Xcsv[132,5:qw]))
-BITA=parse.(Float64,Array(Xcsv[155,5:qw]));
-BESP=parse.(Float64,Array(Xcsv[239,5:qw]));
+BFRA=parse.(Float64,Array(Xcsv[133,5:qw]))
+BITA=parse.(Float64,Array(Xcsv[156,5:qw]));
+BESP=parse.(Float64,Array(Xcsv[240,5:qw]));
 BFIE=(BFRA+BITA+BESP)/PFIE;
 NDFIE=zeros(DD);
 for j=1:DD
