@@ -332,12 +332,12 @@ end
 
 # United Kingdom 
 PGBR=68.294438;
-AGBR=parse.(Float64,Array(Wcsv[273,5:qw]))/PGBR;
+AGBR=parse.(Float64,Array(Wcsv[275,5:qw]))/PGBR;
 NGBR=zeros(DD);
 for j=1:DD
     NGBR[j]=(max(AGBR[679+j]-AGBR[672+j],0))/7
 end
-BGBR=parse.(Float64,Array(Xcsv[273,5:qw]))/PGBR;
+BGBR=parse.(Float64,Array(Xcsv[275,5:qw]))/PGBR;
 NDGBR=zeros(DD);
 for j=1:DD
     NDGBR[j]=(BGBR[j+679]-BGBR[j+672])/7
@@ -345,7 +345,7 @@ end
 
 # Vietnam
 PVNM=98.341025;
-AVNM=parse.(Float64,Array(Wcsv[278,5:qw]))/PVNM;
+AVNM=parse.(Float64,Array(Wcsv[280,5:qw]))/PVNM;
 NVNM=zeros(DD);
 for j=1:DD
     NVNM[j]=(AVNM[679+j]-AVNM[672+j])/7
