@@ -39,7 +39,7 @@ ll1=string(dd0+Day(Int(floor((DD-1)/2))));
 ll2=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
-PJPN=125.36;
+PJPN=125.845010;
 OJPN=N1[:,1]/PJPN;
 CJPN=C1[:,1]/PJPN;
 NJPN=zeros(D);
@@ -61,7 +61,7 @@ for j=8:D
 end
 
 # Tokyo
-PTKY=14.049146;
+PTKY=13.988129;
 OTKY=N1[:,14]/PTKY;
 CTKY=C1[:,14]/PTKY;
 NTKY=zeros(D);
@@ -83,7 +83,7 @@ for j=8:D
 end
 
 # Okinawa
-POKNW=1.458870;
+POKNW=1.469335;    
 OOKNW=N1[:,48]/POKNW;
 COKNW=C1[:,48]/POKNW;
 NOKNW=zeros(D);
@@ -105,7 +105,7 @@ for j=8:D
 end
 
 # Osaka
-POSK=8.798545;
+POSK=8.797153;
 OOSK=N1[:,28]/POSK;
 COSK=C1[:,28]/POSK;
 NOSK=zeros(D);
@@ -127,7 +127,7 @@ for j=8:D
 end
 
 # Hyogo
-PHYG=5.446455;
+PHYG=5.425850;
 NHYG=N1[:,29]/PHYG;
 CHYG=C1[:,29]/PHYG;
 DHYG=D1[:,29]/PHYG;
@@ -142,7 +142,7 @@ for j=8:D
 end
  
 # Hokkaido
-PHKD=5.207185;
+PHKD=5.191355;
 NHKD=N1[:,2]/PHKD;
 CHKD=C1[:,2]/PHKD;
 DHKD=D1[:,2]/PHKD;

@@ -35,7 +35,7 @@ J=parse.(Float64,Ccsv[2:pa,2:qa]);
 K=parse.(Float64,Dcsv[2:pa,2:qa]);
 
 # Okinawa
-POKNW=1.458870;
+POKNW=1.469335;    
 COKNW=J[:,48]/POKNW
 NOKNW=zeros(DD);
 for j=1:DD
@@ -48,7 +48,7 @@ for j=1:DD
 end
 
 # Tokyo
-PTKY=14.049146;
+PTKY=13.988129;
 CTKY=J[:,14]/PTKY
 NTKY=zeros(DD);
 for j=1:DD
@@ -56,7 +56,7 @@ for j=1:DD
 end
 
 # Osaka
-POSK=8.798545;
+POSK=8.797153;
 COSK=J[:,28]/POSK
 NOSK=zeros(DD);
 for j=1:DD
@@ -69,7 +69,7 @@ for j=1:DD
 end
 
 # Argentina
-PARG=45.670451;
+PARG=45.870820;
 AARG=parse.(Float64,Array(Wcsv[9,5:qw]))/PARG;
 NARG=zeros(DD);
 for j=1:DD
@@ -82,7 +82,7 @@ for j=1:DD
 end
 
 # NSW
-PNSW=8.196;
+PNSW=8.21;
 ANSW=parse.(Float64,Array(Wcsv[12,5:qw]))/PNSW;
 NNSW=zeros(DD);
 for j=1:DD
@@ -90,7 +90,7 @@ for j=1:DD
 end
 
 # Victoria
-PVIC=6.7;
+PVIC=6.64;
 AVIC=parse.(Float64,Array(Wcsv[17,5:qw]))/PVIC;
 NVIC=zeros(DD);
 for j=1:DD
@@ -98,7 +98,7 @@ for j=1:DD
 end
 
 # Australia
-PAUS=25.739256;
+PAUS=25.981402;
 AACT=parse.(Float64,Array(Wcsv[11,5:qw]));
 ANSW=parse.(Float64,Array(Wcsv[12,5:qw]));
 ANT=parse.(Float64,Array(Wcsv[13,5:qw]));
@@ -127,7 +127,7 @@ for j=1:DD
 end
 
 # Brazil 
-PBRA=214.289417;
+PBRA=215.019011;
 BBRA=parse.(Float64,Array(Xcsv[33,5:qw]))/PBRA;
 NDBRA=zeros(DD);
 for j=1:DD
@@ -135,23 +135,15 @@ for j=1:DD
 end
 
 # Brunei Darussalam
-PBWN=0.442205;
+PBWN=0.4435;
 ABWN=parse.(Float64,Array(Wcsv[34,5:qw]))/PBWN;
 NBWN=zeros(DD);
 for j=1:DD
     NBWN[j]=(ABWN[679+j]-ABWN[672+j])/7
 end
 
-# Shaanxi
-PShaanxi=8.275000;
-AShaanxi=parse.(Float64,Array(Wcsv[84,5:qw]))/PShaanxi;
-NShaanxi=zeros(DD);
-for j=1:DD
-    NShaanxi[j]=(AShaanxi[679+j]-AShaanxi[672+j])/7
-end
-
 # Colombia 
-PCOL=51.503463;
+PCOL=51.765589;
 BCOL=parse.(Float64,Array(Xcsv[95,5:qw]))/PCOL;
 NDCOL=zeros(DD);
 for j=1:DD
@@ -159,7 +151,7 @@ for j=1:DD
 end
 
 # India 
-PIND=1395.531433;
+PIND=1402.124607;
 AIND=parse.(Float64,Array(Wcsv[150,5:qw]))/PIND;
 NIND=zeros(DD);
 for j=1:DD
@@ -172,7 +164,7 @@ for j=1:DD
 end
 
 # Indonesia
-PIDN=276.833206;
+PIDN=278.239007;
 AIDN=parse.(Float64,Array(Wcsv[151,5:qw]))/PIDN;
 NIDN=zeros(DD);
 for j=1:DD
@@ -184,21 +176,8 @@ for j=1:DD
     NDIDN[j]=(BIDN[j+679]-BIDN[j+672])/7
 end
 
-# Israel
-PISR=8.789774;
-AISR=parse.(Float64,Array(Wcsv[155,5:qw]))/PISR;
-NISR=zeros(DD);
-for j=1:DD
-    NISR[j]=(AISR[679+j]-AISR[672+j])/7
-end
-BISR=parse.(Float64,Array(Xcsv[155,5:qw]))/PISR;
-NDISR=zeros(DD);
-for j=1:DD
-    NDISR[j]=(BISR[j+679]-BISR[j+672])/7
-end
-
 # Japan
-PJPN=125.36;
+PJPN=125.845010;
 AJPN=parse.(Float64,Array(Wcsv[158,5:qw]))/PJPN;
 NJPN=zeros(DD);
 for j=1:DD
@@ -211,7 +190,7 @@ for j=1:DD
 end
 
 # South Korea
-PKOR=51.318552;
+PKOR=51.341022;
 AKOR=parse.(Float64,Array(Wcsv[163,5:qw]))/PKOR;
 NKOR=zeros(DD);
 for j=1:DD
@@ -219,7 +198,7 @@ for j=1:DD
 end
 
 # Malaysia
-PMYS=32.66;
+PMYS=33.060794;
 AMYS=parse.(Float64,Array(Wcsv[179,5:qw]))/PMYS;
 NMYS=zeros(DD);
 for j=1:DD
@@ -232,7 +211,7 @@ for j=1:DD
 end
 
 # Mexico 
-PMEX=130.482814;
+PMEX=131.137507;
 BMEX=parse.(Float64,Array(Xcsv[186,5:qw]))/PMEX;
 NDMEX=zeros(DD);
 for j=1:DD
@@ -240,7 +219,7 @@ for j=1:DD
 end
 
 # Peru
-PPER=33.510887;
+PPER=33.719259;
 APER=parse.(Float64,Array(Wcsv[214,5:qw]))/PPER;
 NPER=zeros(DD);
 for j=1:DD
@@ -253,7 +232,7 @@ for j=1:DD
 end
 
 # Philippines
-PPHI=111.249116;
+PPHI=112.027348;
 APHI=parse.(Float64,Array(Wcsv[215,5:qw]))/PPHI;
 NPHI=zeros(DD);
 for j=1:DD
@@ -266,7 +245,7 @@ for j=1:DD
 end
 
 # Russia
-PRUS=146.013169;
+PRUS=146.036343;
 ARUS=parse.(Float64,Array(Wcsv[220,5:qw]))/PRUS;
 NRUS=zeros(DD);
 for j=1:DD
@@ -279,7 +258,7 @@ for j=1:DD
 end
 
 # Singapore
-PSIN=5.902011;
+PSIN=5.925237;
 ASIN=parse.(Float64,Array(Wcsv[233,5:qw]))/PSIN;
 NSIN=zeros(DD);
 for j=1:DD
@@ -292,7 +271,7 @@ for j=1:DD
 end
 
 # Sri Lanka
-PLKA=21.516097;
+PLKA=21.559415;
 ALKA=parse.(Float64,Array(Wcsv[241,5:qw]))/PLKA;
 NLKA=zeros(DD);
 for j=1:DD
@@ -305,7 +284,7 @@ for j=1:DD
 end
 
 # Thailand
-PTHA=70.000662;
+PTHA=70.085127;
 ATHA=parse.(Float64,Array(Wcsv[251,5:qw]))/PTHA;
 NTHA=zeros(DD);
 for j=1:DD
@@ -318,7 +297,7 @@ for j=1:DD
 end
 
 # United Staes 
-PUSA=333.225477;
+PUSA=334.207212;
 AUSA=parse.(Float64,Array(Wcsv[258,5:qw]))/PUSA;
 NUSA=zeros(DD);
 for j=1:DD
@@ -331,7 +310,7 @@ for j=1:DD
 end
 
 # United Kingdom 
-PGBR=68.294438;
+PGBR=68.466544;
 AGBR=parse.(Float64,Array(Wcsv[275,5:qw]))/PGBR;
 NGBR=zeros(DD);
 for j=1:DD
@@ -344,7 +323,7 @@ for j=1:DD
 end
 
 # Vietnam
-PVNM=98.341025;
+PVNM=98.953541;
 AVNM=parse.(Float64,Array(Wcsv[280,5:qw]))/PVNM;
 NVNM=zeros(DD);
 for j=1:DD
@@ -352,9 +331,9 @@ for j=1:DD
 end
 
 # France Italy Spain 
-PFRA=65.439014;
-PITA=60.359899;
-PESP=46.775535;
+PFRA=65.508662;
+PITA=60.317073;
+PESP=46.784213;
 PFIE=PFRA+PITA+PESP;
 AFRA=parse.(Float64,Array(Wcsv[133,5:qw]));
 AITA=parse.(Float64,Array(Wcsv[156,5:qw]));

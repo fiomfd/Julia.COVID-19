@@ -31,7 +31,7 @@ ll2=string(dd0+Day(DD-1));
 
 
 # Argentina
-PARG=45.670451;
+PARG=45.870820;
 AARG=parse.(Float64,Array(Acsv[9,5:qw]))/PARG;
 NARG=zeros(D);
 for j=1:7
@@ -50,7 +50,7 @@ for j=8:D
 end
 
 # Australia
-PAUS=25.739256;
+PAUS=25.981402;
 AACT=parse.(Float64,Array(Acsv[11,5:qw]));
 ANSW=parse.(Float64,Array(Acsv[12,5:qw]));
 ANT=parse.(Float64,Array(Acsv[13,5:qw]));
@@ -84,27 +84,8 @@ for j=8:D
     NDAUS[j]=(BAUS[j]-BAUS[j-7])/7
 end
 
-# Bangladesh
-PBGD=166.567052;
-ABGD=parse.(Float64,Array(Acsv[23,5:qw]))/PBGD;
-NBGD=zeros(D);
-for j=1:7
-    NBGD[j]=ABGD[j]/7
-end
-for j=8:D
-    NBGD[j]=(ABGD[j]-ABGD[j-7])/7
-end
-BBGD=parse.(Float64,Array(Bcsv[23,5:qw]))/PBGD;
-NDBGD=zeros(D);
-for j=1:7
-    NDBGD[j]=BBGD[j]/7
-end
-for j=8:D
-    NDBGD[j]=(BBGD[j]-BBGD[j-7])/7
-end
-
 # Brazil 
-PBRA=214.289417;
+PBRA=215.019011;
 ABRA=parse.(Float64,Array(Acsv[33,5:qw]))/PBRA;
 NBRA=zeros(D);
 for j=1:7
@@ -123,7 +104,7 @@ for j=8:D
 end
 
 # Colombia 
-PCOL=51.503463;
+PCOL=51.765589;
 ACOL=parse.(Float64,Array(Acsv[95,5:qw]))/PCOL;
 NCOL=zeros(D);
 for j=1:7
@@ -142,9 +123,9 @@ for j=8:D
 end
 
 # France Italy Spain 
-PFRA=65.439014;
-PITA=60.359899;
-PESP=46.775535;
+PFRA=65.508662;
+PITA=60.317073;
+PESP=46.784213;
 PFIE=PFRA+PITA+PESP;
 CFRA=parse.(Float64,Array(Acsv[133,5:qw]));
 CITA=parse.(Float64,Array(Acsv[156,5:qw]));
@@ -170,7 +151,7 @@ for j=8:D
 end
 
 # India 
-PIND=1395.531433;
+PIND=1402.124607;
 AIND=parse.(Float64,Array(Acsv[150,5:qw]))/PIND;
 NIND=zeros(D);
 for j=1:7
@@ -189,7 +170,7 @@ for j=8:D
 end
 
 # Indonesia
-PIDN=276.833206;
+PIDN=278.239007;
 AIDN=parse.(Float64,Array(Acsv[151,5:qw]))/PIDN;
 NIDN=zeros(D);
 for j=1:7
@@ -208,7 +189,7 @@ for j=8:D
 end
 
 # Japan
-PJPN=126.032481;
+PJPN=125.845010;
 AJPN=parse.(Float64,Array(Acsv[158,5:qw]))/PJPN;
 NJPN=zeros(D);
 for j=1:7
@@ -227,7 +208,7 @@ for j=8:D
 end
 
 # South Korea
-PKOR=51.319753;
+PKOR=51.341022;
 AKOR=parse.(Float64,Array(Acsv[163,5:qw]))/PKOR;
 NKOR=zeros(D);
 for j=1:7
@@ -246,7 +227,7 @@ for j=8:D
 end
 
 # Malaysia
-PMYS=32.7;
+PMYS=33.060794;
 AMYS=parse.(Float64,Array(Acsv[179,5:qw]))/PMYS;
 NMYS=zeros(D);
 for j=1:7
@@ -265,7 +246,7 @@ for j=8:D
 end
 
 # Mexico 
-PMEX=130.482814;
+PMEX=131.137507;
 AMEX=parse.(Float64,Array(Acsv[186,5:qw]))/PMEX;
 NMEX=zeros(D);
 for j=1:7
@@ -284,7 +265,7 @@ for j=8:D
 end
 
 # Nepal
-PNPL=29.735589;
+PNPL=29.989352;
 ANPL=parse.(Float64,Array(Acsv[195,5:qw]))/PNPL;
 NNPL=zeros(D);
 for j=1:7
@@ -302,27 +283,8 @@ for j=8:D
     NDNPL[j]=(BNPL[j]-BNPL[j-7])/7
 end
 
-# Pakistan 205 190
-PPAK=225.791619;
-APAK=parse.(Float64,Array(Acsv[209,5:qw]))/PPAK;
-NPAK=zeros(D);
-for j=1:7
-    NPAK[j]=APAK[j]/7
-end
-for j=8:D
-    NPAK[j]=(APAK[j]-APAK[j-7])/7
-end
-BPAK=parse.(Float64,Array(Bcsv[209,5:qw]))/PPAK;
-NDPAK=zeros(D);
-for j=1:7
-    NDPAK[j]=BPAK[j]/7
-end
-for j=8:D
-    NDPAK[j]=(BPAK[j]-BPAK[j-7])/7
-end
-
 # Philippines
-PPHI=111.249116;
+PPHI=112.027348;
 APHI=parse.(Float64,Array(Acsv[215,5:qw]))/PPHI;
 NPHI=zeros(D);
 for j=1:7
@@ -341,7 +303,7 @@ for j=8:D
 end
 
 # Singapore 
-PSIN=5.902011;
+PSIN=5.925237;
 ASIN=parse.(Float64,Array(Acsv[233,5:qw]))/PSIN;
 NSIN=zeros(D);
 for j=1:7
@@ -360,7 +322,7 @@ for j=8:D
 end
 
 # Sri Lanka 
-PLKA=21.516097;
+PLKA=21.559415;
 ALKA=parse.(Float64,Array(Acsv[241,5:qw]))/PLKA;
 NLKA=zeros(D);
 for j=1:7
@@ -379,7 +341,7 @@ for j=8:D
 end
 
 # Thailand
-PTHA=70.000662;
+PTHA=70.085127;
 ATHA=parse.(Float64,Array(Acsv[251,5:qw]))/PTHA;
 NTHA=zeros(D);
 for j=1:7
@@ -398,7 +360,7 @@ for j=8:D
 end
 
 # United Staes 
-PUSA=333.225477;
+PUSA=334.207212;
 AUSA=parse.(Float64,Array(Acsv[258,5:qw]))/PUSA;
 NUSA=zeros(D);
 for j=1:7
@@ -417,7 +379,7 @@ for j=8:D
 end
 
 # United Kingdom 
-PGBR=68.294438;
+PGBR=68.466544;
 AGBR=parse.(Float64,Array(Acsv[275,5:qw]))/PGBR;
 NGBR=zeros(D);
 for j=1:7
@@ -435,7 +397,26 @@ for j=8:D
     NDGBR[j]=(BGBR[j]-BGBR[j-7])/7
 end
 
-p1=plot([AJPN APHI AMYS AIDN AIND ANPL AKOR ALKA ATHA ASIN],  
+# Vietnam
+PVNM=98.953541;
+AVNM=parse.(Float64,Array(Acsv[275,5:qw]))/PVNM;
+NVNM=zeros(D);
+for j=1:7
+    NVNM[j]=AVNM[j]/7
+end
+for j=8:D
+    NVNM[j]=(AVNM[j]-AVNM[j-7])/7
+end
+BVNM=parse.(Float64,Array(Bcsv[275,5:qw]))/PVNM;
+NDVNM=zeros(D);
+for j=1:7
+    NDVNM[j]=BVNM[j]/7
+end
+for j=8:D
+    NDVNM[j]=(BVNM[j]-BVNM[j-7])/7
+end
+
+p1=plot([AJPN APHI AMYS AIDN AIND AVNM AKOR ALKA ATHA ASIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -445,12 +426,12 @@ p1=plot([AJPN APHI AMYS AIDN AIND ANPL AKOR ALKA ATHA ASIN],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Vietnam" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_cases.png") 
 
-p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BKOR BLKA BTHA BSIN], 
+p2=plot([BJPN BPHI BMYS BIDN BIND BVNM BKOR BLKA BTHA BSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19: deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -460,12 +441,12 @@ p2=plot([BJPN BPHI BMYS BIDN BIND BNPL BKOR BLKA BTHA BSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Vietnam" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_deaths.png") 
 
-p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NKOR NLKA NTHA NSIN],  
+p3=plot([NJPN NPHI NMYS NIDN NIND NVNM NKOR NLKA NTHA NSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -475,12 +456,12 @@ p3=plot([NJPN NPHI NMYS NIDN NIND NNPL NKOR NLKA NTHA NSIN],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
+   label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Vietnam" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_new_cases.png") 
 
-p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDKOR NDLKA NDTHA NDSIN],  
+p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDVNM NDKOR NDLKA NDTHA NDSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -490,7 +471,7 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDIND NDNPL NDKOR NDLKA NDTHA NDSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Nepal" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Indonesia" "India" "Vietnam" "South Korea" "Sri Lanka" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_recent_deaths.png") 

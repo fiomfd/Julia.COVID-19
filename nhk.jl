@@ -40,7 +40,7 @@ ll1=string(dd0+Day(Int(floor((DD-1)/2))));
 ll2=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan (126M)
-PJPN=125.36;
+PJPN=125.845010;
 TJPN=J2/PJPN;
 NJPN=zeros(D)
 for j=1:7
@@ -60,7 +60,7 @@ end
 
 # Okinawa (1.46M): code 47
 ROWOKNW=findall(x->x==47,A0);
-POKNW=1.458870;    
+POKNW=1.469335;    
 TOKNW=A2[ROWOKNW]/POKNW;
 NOKNW=zeros(D)
 for j=1:7
@@ -79,7 +79,7 @@ for j=8:D
 end
 
 # Tokyo (14M): code 13,
-PTKY=14.049146;
+PTKY=13.988129;
 ROWTKY=findall(x->x==13,A0);
 TTKY=A2[ROWTKY]/PTKY;
 NTKY=zeros(D)
@@ -99,7 +99,7 @@ for j=8:D
 end
 
 # Osaka (8.81M): code 27
-POSK=8.798545;
+POSK=8.797153;
 ROWOSK=findall(x->x==27,A0);
 TOSK=A2[ROWOSK]/POSK;
 NOSK=zeros(D)
@@ -119,7 +119,7 @@ for j=8:D
 end
 
 # Hyogo (5.43M): code 28, 
-PHYG=5.446455;
+PHYG=5.425850;
 rowhyg=findall(x->x==28,A0);
 THYG=A2[rowhyg]/PHYG;
 NHYG=zeros(D)
@@ -139,7 +139,7 @@ for j=8:D
 end
 
 # Hokkaido (5.27M): code 1, 
-PHKD=5.207185;
+PHKD=5.191355;
 ROWHKD=findall(x->x==1,A0);
 THKD=A2[ROWHKD]/PHKD;
 NHKD=zeros(D)
@@ -156,26 +156,6 @@ for j=1:7
 end
 for j=8:D
     NDHKD[j]=(DHKD[j]-DHKD[j-7])/7;
-end
-
-# Chiba: code 12 
-PCHB=6.282457;
-ROWCHB=findall(x->x==12,A0);
-TCHB=A2[ROWCHB]/PCHB;
-NCHB=zeros(D)
-for j=1:7
-    NCHB[j]=TCHB[j]/j
-end
-for j=8:D
-    NCHB[j]=(TCHB[j]-TCHB[j-7])/7
-end
-DCHB=A3[ROWCHB]/PCHB;
-NDCHB=zeros(D);
-for j=1:7
-    NDCHB[j]=(NDCHB[j]-NDCHB[1])/j;
-end
-for j=8:D
-    NDCHB[j]=(DCHB[j]-DCHB[j-7])/7;
 end
 
 p1=plot([TJPN TTKY TOKNW TOSK], 
