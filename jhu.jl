@@ -399,7 +399,7 @@ end
 
 # Vietnam
 PVNM=98.953541;
-AVNM=parse.(Float64,Array(Acsv[275,5:qw]))/PVNM;
+AVNM=parse.(Float64,Array(Acsv[280,5:qw]))/PVNM;
 NVNM=zeros(D);
 for j=1:7
     NVNM[j]=AVNM[j]/7
@@ -407,7 +407,7 @@ end
 for j=8:D
     NVNM[j]=(AVNM[j]-AVNM[j-7])/7
 end
-BVNM=parse.(Float64,Array(Bcsv[275,5:qw]))/PVNM;
+BVNM=parse.(Float64,Array(Bcsv[280,5:qw]))/PVNM;
 NDVNM=zeros(D);
 for j=1:7
     NDVNM[j]=BVNM[j]/7
