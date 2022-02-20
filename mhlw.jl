@@ -32,10 +32,11 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
-dd0=Date(2021,7,1);
-DD=Int64(D-418);
+dd0=Date(2022,1,1);
+dd1=Date(2022,1,27);
+DD=Int64(D-602);
 ll0=string(dd0);
-ll1=string(dd0+Day(Int(floor((DD-1)/2))));
+ll1=string(dd1);
 ll2=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
@@ -48,6 +49,10 @@ for j=1:7
 end
 for j=8:D
     NJPN[j]=(CJPN[j]-CJPN[j-7])/7;
+end
+XJPN=zeros(DD);
+for j=1:DD
+    XJPN[j]=(CJPN[j+602]-CJPN[j+595])/7;
 end
 DJPN=D1[:,1]/PJPN;
 RJPN=R1[:,2]/PJPN;
@@ -71,6 +76,10 @@ end
 for j=8:D
     NTKY[j]=(CTKY[j]-CTKY[j-7])/7;
 end
+XTKY=zeros(DD);
+for j=1:DD
+    XTKY[j]=(CTKY[j+602]-CTKY[j+595])/7;
+end
 DTKY=D1[:,14]/PTKY;
 RTKY=R1[:,41]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
@@ -93,6 +102,10 @@ end
 for j=8:D
     NOKNW[j]=(COKNW[j]-COKNW[j-7])/7;
 end
+XOKNW=zeros(DD);
+for j=1:DD
+    XOKNW[j]=(COKNW[j+602]-COKNW[j+595])/7;
+end
 DOKNW=D1[:,48]/POKNW;
 ROKNW=R1[:,143]/POKNW;
 AOKNW=COKNW-ROKNW-DOKNW;
@@ -114,6 +127,10 @@ for j=1:7
 end
 for j=8:D
     NOSK[j]=(COSK[j]-COSK[j-7])/7;
+end
+XOSK=zeros(DD);
+for j=1:DD
+    XOSK[j]=(COSK[j+602]-COSK[j+595])/7;
 end
 DOSK=D1[:,28]/POSK;
 ROSK=R1[:,83]/POSK;
@@ -254,6 +271,19 @@ p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     legend = :topleft)
 savefig("./mhlw/mhlw_recent_deaths.png") 
 
+r=plot([XJPN XTKY XOKNW XOSK], 
+    grid=false,
+    linewidth=2, 
+    legendfont=font(10), 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
+    title="COVID-19: 7-day average of daily new cases per 1M \n data sourced by MOH of Japan",
+    right_margin=Plots.Measures.Length(:mm, 10.0),
+    xticks = ([1 floor(27) DD;], [ll0 ll1 ll2]),
+    xlabel="date",
+    yaxis="cases/1M",    
+    palette = :seaborn_bright, 
+    legend = :topleft)
+savefig("./mhlw/mhlw_012722.png") 
 plot(p1, p2, p3, p4, 
      layout=(2,2), 
      size=(1260,840), 
