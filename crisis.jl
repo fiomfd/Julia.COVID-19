@@ -147,6 +147,19 @@ for j=1:DD
     NDBWN[j]=(BBWN[j+679]-BBWN[j+672])/7
 end
 
+# Hong Kong
+PHKG=7.600852;
+AHKG=parse.(Float64,Array(Wcsv[73,5:qw]))/PHKG;
+NHKG=zeros(DD);
+for j=1:DD
+    NHKG[j]=(AHKG[679+j]-AHKG[672+j])/7
+end
+BHKG=parse.(Float64,Array(Xcsv[73,5:qw]))/PHKG;
+NDHKG=zeros(DD);
+for j=1:DD
+    NDHKG[j]=(BHKG[j+679]-BHKG[j+672])/7
+end
+
 
 # Colombia 
 PCOL=51.765589;
@@ -358,7 +371,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+679]-BFIE[j+672]),0)/7
 end
 
-p=plot([NMYS NTKY NOKNW NOSK NKOR NAUS NBWN NUSA NGBR NSIN], 
+p=plot([NHKG NAUS NMYS NOSK NKOR NVNM NBWN NUSA NGBR NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -367,12 +380,12 @@ p=plot([NMYS NTKY NOKNW NOSK NKOR NAUS NBWN NUSA NGBR NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Malaysia" "Tokyo" "Okinawa" "Osaka" "South Korea" "Australia" "Brunei" "United States" "United Kingdom" "Singapore"], 
+    label=["Hong Kong" "Australia" "Malaysia" "Osaka" "South Korea" "Vietnam" "Brunei" "United States" "United Kingdom" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NOKNW NOSK NVNM NIDN NKOR NIND NPHI NTHA], 
+q=plot([NJPN NTKY NOKNW NOSK NTHA NVNM NIDN NIND NPHI NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
@@ -381,7 +394,7 @@ q=plot([NJPN NTKY NOKNW NOSK NVNM NIDN NKOR NIND NPHI NTHA],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Vietnam" "Indonesia" "South Korea" "India" "Philippines" "Thailand"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Thailand" "VNM" "Indonesia" "India" "Philippines" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/delta.png") 
