@@ -215,6 +215,11 @@ NKOR=zeros(DD);
 for j=1:DD
     NKOR[j]=(AKOR[710+j]-AKOR[703+j])/7
 end
+BKOR=parse.(Float64,Array(Xcsv[158,5:qw]))/PKOR;
+NDKOR=zeros(DD);
+for j=1:DD
+    NDKOR[j]=(BKOR[j+710]-BKOR[j+703])/7
+end
 
 # Malaysia
 PMYS=33.060794;
@@ -399,7 +404,7 @@ q=plot([NJPN NTKY NOKNW NOSK NTHA NVNM NIDN NIND NPHI NSIN],
     legend = :topleft)
 savefig("./crisis/delta.png") 
 
-r=plot([NDJPN NDGBR NDUSA NDOSK NDAUS NDMEX NDBWN NDRUS NDBRA NDSIN],  
+r=plot([NDJPN NDAUS NDUSA NDOSK NDKOR NDGBR NDBWN NDRUS NDBRA NDSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -409,7 +414,7 @@ r=plot([NDJPN NDGBR NDUSA NDOSK NDAUS NDMEX NDBWN NDRUS NDBRA NDSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-   label=["Japan" "United Kingdom" "United States" "Osaka" "Australia" "Mexico" "Brunei" "Russia" "Brazil" "Singapore"], 
+   label=["Japan" "Australia" "United States" "Osaka" "South Korea" "United Kingdom" "Brunei" "Russia" "Brazil" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
