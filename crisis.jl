@@ -242,6 +242,18 @@ for j=1:DD
     NDMEX[j]=(BMEX[j+710]-BMEX[j+703])/7
 end
 
+# New Zealand
+PNZ1=0.017593;
+PNZ2=4.892946;
+PNZL=PNZ1+PNZ2;
+ANZ1=parse.(Float64,Array(Wcsv[201,5:qw]));
+ANZ2=parse.(Float64,Array(Wcsv[202,5:qw]));
+ANZL=(ANZ1+ANZ2)/PNZL;
+NNZL=zeros(DD);
+for j=1:DD
+    NNZL[j]=(ANZL[710+j]-ANZL[703+j])/7
+end
+
 # Peru
 PPER=33.719259;
 APER=parse.(Float64,Array(Wcsv[214,5:qw]))/PPER;
@@ -376,7 +388,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+710]-BFIE[j+703]),0)/7
 end
 
-p=plot([NHKG NAUS NOKNW NMYS NKOR NVNM NBWN NNSW NVIC NSIN], 
+p=plot([NHKG NAUS NOKNW NNZL NKOR NVNM NBWN NNSW NVIC NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -385,7 +397,7 @@ p=plot([NHKG NAUS NOKNW NMYS NKOR NVNM NBWN NNSW NVIC NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Hong Kong" "Australia" "Okinawa" "Malaysia" "South Korea" "Vietnam" "Brunei" "New South Wales" "Victoria" "Singapore"], 
+    label=["Hong Kong" "Australia" "Okinawa" "New Zealand" "South Korea" "Vietnam" "Brunei" "New South Wales" "Victoria" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
