@@ -126,6 +126,14 @@ for j=1:DD
     NDAUS[j]=(BAUS[710+j]-BAUS[703+j])/7
 end
 
+# Western Australia
+PWAU=2.69;
+AWAU=parse.(Float64,Array(Wcsv[18,5:qw]))/PWAU;
+NWAU=zeros(DD);
+for j=1:DD
+    NWAU[j]=(AWAU[710+j]-AWAU[703+j])/7
+end
+
 # Brazil 
 PBRA=215.019011;
 BBRA=parse.(Float64,Array(Xcsv[33,5:qw]))/PBRA;
@@ -319,6 +327,14 @@ for j=1:DD
     NDLKA[j]=(BLKA[j+710]-BLKA[j+703])/7
 end
 
+# Taiwan
+PTWN=23.61;
+ATWN=parse.(Float64,Array(Wcsv[249,5:qw]))/PTWN;
+NTWN=zeros(DD);
+for j=1:DD
+    NTWN[j]=(ATWN[710+j]-ATWN[703+j])/7
+end
+
 # Thailand
 PTHA=70.085127;
 ATHA=parse.(Float64,Array(Wcsv[252,5:qw]))/PTHA;
@@ -388,7 +404,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+710]-BFIE[j+703]),0)/7
 end
 
-p=plot([NHKG NAUS NOKNW NNZL NKOR NVNM NBWN NNSW NVIC NSIN], 
+p=plot([NHKG NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NTWN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -397,7 +413,7 @@ p=plot([NHKG NAUS NOKNW NNZL NKOR NVNM NBWN NNSW NVIC NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Hong Kong" "Australia" "Okinawa" "New Zealand" "South Korea" "Vietnam" "Brunei" "New South Wales" "Victoria" "Singapore"], 
+    label=["Hong Kong" "Australia" "Okinawa" "New Zealand" "South Korea" "Western Australia" "Brunei" "New South Wales" "Victoria" "Taiwan"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 

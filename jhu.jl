@@ -359,6 +359,17 @@ for j=8:D
     NDLKA[j]=(BLKA[j]-BLKA[j-7])/7
 end
 
+# Taiwan
+PTWN=23.61;
+ATWN=parse.(Float64,Array(Wcsv[249,5:qw]))/PTWN;
+NTWN=zeros(D);
+for j=1:7
+    NTWN[j]=ATWN[j]/7
+end
+for j=8:D
+    NTWN[j]=(ATWN[j]-ATWN[j-7])/7
+end
+
 # Thailand
 PTHA=70.085127;
 ATHA=parse.(Float64,Array(Acsv[252,5:qw]))/PTHA;
@@ -435,7 +446,7 @@ for j=8:D
     NDVNM[j]=(BVNM[j]-BVNM[j-7])/7
 end
 
-p1=plot([AJPN APHI AMYS AIDN AKOR AVNM ABWN AIND ATHA ASIN],  
+p1=plot([AJPN APHI AMYS ATWN AKOR AVNM ABWN AIDN ATHA ASIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -445,12 +456,12 @@ p1=plot([AJPN APHI AMYS AIDN AKOR AVNM ABWN AIND ATHA ASIN],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "Vietnam" "Brunei" "India" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Taiwan" "South Korea" "Vietnam" "Brunei" "Indonesia" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_cases.png") 
 
-p2=plot([BJPN BPHI BMYS BIDN BKOR BVNM BBWN BIND BTHA BSIN], 
+p2=plot([BJPN BPHI BMYS BTWN BKOR BVNM BBWN BIDN BTHA BSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19: deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -460,12 +471,12 @@ p2=plot([BJPN BPHI BMYS BIDN BKOR BVNM BBWN BIND BTHA BSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "Vietnam" "Brunei" "India" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Taiwan" "South Korea" "Vietnam" "Brunei" "Indonesia" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_deaths.png") 
 
-p3=plot([NJPN NPHI NMYS NIDN NKOR NVNM NBWN NIND NTHA NSIN],  
+p3=plot([NJPN NPHI NMYS NTWN NKOR NVNM NBWN NIDN NTHA NSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -475,12 +486,12 @@ p3=plot([NJPN NPHI NMYS NIDN NKOR NVNM NBWN NIND NTHA NSIN],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D;], [l0 l1 l2 l3 l4]),
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "Vietnam" "Brunei" "India" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Taiwan" "South Korea" "Vietnam" "Brunei" "Indonesia" "Thailand" "Singapore"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./jhu/asia_new_cases.png") 
 
-p4=plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDVNM NDBWN NDIND NDTHA NDSIN],  
+p4=plot([NDJPN NDPHI NDMYS NDTWN NDKOR NDVNM NDBWN NDIDN NDTHA NDSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -490,7 +501,7 @@ p4=plot([NDJPN NDPHI NDMYS NDIDN NDKOR NDVNM NDBWN NDIND NDTHA NDSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Philippines" "Malaysia" "Indonesia" "South Korea" "Vietnam" "Brunei" "India" "Thailand" "Singapore"],
+    label=["Japan" "Philippines" "Malaysia" "Taiwan" "South Korea" "Vietnam" "Brunei" "Indonesia" "Thailand" "Singapore"],
    palette = :seaborn_bright, 
      legend = :topleft)
 savefig("./jhu/asia_recent_deaths.png") 
