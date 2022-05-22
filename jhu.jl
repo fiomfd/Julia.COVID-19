@@ -361,7 +361,7 @@ end
 
 # Taiwan
 PTWN=23.61;
-ATWN=parse.(Float64,Array(Wcsv[249,5:qw]))/PTWN;
+ATWN=parse.(Float64,Array(Acsv[249,5:qw]))/PTWN;
 NTWN=zeros(D);
 for j=1:7
     NTWN[j]=ATWN[j]/7
