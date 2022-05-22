@@ -369,6 +369,15 @@ end
 for j=8:D
     NTWN[j]=(ATWN[j]-ATWN[j-7])/7
 end
+BTWN=parse.(Float64,Array(Bcsv[249,5:qw]))/PTWN;
+NDTWN=zeros(D);
+for j=1:7
+    NDTWN[j]=BTWN[j]/7
+end
+for j=8:D
+    NDTWN[j]=(BTWN[j]-BTWN[j-7])/7
+end
+
 
 # Thailand
 PTHA=70.085127;
