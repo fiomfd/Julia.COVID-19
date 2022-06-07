@@ -218,12 +218,12 @@ end
 
 # South Korea
 PKOR=51.341022;
-AKOR=parse.(Float64,Array(Wcsv[163,5:qw]))/PKOR;
+AKOR=parse.(Float64,Array(Wcsv[164,5:qw]))/PKOR;
 NKOR=zeros(DD);
 for j=1:DD
     NKOR[j]=(AKOR[710+j]-AKOR[703+j])/7
 end
-BKOR=parse.(Float64,Array(Xcsv[163,5:qw]))/PKOR;
+BKOR=parse.(Float64,Array(Xcsv[164,5:qw]))/PKOR;
 NDKOR=zeros(DD);
 for j=1:DD
     NDKOR[j]=(BKOR[j+710]-BKOR[j+703])/7
@@ -404,7 +404,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+710]-BFIE[j+703]),0)/7
 end
 
-p=plot([NHKG NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NTWN], 
+p=plot([NTWN NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -413,7 +413,7 @@ p=plot([NHKG NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NTWN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Hong Kong" "Australia" "Okinawa" "New Zealand" "South Korea" "Western Australia" "Brunei" "New South Wales" "Victoria" "Taiwan"], 
+    label=["Taiwan" "Australia" "Okinawa" "New Zealand" "South Korea" "Western Australia" "Brunei" "New South Wales" "Victoria" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
