@@ -33,11 +33,13 @@ l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
 dd0=Date(2022,1,1);
-dd1=Date(2022,1,27);
+dd1=Date(2022,3,1);
+dd2=Date(2022,5,1);
 DD=Int64(D-602);
 ll0=string(dd0);
 ll1=string(dd1);
-ll2=string(dd0+Day(Int(floor(DD-1))));
+ll2=string(dd2);
+ll3=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
 PJPN=125.845010;
@@ -278,12 +280,13 @@ r=plot([XJPN XTKY XOKNW XOSK],
     label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
     title="COVID-19: 7-day average of daily new cases per 1M \n data sourced by MOH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 floor(27) DD;], [ll0 ll1 ll2]),
+    xticks = ([1 61 122 DD;], [ll0 ll1 ll2 ll3]),
     xlabel="date",
     yaxis="cases/1M",    
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_012722.png") 
+
 plot(p1, p2, p3, p4, 
      layout=(2,2), 
      size=(1260,840), 
