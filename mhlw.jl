@@ -32,16 +32,14 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
-dd0=Date(2022,1,1);
-dd1=Date(2022,3,1);
-dd2=Date(2022,5,1);
-dd3=Date(2022,7,1);
-DD=Int64(D-602);
+dd0=Date(2022,7,1);
+dd1=Date(2022,9,1);
+dd2=Date(2022,11,1);
+DD=Int64(D-783);
 ll0=string(dd0);
 ll1=string(dd1);
 ll2=string(dd2);
-ll3=string(dd3);
-ll4=string(dd0+Day(Int(floor(DD-1))));
+llf=string(dd0+Day(Int(floor(DD-1))));
 
 # Japan 
 PJPN=125.845010;
@@ -56,7 +54,7 @@ for j=8:D
 end
 XJPN=zeros(DD);
 for j=1:DD
-    XJPN[j]=(CJPN[j+602]-CJPN[j+595])/7;
+    XJPN[j]=(CJPN[j+783]-CJPN[j+776])/7;
 end
 DJPN=D1[:,1]/PJPN;
 RJPN=R1[:,2]/PJPN;
@@ -82,7 +80,7 @@ for j=8:D
 end
 XTKY=zeros(DD);
 for j=1:DD
-    XTKY[j]=(CTKY[j+602]-CTKY[j+595])/7;
+    XTKY[j]=(CTKY[j+783]-CTKY[j+776])/7;
 end
 DTKY=D1[:,14]/PTKY;
 RTKY=R1[:,41]/PTKY;
@@ -108,7 +106,7 @@ for j=8:D
 end
 XOKNW=zeros(DD);
 for j=1:DD
-    XOKNW[j]=(COKNW[j+602]-COKNW[j+595])/7;
+    XOKNW[j]=(COKNW[j+783]-COKNW[j+776])/7;
 end
 DOKNW=D1[:,48]/POKNW;
 ROKNW=R1[:,143]/POKNW;
@@ -134,7 +132,7 @@ for j=8:D
 end
 XOSK=zeros(DD);
 for j=1:DD
-    XOSK[j]=(COSK[j+602]-COSK[j+595])/7;
+    XOSK[j]=(COSK[j+783]-COSK[j+776])/7;
 end
 DOSK=D1[:,28]/POSK;
 ROSK=R1[:,83]/POSK;
@@ -196,7 +194,7 @@ CKAG=C1[:,47];
 CKYU=(CFUK+CSAG+CNAG+CKUM+COIT+CMIY+CKAG)/PKYU;
 XKYU=zeros(DD);
 for j=1:DD
-    XKYU[j]=(CKYU[j+602]-CKYU[j+595])/7;
+    XKYU[j]=(CKYU[j+783]-CKYU[j+776])/7;
 end
 
 q1=plot([CJPN AJPN RJPN], 
@@ -304,7 +302,7 @@ r=plot([XJPN XTKY XOKNW XOSK XKYU],
     label=["Japan" "Tokyo" "Okinawa" "Osaka" "Kyushu"], 
     title="COVID-19: 7-day average of daily new cases per 1M \n data sourced by MoH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 61 122 183 DD;], [ll0 ll1 ll2 ll3 ll4]),
+    xticks = ([1 DD;], [ll0 llf]),
     xlabel="date",
     yaxis="cases/1M",    
     palette = :seaborn_bright, 

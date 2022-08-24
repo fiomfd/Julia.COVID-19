@@ -33,12 +33,6 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
-dd0=Date(2021,7,1);
-DD=D-532;
-ll0=string(dd0);
-ll1=string(dd0+Day(Int(floor((DD-1)/2))));
-ll2=string(dd0+Day(Int(floor(DD-1))));
-
 # Japan (126M)
 PJPN=125.845010;
 TJPN=J2/PJPN;

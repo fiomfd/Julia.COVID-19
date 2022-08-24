@@ -7,7 +7,7 @@ using Plots, CSV, Dates, DataFrames
 # Download data from the MHLW web site. 
 download("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv","./csv/jhu_cases.csv");
 download("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv","./csv/jhu_deaths.csv");
-download("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv","./csv/jhu_recovered.csv");
+#download("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv","./csv/jhu_recovered.csv");
 
 Acsv=DataFrame(CSV.File("./csv/jhu_cases.csv", header=false, delim=','));
 Bcsv=DataFrame(CSV.File("./csv/jhu_deaths.csv", header=false, delim=','));
