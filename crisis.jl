@@ -68,6 +68,33 @@ for j=1:DD
     NDOSK[j]=(DOSK[j+783]-DOSK[j+776])/7
 end
 
+# Kyushu
+PFUK=5.112176;
+PSAG=0.805721;
+PNAG=1.290992;
+PKUM=1.722474;
+POIT=1.110553;
+PMIY=1.057609;
+PKAG=1.571833;
+PKYU=PFUK+PSAG+PNAG+PKUM+POIT+PMIY+PKAG;
+CFUK=J[:,41];   
+CSAG=J[:,42];
+CNAG=J[:,43];   
+CKUM=J[:,44];
+COIT=J[:,45];   
+CMIY=J[:,46];  
+CKAG=J[:,47];
+CKYU=(CFUK+CSAG+CNAG+CKUM+COIT+CMIY+CKAG)/PKYU;
+NKYU=zeros(DD);
+for j=1:DD
+    NKYU[j]=(CKYU[j+783]-CKYU[j+776])/7;
+end
+
+NMIY=zeros(DD);
+for j=1:DD
+    NMIY[j]=(CMIY[j+783]-CMIY[j+776])/PMIY/7;
+end
+
 # Argentina
 PARG=45.870820;
 AARG=parse.(Float64,Array(Wcsv[9,5:qw]))/PARG;
@@ -371,7 +398,7 @@ end
 BGBR=parse.(Float64,Array(Xcsv[276,5:qw]))/PGBR;
 NDGBR=zeros(DD);
 for j=1:DD
-    NDGBR[j]=(BGBR[j+891]-BGBR[j+884])/7
+    NDGBR[j]=max(0,(BGBR[j+891]-BGBR[j+884]))/7
 end
 
 # Vietnam
@@ -404,7 +431,7 @@ for j=1:DD
     NDFIE[j]=max((BFIE[j+891]-BFIE[j+884]),0)/7
 end
 
-p=plot([NTWN NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NSIN], 
+p=plot([NJPN NTKY NOKNW NOSK NKYU NMIY NKOR NHKG NTWN NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -413,26 +440,12 @@ p=plot([NTWN NAUS NOKNW NNZL NKOR NWAU NBWN NNSW NVIC NSIN],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Taiwan" "Australia" "Okinawa" "New Zealand" "South Korea" "Western Australia" "Brunei" "New South Wales" "Victoria" "Singapore"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Kyushu" "Miyazaki" "South Korea" "Hong Kong" "Taiwan" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NJPN NTKY NOKNW NOSK NTHA NVNM NIDN NIND NPHI NSIN], 
-    grid=false,
-    linewidth=2, 
-    title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU and MOH of Japan", 
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 DD;], [ll0 llf]),
-    xlabel="date",
-    yaxis="cases/1M",
-    legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Thailand" "VNM" "Indonesia" "India" "Philippines" "Singapore"], 
-    palette = :seaborn_bright, 
-    legend = :topleft)
-savefig("./crisis/delta.png") 
-
-r=plot([NDJPN NDAUS NDUSA NDOSK NDKOR NDGBR NDBWN NDRUS NDBRA NDSIN],  
+q=plot([NDJPN NDAUS NDOKNW NDOSK NDKOR NDGBR NDUSA NDRUS NDBRA NDSIN],  
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -442,14 +455,14 @@ r=plot([NDJPN NDAUS NDUSA NDOSK NDKOR NDGBR NDBWN NDRUS NDBRA NDSIN],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-   label=["Japan" "Australia" "United States" "Osaka" "South Korea" "United Kingdom" "Brunei" "Russia" "Brazil" "Singapore"], 
+   label=["Japan" "Australia" "Okinawa" "Osaka" "South Korea" "United Kingdom" "United States" "Russia" "Brazil" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
 
-plot(p, q, r,
-     layout=3, 
-     size=(1260,840), 
+plot(p, q,
+     layout=2, 
+     size=(1260,420), 
      left_margin=Plots.Measures.Length(:mm, 5.0),
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
