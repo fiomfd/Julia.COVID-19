@@ -32,15 +32,6 @@ l2=string(d0+Day(Int(floor((D-1)/2))));
 l3=string(d0+Day(Int(floor(3*(D-1)/4))));
 l4=string(df);
 
-dd0=Date(2022,7,1);
-dd1=Date(2022,9,1);
-dd2=Date(2022,11,1);
-DD=Int64(D-783);
-ll0=string(dd0);
-ll1=string(dd1);
-ll2=string(dd2);
-llf=string(dd0+Day(Int(DD-1)));
-
 # Japan 
 PJPN=125.845010;
 OJPN=N1[:,1]/PJPN;
@@ -51,10 +42,6 @@ for j=1:7
 end
 for j=8:D
     NJPN[j]=(CJPN[j]-CJPN[j-7])/7;
-end
-XJPN=zeros(DD);
-for j=1:DD
-    XJPN[j]=(CJPN[j+783]-CJPN[j+776])/7;
 end
 DJPN=D1[:,1]/PJPN;
 RJPN=R1[:,2]/PJPN;
@@ -78,10 +65,6 @@ end
 for j=8:D
     NTKY[j]=(CTKY[j]-CTKY[j-7])/7;
 end
-XTKY=zeros(DD);
-for j=1:DD
-    XTKY[j]=(CTKY[j+783]-CTKY[j+776])/7;
-end
 DTKY=D1[:,14]/PTKY;
 RTKY=R1[:,41]/PTKY;
 ATKY=CTKY-RTKY-DTKY;
@@ -103,10 +86,6 @@ for j=1:7
 end
 for j=8:D
     NOKNW[j]=(COKNW[j]-COKNW[j-7])/7;
-end
-XOKNW=zeros(DD);
-for j=1:DD
-    XOKNW[j]=(COKNW[j+783]-COKNW[j+776])/7;
 end
 DOKNW=D1[:,48]/POKNW;
 ROKNW=R1[:,143]/POKNW;
@@ -130,10 +109,6 @@ end
 for j=8:D
     NOSK[j]=(COSK[j]-COSK[j-7])/7;
 end
-XOSK=zeros(DD);
-for j=1:DD
-    XOSK[j]=(COSK[j+783]-COSK[j+776])/7;
-end
 DOSK=D1[:,28]/POSK;
 ROSK=R1[:,83]/POSK;
 AOSK=COSK-ROSK-DOSK;
@@ -150,7 +125,7 @@ PHYG=5.425850;
 NHYG=N1[:,29]/PHYG;
 CHYG=C1[:,29]/PHYG;
 DHYG=D1[:,29]/PHYG;
-RHYG=R1[:,86]/PHYG;
+RHYG=R1[:,84]/PHYG;
 AHYG=CHYG-RHYG-DHYG;
 NDHYG=zeros(D);
 for j=1:7
@@ -162,8 +137,15 @@ end
  
 # Hokkaido
 PHKD=5.191355;
-NHKD=N1[:,2]/PHKD;
+OHKD=N1[:,2]/PHKD;
 CHKD=C1[:,2]/PHKD;
+NHKD=zeros(D);
+for j=1:7
+    NHKD[j]=(OHKD[j+104]+OHKD[j+103]+OHKD[j+102]+OHKD[j+101]+OHKD[j+100]+OHKD[j+99]+OHKD[j+98])/7;
+end
+for j=8:D
+    NHKD[j]=(CHKD[j]-CHKD[j-7])/7;
+end
 DHKD=D1[:,2]/PHKD;
 RHKD=R1[:,5]/PHKD;
 AHKD=CHKD-RHKD-DHKD;
@@ -192,10 +174,6 @@ COIT=C1[:,45];
 CMIY=C1[:,46];  
 CKAG=C1[:,47];
 CKYU=(CFUK+CSAG+CNAG+CKUM+COIT+CMIY+CKAG)/PKYU;
-XKYU=zeros(DD);
-for j=1:DD
-    XKYU[j]=(CKYU[j+783]-CKYU[j+776])/7;
-end
 
 q1=plot([CJPN AJPN RJPN], 
     grid=false,
@@ -294,20 +272,6 @@ p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHKD],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_recent_deaths.png") 
-
-r=plot([XJPN XTKY XOKNW XOSK XHKD], 
-    grid=false,
-    linewidth=2, 
-    legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"], 
-    title="COVID-19: 7-day average of daily new cases per 1M \n data sourced by MoH of Japan",
-    right_margin=Plots.Measures.Length(:mm, 10.0),
-    xticks = ([1 DD], [ll0,llf]),
-    xlabel="date",
-    yaxis="cases/1M",    
-    palette = :seaborn_bright, 
-    legend = :topleft)
-savefig("./mhlw/mhlw_012722.png") 
 
 plot(p1, p2, p3, p4, 
      layout=(2,2), 
