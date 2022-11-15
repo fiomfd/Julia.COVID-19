@@ -239,11 +239,11 @@ q3=plot([COKNW AOKNW ROKNW],
     legend = :topleft)
 savefig("./mhlw/mhlw_okinawa.png") 
 
-p1=plot([CJPN CTKY COKNW COSK], 
+p1=plot([CJPN CTKY COKNW COSK CHKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"], 
     title="COVID-19: total cases per 1M \n data sourced by MoH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D],[l0,l1,l2,l3,l4]),
@@ -253,7 +253,7 @@ p1=plot([CJPN CTKY COKNW COSK],
     legend = :topleft)
 savefig("./mhlw/mhlw_cases.png") 
 
-p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD], 
+p2=plot([DJPN DTKY DOKNW DOSK DHKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
@@ -262,12 +262,12 @@ p2=plot([DJPN DTKY DOKNW DOSK DHYG DHKD],
     xticks = ([1 floor(D/4)  floor(D/2) floor(3*D/4) D],[l0,l1,l2,l3,l4]),
     xlabel="date",
     yaxis="deaths/1M",
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"],
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"],
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_deaths.png") 
 
-p3=plot([NJPN NTKY NOKNW NOSK], 
+p3=plot([NJPN NTKY NOKNW NOSK NHKD], 
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average of new cases per 1M \n data sourced by MoH of Japan", 
@@ -276,12 +276,12 @@ p3=plot([NJPN NTKY NOKNW NOSK],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_new_cases.png") 
 
-p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD], 
+p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHKD], 
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by MoH of Japan", 
@@ -290,16 +290,16 @@ p4=plot([NDJPN NDTKY NDOKNW NDOSK NDHYG NDHKD],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hyogo" "Hokkaido"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./mhlw/mhlw_recent_deaths.png") 
 
-r=plot([XJPN XTKY XOKNW XOSK], 
+r=plot([XJPN XTKY XOKNW XOSK XHKD], 
     grid=false,
     linewidth=2, 
     legendfont=font(10), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido"], 
     title="COVID-19: 7-day average of daily new cases per 1M \n data sourced by MoH of Japan",
     right_margin=Plots.Measures.Length(:mm, 10.0),
     xticks = ([1 DD], [ll0,llf]),
