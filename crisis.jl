@@ -343,7 +343,7 @@ for j=1:DD
     NVNM[j]=(AVNM[j+983]-AVNM[j+976])/7
 end
 
-p=plot([NJPN NTKY NOKNW NOSK NHKD NNZL NKOR NHKG NTWN NAUS], 
+p=plot([NJPN NTKY NOKNW NOSK NHKD NAUS NKOR NHKG NTWN NSIN], 
     grid=false,
     linewidth=2, 
     title="COVID-19 7-day average of daily new cases per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -352,12 +352,12 @@ p=plot([NJPN NTKY NOKNW NOSK NHKD NNZL NKOR NHKG NTWN NAUS],
     xlabel="date",
     yaxis="cases/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido" "New Zealand" "South Korea" "Hong Kong" "Taiwan" "Australia"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido" "Australia" "South Korea" "Hong Kong" "Taiwan" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/cases.png") 
 
-q=plot([NDJPN NDTKY NDOKNW NDOSK NDHKD NDNZL NDKOR NDHKG NDTWN NDAUS],   
+q=plot([NDJPN NDTKY NDOKNW NDOSK NDHKD NDAUS NDKOR NDHKG NDTWN NDSIN],   
     grid=false,
     linewidth=2, 
     title="COVID-19: 7-day average deaths per 1M \n data sourced by JHU Coronavirus Resource Center", 
@@ -367,7 +367,7 @@ q=plot([NDJPN NDTKY NDOKNW NDOSK NDHKD NDNZL NDKOR NDHKG NDTWN NDAUS],
     xlabel="date",
     yaxis="deaths/1M",
     legendfont=font(8), 
-    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido" "New Zealand" "South Korea" "Hong Kong" "Taiwan" "Australia"], 
+    label=["Japan" "Tokyo" "Okinawa" "Osaka" "Hokkaido" "Australia" "South Korea" "Hong Kong" "Taiwan" "Singapore"], 
     palette = :seaborn_bright, 
     legend = :topleft)
 savefig("./crisis/deaths.png") 
@@ -379,4 +379,4 @@ plot(p, q,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("./crisis/crisis.png") 
+savefig("./crisis.png") 
