@@ -575,7 +575,7 @@ plot(p1, p2, p3, p4,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("./jhu/asia.png") 
+savefig("./asia.png") 
 
 plot(p5, p6, p7, p8,
      layout=(2,2), 
@@ -584,4 +584,4 @@ plot(p5, p6, p7, p8,
      right_margin=Plots.Measures.Length(:mm, 15.0),
      top_margin=Plots.Measures.Length(:mm, 5.0),
      bottom_margin=Plots.Measures.Length(:mm, 5.0))
-savefig("./jhu/world.png") 
+savefig("./world.png") 
